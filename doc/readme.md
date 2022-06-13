@@ -16,15 +16,40 @@ scene.globe.imageryLayers.addImageryProvider(imageryProvider);
 ```
 
 ```js
+/**
+ * 如有必要，应优先更换瓷砖，以便为新瓷砖腾出空间。队列实现为链表。
+ */
+class TileReplacementQueue {}
+
 // 栅格图层
 class UrlTemplateImageryProvider {}
 
 // 其他图层的容器
-class ImageryLayer {}
+class ImageryLayer {
+    constructor() {
+        this._reprojectComputeCommands = [];
+    }
+
+    // 更新帧状态以执行任何排队纹理重新投影。
+    queueReprojectionCommands() {
+        const computeCommands = this._reprojectComputeCommands;
+        const length = computeCommands.length;
+        for (let i = 0; i < length; ++i) {
+            frameState.commandList.push(computeCommands[i]);
+        }
+        computeCommands.length = 0;
+    }
+
+    /**
+     * 如有必要，在下一次更新时，将重新投影纹理到{@link GeographicProjection}的命令排队，并生成地理纹理的mipmaps。
+     */
+    _reprojectTexture() {}
+}
 
 // 图片层的有序集合
 class ImageryLayerCollection {
     constructor() {
+        this._layers = [];
         this.layerRemoved = new Event();
         this.layerMoved = new Event();
         this.layerShownOrHidden = new Event();
@@ -57,6 +82,18 @@ class ImageryLayerCollection {
         for (let i = 0, len = layers.length; i < len; ++i) {
             layers[i].queueReprojectionCommands(frameState);
         }
+    }
+
+    add() {
+        if (!hasIndex) {
+            index = this._layers.length;
+            this._layers.push(layer);
+        } else {
+            this._layers.splice(index, 0, layer);
+        }
+
+        this._update();
+        this.layerAdded.raiseEvent(layer, index);
     }
 }
 
@@ -111,6 +148,9 @@ class QuadtreePrimitive {
     beginFrame() {
         // Gets commands for any texture re-projections
         this._tileProvider.initialize(frameState);
+
+        // 清除瓦片下载队列
+        clearTileLoadQueue(this);
     }
 }
 
@@ -121,6 +161,9 @@ class GlobeSurfaceTileProvider {
         this._imageryLayers = options.imageryLayers;
 
         this._imageryLayers.layerMoved.addEventListener(this._onLayerMoved);
+
+        // 需要销毁的顶点数组
+        this._vertexArraysToDestroy = [];
     }
 
     _onLayerMoved() {
@@ -136,8 +179,10 @@ class GlobeSurfaceTileProvider {
      * 在每个渲染帧开始调用
      */
     initialize() {
-        // update each layer for texture reprojection.
+        // 更新每个层以进行纹理重投影。
         this._imageryLayers.queueReprojectionCommands(frameState);
+
+        // 释放需要销毁的顶点数组
     }
 }
 ```
@@ -190,3 +235,4 @@ globe.beginFrame() {
 
 https://zhuanlan.zhihu.com/p/511339180
 https://zhuanlan.zhihu.com/p/389940746
+[中文文档](http://cesium.xin/cesium/cn/Documentation1.62/Globe.html?classFilter=Globe)
