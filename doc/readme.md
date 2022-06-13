@@ -131,6 +131,15 @@ class Globe {
     }
 }
 
+function createRenderCommandsForSelectedTiles(primitive:QuadtreePrimitive, frameState) {
+  const tileProvider = primitive._tileProvider;
+  const tilesToRender = primitive._tilesToRender;
+
+  for (let i = 0, len = tilesToRender.length; i < len; ++i) {
+    const tile = tilesToRender[i];
+    tileProvider.showTileThisFrame(tile, frameState);
+  }
+}
 /*
  * 四叉树瓦片图元
  *通过利用细节级别和剔除来渲染大量数据集。地球表面分为
@@ -141,8 +150,9 @@ class Globe {
  */
 class QuadtreePrimitive {
     constructor(options) {
-        // GlobeSurfaceTileProvider
-        this._tileProvider = options.tileProvider;
+        this._tilesToRender = [];
+        this._levelZeroTiles = []
+        this._tileProvider:GlobeSurfaceTileProvider = options.tileProvider;
     }
 
     beginFrame() {
@@ -151,13 +161,14 @@ class QuadtreePrimitive {
 
         // 清除瓦片下载队列
         clearTileLoadQueue(this);
+
+        this._tileReplacementQueue.markStartOfRenderFrame();
     }
 }
 
 // 地球表面的四叉树图瓦片提供者
 class GlobeSurfaceTileProvider {
-    constructor(imageryLayers) {
-        // ImageryLayerCollection
+    constructor(imageryLayers: ImageryLayerCollection) {
         this._imageryLayers = options.imageryLayers;
 
         this._imageryLayers.layerMoved.addEventListener(this._onLayerMoved);
@@ -194,6 +205,7 @@ class GlobeSurfaceTileProvider {
     |--Globe
         |--QuadtreePrimitive
             |--GlobeSurfaceTileProvider
+                        |--QuadtreeTile
 ```
 
 #### 2、单帧流程
@@ -228,6 +240,105 @@ globe.update() {
 ```js
 globe.beginFrame() {
   QuadtreePrimitive.beginFrame()
+}
+```
+
+##### 2.3 globe.render()
+
+```js
+globe.render() {
+    QuadtreePrimitive.render(frameState);
+}
+
+QuadtreePrimitive.render() {
+    //
+    const tileProvider:GlobeSurfaceTileProvider = this._tileProvider;
+    tileProvider.beginUpdate(frameState);
+
+    selectTilesForRendering(this, frameState);
+    createRenderCommandsForSelectedTiles(this, frameState);
+
+    tileProvider.endUpdate(frameState);
+}
+```
+
+###### 2.3.1 selectTilesForRendering()
+
+```js
+function selectTilesForRendering(primitive:GlobeSurfaceTileProvider, frameState) {
+    // 1) Clear the render list.
+    const tilesToRender = primitive._tilesToRender;
+    tilesToRender.length = 0;
+
+    // GlobeSurfaceTileProvider
+    const tileProvider = primitive._tileProvider;
+    // 2) 创建零级瓦片
+    primitive._levelZeroTiles = QuadtreeTile.createLevelZeroTiles(tilingScheme);
+
+    createRenderCommandsForSelectedTiles(this, frameState);
+}
+
+class QuadtreePrimitive {
+    render() {
+        selectTilesForRendering(this, frameState);
+    }
+}
+
+// 四叉树瓦片
+class QuadtreeTile{
+
+    // 为“详细级别零”（最粗糙、最不详细的级别）创建一组矩形平铺。
+    static createLevelZeroTiles(tilingScheme) {
+        // tilingScheme:GeographicTilingScheme
+        const numberOfLevelZeroTilesX = tilingScheme.getNumberOfXTilesAtLevel(0);
+        const numberOfLevelZeroTilesY = tilingScheme.getNumberOfYTilesAtLevel(0);
+        const result = new Array(numberOfLevelZeroTilesX * numberOfLevelZeroTilesY);
+
+        let index = 0;
+        for (let y = 0; y < numberOfLevelZeroTilesY; ++y) {
+            for (let x = 0; x < numberOfLevelZeroTilesX; ++x) {
+                result[index++] = new QuadtreeTile({
+                    tilingScheme: tilingScheme,
+                    x: x,
+                    y: y,
+                    level: 0,
+                });
+            }
+        }
+
+  return result;
+    }
+}
+
+/**
+ * 地理平铺方案
+ * 参考简单{@link GeographicProjection}的几何体的平铺方案，其中经度和纬度直接映射到X和Y。
+ * 此投影通常被称为地理、等矩形、等距圆柱或平板。
+*/
+class GeographicTilingScheme {
+    constructor() {
+        // 零级Tilex数
+        this._numberOfLevelZeroTilesX = 2;
+        this._numberOfLevelZeroTilesY = 1;
+    }
+    // 获取指定详细级别下X方向上的平铺总数。
+    getNumberOfXTilesAtLevel() {
+        return this._numberOfLevelZeroTilesX << level;
+    }
+
+    // 获取指定详细级别下Y方向上的平铺总数。
+    getNumberOfYTilesAtLevel(){
+        return this._numberOfLevelZeroTilesY << level;
+    }
+}
+
+
+class GlobeSurfaceTileProvider {
+
+    // 地形的平铺方案
+    get tilingScheme(){
+      return this._terrainProvider.tilingScheme;
+  },
 }
 ```
 
