@@ -7,6 +7,13 @@ export function addGaode(viewer) {
   })
   viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
 
+  // 添加高德矢量图
+  // var atLayer = new Cesium.UrlTemplateImageryProvider({
+  //   url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+  //   minimumLevel: 3,
+  //   maximumLevel: 18
+  // })
+  // viewer.imageryLayers.addImageryProvider(atLayer);
 }
 
 // 添加天地图
