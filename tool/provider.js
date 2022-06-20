@@ -1,9 +1,20 @@
+
+import {AmapMercatorTilingScheme} from './AmapMercatorTilingScheme'
+export function addDebug(params) {
+  viewer.imageryLayers.addImageryProvider(new Cesium.GridImageryProvider());
+
+viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider())
+
+}
+
 export function addGaode(viewer) {
   // 添加高德影像
   var gaodeImageProvider = new Cesium.UrlTemplateImageryProvider({
     url: "https://webst{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7",
     // "http://wprd02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7"
-    subdomains: ["01", "02", "03", "04"] //多域名请求
+    subdomains: ["01", "02", "03", "04"], //多域名请求
+    tilingScheme: new AmapMercatorTilingScheme(),
+    crs: "WGS84"
   })
   viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
 
@@ -126,4 +137,27 @@ export function changeBaseMap(viewer, type) {
   //     tileMatrixSetID: "GoogleMapsCompatible"
   //   })
   // );
+}
+
+
+export function openstreetmap(viewer) {
+  const url = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+  var provider = new Cesium.UrlTemplateImageryProvider({
+    url:url,
+  })
+  viewer.imageryLayers.addImageryProvider(provider);
+}
+
+
+// 加载ArcGIS在线地图
+export function arcgis(viewer) {
+  viewer.imageryLayers.addImageryProvider(
+    new Cesium.ArcGisMapServerImageryProvider({
+        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
+    })
+  );
+
+//   var esri = new Cesium.ArcGisMapServerImageryProvider({
+//     url : 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+// });
 }

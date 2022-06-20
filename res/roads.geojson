@@ -1,0 +1,24 @@
+{
+"type": "FeatureCollection",
+"name": "roads",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 117083228, "name": "兴华中街", "ref": null, "type": "unclassified", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083229, "name": null, "ref": null, "type": "service", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083235, "name": null, "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083237, "name": "中心一路", "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 116.5374582, 39.759547499999037 ], [ 116.5384568, 39.75895249999904 ], [ 116.5386185, 39.758820599999041 ], [ 116.5386633, 39.758728499999037 ], [ 116.5386459, 39.758641399999043 ], [ 116.5385239, 39.757792899999039 ], [ 116.5384248, 39.757104599999039 ], [ 116.538424702409898, 39.757103897753993 ] ] ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083240, "name": "中心三路", "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083242, "name": null, "ref": null, "type": "residential", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 122705349, "name": "兴华中街", "ref": null, "type": "unclassified", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 240016468, "name": "漷马路", "ref": null, "type": "secondary", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 256265209, "name": null, "ref": null, "type": "service", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 256265227, "name": null, "ref": null, "type": "residential", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 361964647, "name": "漷马路", "ref": null, "type": "secondary", "oneway": 1, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 364451508, "name": null, "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 364451508, "name": null, "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 1, "name": "北五村小区路", "ref": null, "type": null, "oneway": null, "bridge": null, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083241, "name": "北五村小区路", "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 116.538424800084755, 39.757104599840275 ], [ 116.536523700084757, 39.75719009984028 ], [ 116.535083600084747, 39.757212499840278 ], [ 116.534866171222333, 39.757246114947733 ], [ 116.535526199716017, 39.758114199650386 ] ], [ [ 116.5355262, 39.758114199999042 ], [ 116.5359559, 39.758575899999038 ], [ 116.5363709, 39.758894299999042 ], [ 116.5374582, 39.759547499999037 ] ] ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083237, "name": "中心一路", "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "osm_id": 117083237, "name": "中心一路", "ref": null, "type": "residential", "oneway": 0, "bridge": 0, "maxspeed": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } }
+]
+}
