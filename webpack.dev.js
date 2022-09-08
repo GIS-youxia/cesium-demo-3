@@ -12,7 +12,7 @@ module.exports = {
   devtool: "source-map",
   module: "commonjs",
   devServer: {
-    port: 8888,
+    port: 9999,
     open: false,
     compress: false,
     contentBase: path.join(__dirname, "./")
