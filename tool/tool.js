@@ -10,18 +10,18 @@ export function updateResolutionScale(viewer) {
   }
 
   // 自动调整分辨率
-  if (Cesium.FeatureDetection.supportsImageRenderingPixelated()) {
-    var vtxf_dpr = window.devicePixelRatio;
-    // 适度降低分辨率
-    while (vtxf_dpr >= 2.0) {
-      vtxf_dpr /= 2.0;
-    }
-    //alert(dpr);
-    viewer.resolutionScale = vtxf_dpr;
-  }
+  // if (Cesium.FeatureDetection.supportsImageRenderingPixelated()) {
+  //   var vtxf_dpr = window.devicePixelRatio;
+  //   // 适度降低分辨率
+  //   while (vtxf_dpr >= 2.0) {
+  //     vtxf_dpr /= 2.0;
+  //   }
+  //   //alert(dpr);
+  //   viewer.resolutionScale = vtxf_dpr;
+  // }
 
   // 开启抗锯齿
-  viewer.scene.fxaa = true;
+  // viewer.scene.fxaa = true;
   // viewer.scene.postProcessStages.fxaa.enabled = true;
 }
 
