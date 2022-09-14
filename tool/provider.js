@@ -11,22 +11,25 @@ viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvide
 
 export function addGaode(viewer) {
   // 添加高德影像
-  var gaodeImageProvider = new Cesium.UrlTemplateImageryProvider({
-    url: "https://webst{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7",
-    // "http://wprd02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7"
-    subdomains: ["01", "02", "03", "04"], //多域名请求
-    tilingScheme: new AmapMercatorTilingScheme(),
-    crs: "WGS84"
-  })
-  viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
-
-  // 添加高德矢量图
-  // var atLayer = new Cesium.UrlTemplateImageryProvider({
-  //   url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+  // var gaodeImageProvider = new Cesium.UrlTemplateImageryProvider({
+  //   // url: "https://webst{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7",
+  //   // "http://wprd02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7"
+  //   url: "https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}",
+  //   subdomains: ["01", "02", "03", "04"], //多域名请求
+  //   // tilingScheme: new AmapMercatorTilingScheme(),
+  //   // crs: "WGS84",
   //   minimumLevel: 3,
   //   maximumLevel: 18
   // })
-  // viewer.imageryLayers.addImageryProvider(atLayer);
+  // viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
+
+  // 添加高德矢量图
+  var atLayer = new Cesium.UrlTemplateImageryProvider({
+    url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+    minimumLevel: 3,
+    maximumLevel: 18
+  })
+  viewer.imageryLayers.addImageryProvider(atLayer);
 }
 
 // 添加天地图

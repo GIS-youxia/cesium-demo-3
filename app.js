@@ -1,37 +1,51 @@
 
 import * as Cesium from './CesiumUnminified';
 
-// import { setCamera, } from './tool/camera'
+import { setCamera, } from './tool/camera'
 import { addGaode } from './tool/provider'
+import { updateResolutionScale, getClickPointAdd } from './tool/tool'
+import { addGeoJson } from './tool/geojson'
+
 
 window.CESIUM_BASE_URL = "./CesiumUnminified/";
 
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
 
-
-const DEF_OPTS = {
-  animation: false, //Whether to create animated widgets, lower left corner of the meter
-  baseLayerPicker: false, //Whether to display the layer selector
-  // imageryProvider: false, // Whether to display the default imagery
-  // fullscreenButton: false, //Whether to display the full-screen button
-  // geocoder: false, //To display the geocoder widget, query the button in the upper right corner
-  // homeButton: false, //Whether to display the Home button
-  infoBox: false, //Whether to display the information box
-  // sceneModePicker: false, //Whether to display 3D/2D selector
-  // selectionIndicator: false, //Whether to display the selection indicator component
-  timeline: false, //Whether to display the timeline
-  // navigationHelpButton: false, //Whether to display the help button in the upper right corner
+const viewOptions = {
+  //动画控件
+  animation: false,
+  // 图层选择控件
+  baseLayerPicker: false,
+  // geocoder: false,
+  // homeButton: false,
+  infoBox: false,
+  // 2d/3d切换
+  // sceneModePicker: false,
+  // selectionIndicator: false,
+  timeline: false,
+  // navigationHelpButton: false,
   // navigationInstructionsInitiallyVisible: false,
   // creditContainer: undefined,
   shouldAnimate: false
 }
 
-var viewer = new Cesium.Viewer("cesiumContainer", DEF_OPTS);
+var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
+addGaode(viewer)
+setCamera(viewer.camera)
 
+// 解决模糊
+updateResolutionScale(viewer)
 
-viewer.dataSources.add(
-  Cesium.GeoJsonDataSource.load("./res/buildings.geojson")
-);
+// 显示帧率
+viewer.scene.debugShowFramesPerSecond = true;
+
+// 开启拾取
+getClickPointAdd(viewer);
+
+// addGeoJson(viewer, "./res/buildings.geojson");
+// viewer.dataSources.add(
+//   Cesium.GeoJsonDataSource.load("./res/buildings.geojson")
+// );
 
 // viewer.dataSources.add(
 //   Cesium.GeoJsonDataSource.load("./res/roads.geojson")
@@ -42,7 +56,7 @@ viewer.dataSources.add(
 // );
 // // openstreetmap(viewer)
 // // arcgis(viewer)
-addGaode(viewer)
+
 
 
 

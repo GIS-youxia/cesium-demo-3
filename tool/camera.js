@@ -1,3 +1,5 @@
+import * as Cesium from '../CesiumUnminified';
+
 export function setCamera(camera) {
   // 北京
   const position = getChinaPostion(); //new Cesium.Cartesian3.fromDegrees(116.23, 39.54, 100)
