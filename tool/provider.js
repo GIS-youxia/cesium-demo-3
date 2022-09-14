@@ -1,5 +1,7 @@
 
-import {AmapMercatorTilingScheme} from './AmapMercatorTilingScheme'
+import * as Cesium from '../CesiumUnminified';
+
+import { AmapMercatorTilingScheme } from './AmapMercatorTilingScheme'
 export function addDebug(params) {
   viewer.imageryLayers.addImageryProvider(new Cesium.GridImageryProvider());
 
