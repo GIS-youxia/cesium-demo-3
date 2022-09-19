@@ -43,6 +43,14 @@ viewer.scene.debugShowFramesPerSecond = true;
 getClickPointAdd(viewer);
 
 // addGeoJson(viewer, "./res/buildings.geojson");
+
+// 自定义流动纹理材质
+// let material = new Cesium.PolylineFlowMaterialProperty({
+//   color: Cesium.Color.ORANGE,
+//   duration: 200
+// })
+addGeoJson(viewer, "./res/wangjingRoad.geojson");
+
 // viewer.dataSources.add(
 //   Cesium.GeoJsonDataSource.load("./res/buildings.geojson")
 // );

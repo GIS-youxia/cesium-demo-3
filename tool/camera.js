@@ -16,7 +16,7 @@ export function setCamera(camera) {
 
 /** 中国坐标 */
 export function getChinaPostion() {
-  return Cesium.Cartesian3.fromDegrees(116.435314, 40.960521, 1000000.0);
+  return Cesium.Cartesian3.fromDegrees(116.4715397068917, 39.9945712104195, 15000.0);
 }
 
 

@@ -24,23 +24,23 @@ export function addGaode(viewer) {
   // viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
 
   // 添加高德矢量图
-  // var atLayer = new Cesium.UrlTemplateImageryProvider({
-  //   url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
-  //   minimumLevel: 3,
-  //   maximumLevel: 18
-  // })
-  // viewer.imageryLayers.addImageryProvider(atLayer);
+  var atLayer = new Cesium.UrlTemplateImageryProvider({
+    url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+    minimumLevel: 3,
+    maximumLevel: 18
+  })
+  viewer.imageryLayers.addImageryProvider(atLayer);
 
   // 如果需要叠加高德/百度注记地图则添加以下代码
-  viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
-    url: "http://webst02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scale=1&style=8",
-    layer: "tdtAnnoLayer",
-    style: "default",
-    format: "image/jpeg",
-    tileMatrixSetID: "GoogleMapsCompatible",
-       minimumLevel: 3,
-    maximumLevel: 18
-  }));
+  // viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
+  //   url: "http://webst02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scale=1&style=8",
+  //   layer: "tdtAnnoLayer",
+  //   style: "default",
+  //   format: "image/jpeg",
+  //   tileMatrixSetID: "GoogleMapsCompatible",
+  //      minimumLevel: 3,
+  //   maximumLevel: 18
+  // }));
 }
 
 // 添加天地图
