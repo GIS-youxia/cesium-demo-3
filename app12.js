@@ -2,7 +2,14 @@
 import * as Cesium from './CesiumUnminified';
 import {GController} from './src/Controller'
 import { zipObject, map, forIn } from 'lodash'
+import { setCamera, } from './tool/camera'
+import Tileset from './src/Titleset'
+import Primitives from './src/Primitive'
+import Manager from './src/effects/Manager'
+import RoadNetwork from './src/lines/RoadNetwork'
+import { updateResolutionScale, getClickPointAdd } from './tool/tool'
 
+window.Cesium = Cesium;
 window.CESIUM_BASE_URL = "./CesiumUnminified/";
 
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
@@ -175,7 +182,7 @@ const mapConfig = {
 const mapImageryList = {
   "code": 1,
   "msg": "",
-  "time": "1663576818",
+  "time": "1663591303",
   "data": [
     {
       "id": 3,
@@ -185,7 +192,7 @@ const mapImageryList = {
       "interfaceConfig": "{}",
       "offset": "0,0",
       "invertswitch": 0,
-      // "filterRGB": "#ffffff",
+      "filterRGB": "#ffffff",
       "showswitch": 1,
       "weigh": 0,
       "createtime": 1624346908,
@@ -198,8 +205,8 @@ const mapImageryList = {
       "classConfig": "{\"url\":\"http:\/\/webst03.is.autonavi.com\/appmaptile?x={x}&y={y}&z={z}&style=7\"}",
       "interfaceConfig": "{\"saturation\":\"0.0\",\"brightness\":\"0.6\",\"contrast\":\"1.8\",\"hue\":\"1\",\"gamma\":\"0.3\"}",
       "offset": "0,0",
-      "invertswitch": 0,
-      // "filterRGB": "#4e70a6",
+      "invertswitch": 1,
+      "filterRGB": "#4e70a6",
       "showswitch": 1,
       "weigh": 0,
       "createtime": 1624326728,
@@ -238,4 +245,26 @@ function getBaseMapImageryList() {
   return res
 }
 
-GController.init(getBaseMapConfig(), getBaseMapImageryList());
+const viewer = GController.init(getBaseMapConfig(), getBaseMapImageryList());
+
+
+
+// const tile = new Tileset(viewer)
+// tile.init()
+
+// const primitives = new Primitives(viewer)
+// primitives.init();
+
+
+// const GManager = new Manager(viewer)
+// GManager.init()
+
+// 公路效果
+const GRoadNetwork = new RoadNetwork(viewer, 'road')
+GRoadNetwork.init()
+
+// 开启拾取
+getClickPointAdd(viewer);
+
+
+setCamera(viewer, "beiJing", 10000)

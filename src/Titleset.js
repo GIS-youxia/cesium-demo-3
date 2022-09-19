@@ -17,10 +17,11 @@ function getTitlesetList() {
         "offset_z": 0,
         "onswitch": 1,
         "flytoswitch": 1,
-        "color": "rgba(255, 255, 255, 1)",
+        "color": "rgba(1000, 1000, 1000, 1)",
         "effectswitch": 1,
         "height": 260,
-        "effect_color": "#df16f1",
+        // "effect_color": "#df16f1",
+        "effect_color": "#0xffffff",
         "createtime": 1626347087,
         "updatetime": 1637372783
       }

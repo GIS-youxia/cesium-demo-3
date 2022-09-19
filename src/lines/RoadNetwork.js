@@ -68,11 +68,11 @@ function getLinesEffectList() {
             {
               "id": 5,
               "type": "RoadPic",
-              "width": 2.6,
+              "width": 4.6,
               "geojsonfile": "./res/wangjingRoad.geojson",
               "effectimage": "./res/pic\/spriteline2.png",
-              "setup_param": "{\"time\":3200}",
-              "showswitch": 1,
+              "setup_param": "{\"time\":2500}",
+              "showswitch": 0,
               "createtime": 1632815053,
               "updatetime": 1632815053
             }
@@ -373,10 +373,10 @@ class RoadNetwork {
     const _this = this
     let promise = Cesium.GeoJsonDataSource.load(url)
     promise.then(function(dataSource ) {
-      _this.viewer.dataSources.add(dataSource)
+      _this.viewer.dataSources.add(dataSource);
       _this.RoadPicEntities = dataSource.entities.values
       for (let i = 0; i < _this.RoadPicEntities.length; i++) {
-        const entity = _this.RoadPicEntities[i]
+        const entity = _this.RoadPicEntities[i];
         entity.polyline.width = width
         entity.polyline.material = new Cesium.Spriteline1MaterialProperty(time, Picurl)
       }
@@ -504,7 +504,7 @@ class RoadNetwork {
   }
   loadBeijingLinesData() {
     const _this = this
-    Cesium.Resource.fetchJson('https://mapv-data.oss-cn-hangzhou.aliyuncs.com/geojson/bj-lines-bus.json').then(function(i ) {
+    Cesium.Resource.fetchJson('./res/bj-lines-bus.json').then(function(i ) {
       let t = []
       i.map(function(e , i ) {
         let n = []
