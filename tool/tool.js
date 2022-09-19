@@ -53,3 +53,66 @@ export function getClickPointAdd(_viewer) {
     })
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 }
+
+
+// http://map.217dan.com/addons/cesiummapv#/
+export function getCurCenterlonLat(view) {
+  var t = view.camera.pickEllipsoid(new Cesium.Cartesian2(e.canvas.clientWidth / 2, e.canvas.clientHeight / 2))
+  var info = Cesium.Ellipsoid.WGS84.cartesianToCartographic(t);
+  var lon = 180 * info.longitude / Math.PI;
+  var lat = 180 * info.latitude / Math.PI;
+
+  return {
+    lon: lon,
+    lat: lat
+  }
+}
+
+  // 获取当前视图的中心经纬度
+export function changeImageryProviderColors(view) {
+  var t = view.scene.globe._surfaceShaderSet.baseFragmentShaderSource.sources;
+  for (var n = 0; n < t.length; n++) {
+    var i = t[n];
+    var a = "gl_FragColor = finalColor;\n}\n#ifdef GROUND_ATMOSPHERE\n";
+    var o = a;
+    -1 !== i.indexOf(a) && (t[n] = t[n].replace(a, o))
+  }
+}
+
+ // 消除锯齿
+  export function removeJagged (e) {
+    e.scene.postProcessStages.fxaa.enabled = !1,
+      e.scene.fxaa = !1;
+    var t = e.cesiumWidget._supportsImageRenderingPixelated;
+    if (t) {
+      var n = window.devicePixelRatio;
+      while (n >= 2)
+        n /= 2;
+      e.resolutionScale = n
+    }
+  }
+
+
+export function flyTo(view) {
+  view.scene.camera.flyTo({
+    // setView
+    destination: {
+      x: cartesianXYZ.x,
+      y: cartesianXYZ.y,
+      z: cartesianXYZ.z,
+    },
+    orientation: {
+      direction: new Cesium.Cartesian3(
+        parseFloat(FirstMapView.value.direction_x),
+        parseFloat(FirstMapView.value.direction_y),
+        parseFloat(FirstMapView.value.direction_z)
+      ),
+      up: new Cesium.Cartesian3(
+        parseFloat(FirstMapView.value.up_x),
+        parseFloat(FirstMapView.value.up_y),
+        parseFloat(FirstMapView.value.up_z)
+      ),
+    },
+    duration: FirstMapView.value.duration, // 延迟秒数
+  })
+}

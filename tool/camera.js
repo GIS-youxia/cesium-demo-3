@@ -16,7 +16,11 @@ export function setCamera(camera) {
 
 /** 中国坐标 */
 export function getChinaPostion() {
-  return Cesium.Cartesian3.fromDegrees(116.4715397068917, 39.9945712104195, 15000.0);
+  // 北京
+  return Cesium.Cartesian3.fromDegrees(116.4715397068917, 39.9945712104195, 5000.0);
+
+  // 深圳 经度：114.05643562967782, 纬度：22.54490159071341
+  // return Cesium.Cartesian3.fromDegrees(114.05643562967782, 22.54490159071341, 105000.0);
 }
 
 
