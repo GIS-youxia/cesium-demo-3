@@ -35,7 +35,7 @@ const viewOptions = {
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 addGaode(viewer)
-setCamera(viewer.camera)
+setCamera(viewer, "shenZhen")
 
 // 解决模糊
 updateResolutionScale(viewer)

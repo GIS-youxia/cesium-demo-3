@@ -131,6 +131,20 @@ class Titleset {
         }
       })
 
+      // tileset.style = new Cesium.Cesium3DTileStyle({
+      //   color: {
+      //     conditions: [
+      //       ['${floor} >= 8', 'rgba(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 7', 'rgb(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 6', 'rgb(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 5', 'rgb(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 4', 'rgb(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 3', 'rgb(0, 149, 251, 0.3)'],
+      //       ['${floor} >= 2', 'rgb(0, 149, 251, 0.3)'],
+      //       ['true', 'rgb(0, 149, 251, 0.3)']]
+      //   }
+      // })
+
       // 设置白膜的打光效果
       if (ele.effectswitch === 1 || isConfig) {
         _this.makeEffect(tileset, ele, index, isConfig)

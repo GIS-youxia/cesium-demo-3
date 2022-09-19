@@ -1,9 +1,28 @@
 import * as Cesium from '../CesiumUnminified';
 
-export function setCamera(camera) {
-  // 北京
-  const position = getChinaPostion(); //new Cesium.Cartesian3.fromDegrees(116.23, 39.54, 100)
-  camera.setView({
+
+/** 中国坐标 */
+export function setCamera(view, name="beiJing", height=10000) {
+  let info = {}
+
+  switch (name) {
+    // 北京
+    case "beiJing":
+      info.lon = 116.4715397068917;
+      info.aa = 39.9945712104195;
+      break;
+
+    // 深圳
+    case "shenZhen":
+      info.lon = 114.05643562967782;
+      info.aa = 22.54490159071341;
+      break;
+
+    default:
+      break;
+  }
+  const position = Cesium.Cartesian3.fromDegrees(info.lon, info.aa, height);
+  view.camera.setView({
     destination: position,
     orientation: {
       heading: Cesium.Math.toRadians(0),
@@ -11,16 +30,14 @@ export function setCamera(camera) {
       roll: 0
     }
   })
-}
 
-
-/** 中国坐标 */
-export function getChinaPostion() {
-  // 北京
-  return Cesium.Cartesian3.fromDegrees(116.4715397068917, 39.9945712104195, 5000.0);
-
-  // 深圳 经度：114.05643562967782, 纬度：22.54490159071341
-  // return Cesium.Cartesian3.fromDegrees(114.05643562967782, 22.54490159071341, 105000.0);
+  // view.scene.camera.flyTo({
+  //   destination: new Cesium.Cartesian3(-2852038.506894064, 4656753.071879653, 3286786.358214652),
+  //   orientation: {
+  //     heading: 0.4417702951554947,
+  //     pitch: -0.30187320702800813,
+  //   },
+  // });
 }
 
 

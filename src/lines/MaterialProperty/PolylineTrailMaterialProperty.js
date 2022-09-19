@@ -17,6 +17,7 @@ function PolylineTrailMaterialProperty(ob ) {
   this.percent = ob.percent || 0.1
   this.gradient = ob.gradient || 0.01
 }
+
 Object.defineProperties(PolylineTrailMaterialProperty.prototype, {
   isConstant: {
     get: function() {
