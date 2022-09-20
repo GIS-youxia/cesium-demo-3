@@ -65,8 +65,7 @@ Spriteline1MaterialProperty.prototype.equals = function(e) {
 Cesium.Spriteline1MaterialProperty = Spriteline1MaterialProperty
 Cesium.Material.Spriteline1Type = 'Spriteline1'
 Cesium.Material.Spriteline1Source = `
-czm_material czm_getMaterial(czm_materialInput materialInput)
-{
+czm_material czm_getMaterial(czm_materialInput materialInput) {
    czm_material material = czm_getDefaultMaterial(materialInput);
    vec2 st = materialInput.st;
    vec4 colorImage = texture2D(image, vec2(fract(st.s - time), st.t));

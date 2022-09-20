@@ -11,6 +11,7 @@ import Tileset from './src/Titleset'
 import Primitives from './src/Primitive'
 import Manager from './src/effects/Manager'
 import RoadNetwork from './src/lines/RoadNetwork'
+import { addAxis } from './tool/axis'
 
 window.CESIUM_BASE_URL = "./CesiumUnminified/";
 
@@ -37,7 +38,9 @@ const viewOptions = {
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 window.viewer = viewer;
 // addGaode(viewer)
-setCamera(viewer, "beiJing")
+// const position = setCamera(viewer, "beiJing")
+
+
 
 // 解决模糊
 updateResolutionScale(viewer)
@@ -47,6 +50,17 @@ viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
 getClickPointAdd(viewer);
+
+// viewer.scene.globe.show = false;
+viewer.scene.globe.enableLighting = false;
+viewer.shadows = false;
+viewer.scene.sun.show = false;
+viewer.scene.moon.show = false;
+viewer.scene.skyAtmosphere.show = false;
+viewer.scene.fog.enable = false;
+
+// 添加坐标轴
+addAxis(viewer);
 
 // addGeoJson(viewer, "./res/buildings.geojson");
 
@@ -69,8 +83,9 @@ getClickPointAdd(viewer);
 // GManager.init()
 
 // 公路效果
-const GRoadNetwork = new RoadNetwork(viewer, 'road')
-GRoadNetwork.init()
+// const GRoadNetwork = new RoadNetwork(viewer, 'road')
+// GRoadNetwork.init()
+// window.GRoadNetwork = GRoadNetwork;
 
 // viewer.dataSources.add(
 //   Cesium.GeoJsonDataSource.load("./res/buildings.geojson")

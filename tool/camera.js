@@ -30,6 +30,7 @@ export function setCamera(view, name="beiJing", height=10000) {
       roll: 0
     }
   })
+  return position;
 
   // view.scene.camera.flyTo({
   //   destination: new Cesium.Cartesian3(-2852038.506894064, 4656753.071879653, 3286786.358214652),

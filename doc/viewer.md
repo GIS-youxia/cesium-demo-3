@@ -35,7 +35,16 @@ class DataSource{
 ```
 
 ```js
-class Entity{
+class Scene{
+  // 图元集合
+  primitives
 
+  // 地球
+  globe
+}
+
+class Globe{
+  // 椭球
+  ellipsoid
 }
 ```
