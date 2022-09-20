@@ -1,5 +1,6 @@
 
 import * as Cesium from './CesiumUnminified';
+window.Cesium = Cesium;
 
 import { setCamera, } from './tool/camera'
 import { addGaode } from './tool/provider'
@@ -16,26 +17,27 @@ window.CESIUM_BASE_URL = "./CesiumUnminified/";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
 
 const viewOptions = {
-  //动画控件
+  //-------------------------- UI控件 --------------------
+  //动画
   animation: false,
-  // 图层选择控件
+  // 图层选择
   baseLayerPicker: false,
-  // geocoder: false,
-  // homeButton: false,
+  // 全屏
+  fullscreenButton: false,
   infoBox: false,
   // 2d/3d切换
-  // sceneModePicker: false,
-  // selectionIndicator: false,
+  sceneModePicker:false,
+  selectionIndicator: false,
   timeline: false,
-  // navigationHelpButton: false,
-  // navigationInstructionsInitiallyVisible: false,
-  // creditContainer: undefined,
-  shouldAnimate: false
+  navigationHelpButton: false,
+  shouldAnimate: false,
+  imageryProvider: undefined,
 }
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
-addGaode(viewer)
-setCamera(viewer, "shenZhen")
+window.viewer = viewer;
+// addGaode(viewer)
+setCamera(viewer, "beiJing")
 
 // 解决模糊
 updateResolutionScale(viewer)
@@ -56,15 +58,15 @@ getClickPointAdd(viewer);
 // addGeoJson(viewer, "./res/wangjingRoad.geojson");
 
 // addOne3dTitleset(viewer);
-const tile = new Tileset(viewer)
-tile.init()
+// const tile = new Tileset(viewer)
+// tile.init()
 
-const primitives = new Primitives(viewer)
-primitives.init();
+// const primitives = new Primitives(viewer)
+// primitives.init();
 
 
-const GManager = new Manager(viewer)
-GManager.init()
+// const GManager = new Manager(viewer)
+// GManager.init()
 
 // 公路效果
 const GRoadNetwork = new RoadNetwork(viewer, 'road')

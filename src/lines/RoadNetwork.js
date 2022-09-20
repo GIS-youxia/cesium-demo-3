@@ -21,39 +21,39 @@ function getLinesEffectList() {
       "msg": "",
         "time": "1663572990",
           "data": [
-            {
-              "id": 1,
-              "type": "FlyLines",
-              "width": 2,
-              "geojsonfile": "",
-              "effectimage": "",
-              "setup_param": "{\"color\":\"#A932B4\",\"height\":3000,\"speed\":6,\"percent\":0.1,\"gradient\":0.1,\"random\":300,\"startPoint_lng\":113.8918,\"startPoint_lat\":22.4818,\"endPoint_ing\":113.96858,\"endPoint_lat\":22.5692}",
-              "showswitch": 1,
-              "createtime": 1632365596,
-              "updatetime": 1632817818
-            },
-            {
-              "id": 3,
-              "type": "RoadPic",
-              "width": 1.7,
-              "geojsonfile": "./res/nanshan-road1.geojson",
-              "effectimage": "./res/pic/spriteline1.png",
-              "setup_param": "{\"time\":3600}",
-              "showswitch": 1,
-              "createtime": 1632812901,
-              "updatetime": 1632814947
-            },
-            {
-              "id": 4,
-              "type": "RoadPic",
-              "width": 2,
-              "geojsonfile": "./res/nanshan-road2.geojson",
-              "effectimage": "./res/pic/spriteline2.png",
-              "setup_param": "{\"time\":3000}",
-              "showswitch": 1,
-              "createtime": 1632815020,
-              "updatetime": 1632815020
-            },
+            // {
+            //   "id": 1,
+            //   "type": "FlyLines",
+            //   "width": 2,
+            //   "geojsonfile": "",
+            //   "effectimage": "",
+            //   "setup_param": "{\"color\":\"#A932B4\",\"height\":3000,\"speed\":6,\"percent\":0.1,\"gradient\":0.1,\"random\":300,\"startPoint_lng\":113.8918,\"startPoint_lat\":22.4818,\"endPoint_ing\":113.96858,\"endPoint_lat\":22.5692}",
+            //   "showswitch": 1,
+            //   "createtime": 1632365596,
+            //   "updatetime": 1632817818
+            // },
+            // {
+            //   "id": 3,
+            //   "type": "RoadPic",
+            //   "width": 1.7,
+            //   "geojsonfile": "./res/nanshan-road1.geojson",
+            //   "effectimage": "./res/pic/spriteline1.png",
+            //   "setup_param": "{\"time\":3600}",
+            //   "showswitch": 1,
+            //   "createtime": 1632812901,
+            //   "updatetime": 1632814947
+            // },
+            // {
+            //   "id": 4,
+            //   "type": "RoadPic",
+            //   "width": 2,
+            //   "geojsonfile": "./res/nanshan-road2.geojson",
+            //   "effectimage": "./res/pic/spriteline2.png",
+            //   "setup_param": "{\"time\":3000}",
+            //   "showswitch": 1,
+            //   "createtime": 1632815020,
+            //   "updatetime": 1632815020
+            // },
             // {
             //   "id": 5,
             //   "type": "RoadPic",
