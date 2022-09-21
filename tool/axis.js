@@ -1,7 +1,7 @@
 import * as Cesium from '../CesiumUnminified';
+import { getCylinderEntity } from './entity'
 
-
-export function addAxis1(viewer) {
+export function addAxis3(viewer) {
 
   // const distance = 9000 * 1000;
 
@@ -56,10 +56,8 @@ export function addAxis1(viewer) {
 
 
   var length = 400000.0;
-  // 将提供的制图转换为笛卡尔表示。
+  // 将(经度, 纬度, 高度) 转换为笛卡尔表示,高度是贴着地面
   var positionEllipsoid = ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-105.0, 40.0));
-  console.error(positionEllipsoid);
-
 
   //Create Geometry
   var coneGeometry = new Cesium.CylinderGeometry({
@@ -109,13 +107,9 @@ export function addAxis1(viewer) {
     counter += 5;
 
   }, 100);
-
-
 }
 
-export function addAxis(viewer, position) {
-  // console.error(position);
-  // position.z = 4085641
+export function addAxisByPosition(viewer, position) {
   const hprRollZero = new Cesium.HeadingPitchRoll();
   const converter = Cesium.Transforms.eastNorthUpToFixedFrame;
   const modelMatrix = Cesium.Transforms.headingPitchRollToFixedFrame(
@@ -132,4 +126,41 @@ export function addAxis(viewer, position) {
       width: 10.0,
     })
   );
+}
+
+
+/**
+ * 添加地球的坐标轴
+ * @param {*} viewer
+ */
+export function addAxisGlobe(viewer) {
+  const width = 40000;
+  const length = 6000*500;
+
+  const lineX = getCylinderEntity({
+    length,
+    topRadius: width,
+    bottomRadius: width,
+    color: '#ff0000',
+    position: new Cesium.Cartesian3(1, 0, 0)
+  })
+  viewer.entities.add(lineX)
+
+  const lineY = getCylinderEntity({
+    length,
+    topRadius: width,
+    bottomRadius: width,
+    color: '#00ff00',
+    position: new Cesium.Cartesian3(0, 1, 0)
+  })
+  viewer.entities.add(lineY)
+
+  const lineZ = getCylinderEntity({
+    length,
+    topRadius: width,
+    bottomRadius: width,
+    color: '#0000ff',
+    position: new Cesium.Cartesian3(0, 0, 1)
+  })
+  viewer.entities.add(lineZ)
 }

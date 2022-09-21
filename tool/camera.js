@@ -9,28 +9,30 @@ export function setCamera(view, name="beiJing", height=10000) {
     // 北京
     case "beiJing":
       info.lon = 116.4715397068917;
-      info.aa = 39.9945712104195;
+      info.lat = 39.9945712104195;
       break;
 
     // 深圳
     case "shenZhen":
       info.lon = 114.05643562967782;
-      info.aa = 22.54490159071341;
+      info.lat = 22.54490159071341;
       break;
 
     default:
       break;
   }
-  const position = Cesium.Cartesian3.fromDegrees(info.lon, info.aa, height);
+  const position = Cesium.Cartesian3.fromDegrees(info.lon, info.lat, height);
   view.camera.setView({
     destination: position,
     orientation: {
+      // 水平旋转
       heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-40),
+      // 垂直旋转
+      pitch: Cesium.Math.toRadians(-45),
       roll: 0
     }
   })
-  return position;
+  return { position, info };
 
   // view.scene.camera.flyTo({
   //   destination: new Cesium.Cartesian3(-2852038.506894064, 4656753.071879653, 3286786.358214652),

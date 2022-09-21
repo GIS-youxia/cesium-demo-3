@@ -4,15 +4,15 @@ window.Cesium = Cesium;
 
 import { setCamera, } from './tool/camera'
 import { addGaode } from './tool/provider'
-import { updateResolutionScale, getClickPointAdd } from './tool/tool'
+import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 // import { addGeoJson } from './tool/geojson'
 // import { addOne3dTitleset } from './tool/tile'
 import Tileset from './src/Titleset'
 import Primitives from './src/Primitive'
 import Manager from './src/effects/Manager'
 import RoadNetwork from './src/lines/RoadNetwork'
-import { addAxis } from './tool/axis'
-
+import { addAxis, addAxisGlobe } from './tool/axis'
+import {getCylinderPrimitive} from './tool/primitive'
 window.CESIUM_BASE_URL = "./CesiumUnminified/";
 
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
@@ -38,9 +38,7 @@ const viewOptions = {
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 window.viewer = viewer;
 // addGaode(viewer)
-const position = setCamera(viewer, "beiJing")
-
-
+// setCamera(viewer, "beiJing")
 
 // 解决模糊
 updateResolutionScale(viewer)
@@ -50,10 +48,10 @@ viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
 getClickPointAdd(viewer, pos => {
-  addAxis(viewer, pos);
+  // addAxis(viewer, pos);
 });
 
-// viewer.scene.globe.show = false;
+viewer.scene.globe.show = false;
 viewer.scene.globe.enableLighting = false;
 viewer.shadows = false;
 viewer.scene.sun.show = false;
@@ -61,6 +59,7 @@ viewer.scene.moon.show = false;
 viewer.scene.skyAtmosphere.show = false;
 viewer.scene.fog.enable = false;
 
+// addAxisGlobe(viewer)
 // 添加坐标轴
 // addAxis(viewer, position);
 
@@ -178,3 +177,11 @@ viewer.scene.fog.enable = false;
 
 
 // viewer.zoomTo(viewer.entities);
+
+const length = 400000.0;
+const primitive = getCylinderPrimitive({
+  length,
+  topRadius:0,
+  bottomRadius: 200000.0,
+});
+viewer.scene.primitives.add(primitive);

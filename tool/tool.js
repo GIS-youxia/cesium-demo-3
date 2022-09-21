@@ -35,17 +35,18 @@ export function getClickPointAdd(_viewer,cb) {
   // 注册屏幕点击事件
   let handler = new Cesium.ScreenSpaceEventHandler(_viewer.scene.canvas);
 
-  handler.setInputAction(function (event) {
-    // 转换为不包含地形的笛卡尔坐标
+  handler.setInputAction( event=> {
+    // 拾取椭球表面
     let clickPosition = _viewer.scene.camera.pickEllipsoid(event.position);
-    console.error(clickPosition);
 
     // 转经纬度（弧度）坐标
     let radiansPos = Cesium.Cartographic.fromCartesian(clickPosition);
+
     // 转角度
-    console.log("经度：" + Cesium.Math.toDegrees(radiansPos.longitude) + ", 纬度：" + Cesium.Math.toDegrees(radiansPos.latitude));
+    console.log("log" + Cesium.Math.toDegrees(radiansPos.longitude) + "lat" + Cesium.Math.toDegrees(radiansPos.latitude));
 
     cb && cb(clickPosition);
+
     // 添加点
     _viewer.entities.add({
       position: clickPosition,
@@ -117,5 +118,17 @@ export function flyTo(view) {
       ),
     },
     duration: FirstMapView.value.duration, // 延迟秒数
+  })
+}
+
+
+// 添加点
+export function addPoint(viewer, position, pixelSize=10) {
+  viewer.entities.add({
+    position,
+    point: {
+      pixelSize,
+      color: Cesium.Color.YELLOW,
+    }
   })
 }
