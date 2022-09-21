@@ -26,7 +26,7 @@ export function setCamera(view, name="beiJing", height=10000) {
     destination: position,
     orientation: {
       heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-90),
+      pitch: Cesium.Math.toRadians(-40),
       roll: 0
     }
   })

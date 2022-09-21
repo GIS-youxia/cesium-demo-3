@@ -45,6 +45,13 @@ class Scene{
 
 class Globe{
   // 椭球
-  ellipsoid
+  ellipsoid:Ellipsoid
+}
+```
+
+
+```js
+class Ellipsoid{
+
 }
 ```

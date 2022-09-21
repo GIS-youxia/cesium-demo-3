@@ -38,7 +38,7 @@ const viewOptions = {
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 window.viewer = viewer;
 // addGaode(viewer)
-// const position = setCamera(viewer, "beiJing")
+const position = setCamera(viewer, "beiJing")
 
 
 
@@ -49,7 +49,9 @@ updateResolutionScale(viewer)
 viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
-getClickPointAdd(viewer);
+getClickPointAdd(viewer, pos => {
+  addAxis(viewer, pos);
+});
 
 // viewer.scene.globe.show = false;
 viewer.scene.globe.enableLighting = false;
@@ -60,7 +62,7 @@ viewer.scene.skyAtmosphere.show = false;
 viewer.scene.fog.enable = false;
 
 // 添加坐标轴
-addAxis(viewer);
+// addAxis(viewer, position);
 
 // addGeoJson(viewer, "./res/buildings.geojson");
 

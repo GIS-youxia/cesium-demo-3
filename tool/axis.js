@@ -1,7 +1,7 @@
 import * as Cesium from '../CesiumUnminified';
 
 
-export function addAxis(viewer) {
+export function addAxis1(viewer) {
 
   // const distance = 9000 * 1000;
 
@@ -58,6 +58,7 @@ export function addAxis(viewer) {
   var length = 400000.0;
   // 将提供的制图转换为笛卡尔表示。
   var positionEllipsoid = ellipsoid.cartographicToCartesian(Cesium.Cartographic.fromDegrees(-105.0, 40.0));
+  console.error(positionEllipsoid);
 
 
   //Create Geometry
@@ -82,8 +83,6 @@ export function addAxis(viewer) {
   //Add geometry to scene
   var primitive;
   primitives.add(primitive = new Cesium.Primitive({
-
-
     geometryInstances: coneGeometryInstance,
     appearance: new Cesium.PerInstanceColorAppearance({
       closed: true,
@@ -112,4 +111,25 @@ export function addAxis(viewer) {
   }, 100);
 
 
+}
+
+export function addAxis(viewer, position) {
+  // console.error(position);
+  // position.z = 4085641
+  const hprRollZero = new Cesium.HeadingPitchRoll();
+  const converter = Cesium.Transforms.eastNorthUpToFixedFrame;
+  const modelMatrix = Cesium.Transforms.headingPitchRollToFixedFrame(
+    position,
+    hprRollZero,
+    Cesium.Ellipsoid.WGS84,
+    converter
+  );
+
+  viewer.scene.primitives.add(
+    new Cesium.DebugModelMatrixPrimitive({
+      modelMatrix: modelMatrix,
+      length: 300.0,
+      width: 10.0,
+    })
+  );
 }
