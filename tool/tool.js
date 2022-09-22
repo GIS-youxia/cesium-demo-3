@@ -1,4 +1,4 @@
-import * as Cesium from '../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 
 // https://zhuanlan.zhihu.com/p/41794242

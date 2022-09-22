@@ -8,7 +8,7 @@
  */
 /* eslint-disable no-debugger */
 // 墙推动扩散效果
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 
 function WallGradientsMaterialProperty(color ) {

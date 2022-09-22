@@ -1,8 +1,13 @@
+// @ts-check
 
-import * as Cesium from './CesiumUnminified';
+import * as Cesium from 'cesium';
 import { coneRotation } from './show'
-// window.Cesium = Cesium;
 
+// @ts-ignore
+window.Cesium = Cesium;
+
+// @ts-ignore
+console.log(Cesium.VERSION);
 import { setCamera, } from './tool/camera'
 import { addGaode } from './tool/provider'
 
@@ -14,9 +19,9 @@ import RoadNetwork from './src/lines/RoadNetwork'
 
 import { addAxisGlobe } from './tool/axis'
 
-window.CESIUM_BASE_URL = "./CesiumUnminified/";
+// @ts-ignore
+window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
-
 const viewOptions = {
   //-------------------------- UI控件 --------------------
   //动画
@@ -36,6 +41,7 @@ const viewOptions = {
 }
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
+// @ts-ignore
 window.viewer = viewer;
 
 // addGaode(viewer)
@@ -45,6 +51,7 @@ window.viewer = viewer;
 updateResolutionScale(viewer)
 
 // 显示帧率
+// @ts-ignore
 viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
@@ -52,12 +59,19 @@ getClickPointAdd(viewer, pos => {
   // addAxis(viewer, pos);
 });
 
+// @ts-ignore
 viewer.scene.globe.show = false;
+// @ts-ignore
 viewer.scene.globe.enableLighting = false;
+// @ts-ignore
 viewer.shadows = false;
+// @ts-ignore
 viewer.scene.sun.show = false;
+// @ts-ignore
 viewer.scene.moon.show = false;
+// @ts-ignore
 viewer.scene.skyAtmosphere.show = false;
+// @ts-ignore
 viewer.scene.fog.enable = false;
 
 // 添加地球坐标轴
@@ -67,4 +81,3 @@ coneRotation(viewer);
 // Cesium.M
 // Cesium.
 // Cesium.Ma
-Cesium.Mat

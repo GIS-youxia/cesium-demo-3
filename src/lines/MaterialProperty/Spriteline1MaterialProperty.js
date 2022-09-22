@@ -8,7 +8,7 @@
  */
 /* eslint-disable no-debugger */
 // 精灵穿梭路 光效果
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 /**
  *

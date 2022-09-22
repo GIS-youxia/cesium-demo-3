@@ -7,7 +7,7 @@
  * @LastEditTime: 2021-08-27 09:49:59
  */
 /* eslint-disable no-debugger */
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 function PolylineTrailMaterialProperty(ob ) {
   this._definitionChanged = new Cesium.Event()

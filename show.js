@@ -1,4 +1,4 @@
-import * as Cesium from './CesiumUnminified';
+import * as Cesium from 'cesium';
 import { getCylinderPrimitive } from './tool/primitive'
 import { AxisByPrimitive } from './tool/axis'
 

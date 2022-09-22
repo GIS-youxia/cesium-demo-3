@@ -1,4 +1,4 @@
-import * as Cesium from '../CesiumUnminified';
+import * as Cesium from 'cesium';
 import { colorRgb1 } from './color'
 // import { getTitlesetList, getOneTitleset } from '@/api/titleset'
 

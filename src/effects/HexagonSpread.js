@@ -6,7 +6,7 @@
  * @LastEditors: Hawk
  * @LastEditTime: 2021-08-23 15:02:45
  */
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 import Effect from './Effect'
 import { init } from './MaterialProperty/HexagonSpreadMaterialProperty'

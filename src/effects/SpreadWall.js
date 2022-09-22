@@ -1,6 +1,6 @@
 // eslint-disable-line no-unused-vars
 /* eslint-disable no-debugger */
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 import { init } from './MaterialProperty/WallGradientsMaterialProperty'
 
 // 推动墙扩散

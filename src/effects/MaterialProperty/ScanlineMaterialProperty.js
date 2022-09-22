@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 // 线圈发光扩散材质效果
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 
 function ScanlineMaterialProperty(color , speed ) {

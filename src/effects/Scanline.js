@@ -7,7 +7,7 @@
  * @LastEditTime: 2021-08-23 15:03:10
  */
 /* eslint-disable no-debugger */
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 import Effect from './Effect'
 import { init } from './MaterialProperty/ScanlineMaterialProperty'

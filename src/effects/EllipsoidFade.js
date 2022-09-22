@@ -1,4 +1,4 @@
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 import Effect from './Effect'
 import { init as efmInit } from './MaterialProperty/EllipsoidFadeMaterialProperty'

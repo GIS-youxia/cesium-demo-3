@@ -2,7 +2,7 @@
  * EllipsoidFadeMaterialProperty扩散点材质类 不会覆盖在白膜上
  */
 /* eslint-disable no-debugger */
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 /**
  * 流动纹理线

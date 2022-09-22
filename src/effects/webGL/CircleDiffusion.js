@@ -1,4 +1,4 @@
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 // 圆扩散
 class CircleDiffusion {

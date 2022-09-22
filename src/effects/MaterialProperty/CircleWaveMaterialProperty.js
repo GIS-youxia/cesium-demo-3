@@ -1,7 +1,7 @@
 
 /* eslint-disable no-debugger */
 // 水波纹圈扩散效果
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 /**
  *

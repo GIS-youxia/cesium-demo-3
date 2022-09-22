@@ -9,7 +9,7 @@
 // HexagonSpreadMaterialProperty
 /* eslint-disable no-debugger */
 // 六边形扩散效果
-import * as Cesium from '../../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 
 function HexagonSpreadMaterialProperty(color ) {

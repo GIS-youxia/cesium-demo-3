@@ -18,6 +18,7 @@
   "homepage": "https://github.com/dslming/three_stage#readme",
   "dependencies": {
     "@turf/turf": "^6.5.0",
+    "cesium": "^1.97.0",
     "cesium-navigation-es6": "^3.0.8",
     "html-webpack-plugin": "^4.5.0",
     "lodash": "^4.17.21",

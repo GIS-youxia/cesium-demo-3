@@ -3,7 +3,7 @@
  * @Date: 2021-01-31 22:07:05
  */
 //  import * as Cesium from 'cesium';
-import * as Cesium from '../CesiumUnminified';
+import * as Cesium from 'cesium';
 import { CoordTransform } from './CoordTransform'
 
 class AmapMercatorTilingScheme extends Cesium.WebMercatorTilingScheme {

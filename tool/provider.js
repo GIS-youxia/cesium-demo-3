@@ -1,5 +1,5 @@
 
-import * as Cesium from '../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 import { AmapMercatorTilingScheme } from './AmapMercatorTilingScheme'
 export function addDebug(params) {

@@ -1,4 +1,4 @@
-import * as Cesium from '../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 const idManager = {
   cylinder: 0,

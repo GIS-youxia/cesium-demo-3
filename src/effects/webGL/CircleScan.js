@@ -1,4 +1,4 @@
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 // 雷达圆扫
 class CircleScan {

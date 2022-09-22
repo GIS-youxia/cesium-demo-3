@@ -8,7 +8,7 @@
  */
 /* eslint-disable no-debugger */
 // import { getLinesEffectList } from '@/api/effect'
-import * as Cesium from '../../CesiumUnminified';
+import * as Cesium from 'cesium';
 
 import { init } from './MaterialProperty/PolylineTrailMaterialProperty'
 import { init as init2 } from './MaterialProperty/Spriteline1MaterialProperty'
