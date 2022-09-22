@@ -12,6 +12,7 @@ export function getCylinderEntity(options) {
   const bottomRadius = options.bottomRadius !== undefined ? options.bottomRadius : 10000;
   const length = options.length !== undefined ? options.length : 20000;
   const color = options.color !== undefined ? options.color : '#ffffff';
+  const heightReference = options.heightReference !== undefined ? options.heightReference : Cesium.HeightReference.CLAMP_TO_GROUND
 
   idManager.cylinder += 1;
 
@@ -20,7 +21,7 @@ export function getCylinderEntity(options) {
     name: 'cylinder',
     position: options.position,
     cylinder: {
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      heightReference,
       topRadius,
       bottomRadius,
       length,

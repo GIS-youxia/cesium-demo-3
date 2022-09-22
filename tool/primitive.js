@@ -1,11 +1,19 @@
 import * as Cesium from '../CesiumUnminified';
 
+const idManager = {
+  cylinder: 0,
+}
+
 // 获取圆柱图元
 export function getCylinderPrimitive(options) {
   options = options || {};
-  const topRadius = options.topRadius !== undefined ? options.topRadius: 2000;
-  const bottomRadius = options.bottomRadius !== undefined ? options.bottomRadius: 2000;
-  const length = options.length !== undefined ? options.length: 2000;
+  const topRadius = options.topRadius !== undefined ? options.topRadius: 200000;
+  const bottomRadius = options.bottomRadius !== undefined ? options.bottomRadius: 200000;
+  const length = options.length !== undefined ? options.length : 400000;
+  const color = options.color !== undefined ? options.color : '#ffffff';
+  const { modelMatrix } = options;
+
+  idManager.cylinder += 1;
 
  const coneGeometry = new Cesium.CylinderGeometry({
     length,
@@ -14,21 +22,21 @@ export function getCylinderPrimitive(options) {
     vertexFormat: Cesium.PerInstanceColorAppearance.VERTEX_FORMAT
   });
 
+  const cesiumColor = Cesium.Color.fromCssColorString(color);
   const coneGeometryInstance = new Cesium.GeometryInstance({
-    id: 'RedCone',
+    modelMatrix,
+    id: 'cylinder_'+idManager.cylinder,
     geometry: coneGeometry,
     attributes: {
-      color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.RED)
+      color: Cesium.ColorGeometryInstanceAttribute.fromColor(cesiumColor)
     }
   });
 
-  const primitive = new Cesium.Primitive({
+  return new Cesium.Primitive({
     geometryInstances: coneGeometryInstance,
     appearance: new Cesium.PerInstanceColorAppearance({
       closed: true,
       translucent: false
     })
   });
-
-  return primitive;
 }

@@ -1,5 +1,6 @@
 
 import * as Cesium from './CesiumUnminified';
+import { coneRotation } from './show'
 window.Cesium = Cesium;
 
 import { setCamera, } from './tool/camera'
@@ -11,7 +12,7 @@ import Tileset from './src/Titleset'
 import Primitives from './src/Primitive'
 import Manager from './src/effects/Manager'
 import RoadNetwork from './src/lines/RoadNetwork'
-import { addAxis, addAxisGlobe } from './tool/axis'
+import { addAxis, addAxisGlobe, addAxis3 } from './tool/axis'
 import {getCylinderPrimitive} from './tool/primitive'
 window.CESIUM_BASE_URL = "./CesiumUnminified/";
 
@@ -59,7 +60,7 @@ viewer.scene.moon.show = false;
 viewer.scene.skyAtmosphere.show = false;
 viewer.scene.fog.enable = false;
 
-// addAxisGlobe(viewer)
+addAxisGlobe(viewer)
 // 添加坐标轴
 // addAxis(viewer, position);
 
@@ -178,10 +179,12 @@ viewer.scene.fog.enable = false;
 
 // viewer.zoomTo(viewer.entities);
 
-const length = 400000.0;
-const primitive = getCylinderPrimitive({
-  length,
-  topRadius:0,
-  bottomRadius: 200000.0,
-});
-viewer.scene.primitives.add(primitive);
+// const length = 400000.0;
+// const primitive = getCylinderPrimitive({
+//   length,
+//   topRadius:0,
+//   bottomRadius: 200000.0,
+// });
+// viewer.scene.primitives.add(primitive);
+// addAxis3(viewer)
+coneRotation(viewer);
