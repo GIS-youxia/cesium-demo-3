@@ -1,5 +1,6 @@
 import * as Cesium from './CesiumUnminified';
 import { getCylinderPrimitive } from './tool/primitive'
+import { AxisByPrimitive } from './tool/axis'
 
 /**
  * 圆锥自动旋转
@@ -18,7 +19,8 @@ export function coneRotation(viewer) {
     color:'#00ff00'
   })
   viewer.scene.primitives.add(conePrimitive)
-  const axis = new AxisByPrimitive(viewer, primitive)
+  const axis = new AxisByPrimitive(viewer, conePrimitive)
+  axis.floowPrimitive = true;
 
   var counter = 90;
   setInterval( () => {
@@ -26,10 +28,12 @@ export function coneRotation(viewer) {
       counter = 0;
     }
     var angleRad = 3.14 * counter / 180;
-    var rotMatrix = new Cesium.Matrix3.fromRotationY(angleRad);
+    var rotMatrix = new Cesium.Matrix3.fromRotationX(angleRad);
     var modelMatrix = Cesium.Matrix4.multiply(
-      Cesium.Transforms.eastNorthUpToFixedFrame(positionEllipsoid),
-      Cesium.Matrix4.fromRotationTranslation(rotMatrix, new Cesium.Cartesian3(0.0, 0.0, length * 0.5)),
+      Cesium.Matrix4.IDENTITY,
+      // Cesium.Transforms.eastNorthUpToFixedFrame(positionEllipsoid),
+      // Cesium.Matrix4.fromRotationTranslation(rotMatrix, new Cesium.Cartesian3(0.0, 0.0, length * 0.5)),
+      Cesium.Matrix4.fromRotationTranslation(rotMatrix, positionEllipsoid),
       new Cesium.Matrix4());
     conePrimitive.modelMatrix = modelMatrix;
     counter += 5;
