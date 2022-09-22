@@ -1,7 +1,7 @@
 
 import * as Cesium from './CesiumUnminified';
 import { coneRotation } from './show'
-window.Cesium = Cesium;
+// window.Cesium = Cesium;
 
 import { setCamera, } from './tool/camera'
 import { addGaode } from './tool/provider'
@@ -62,5 +62,9 @@ viewer.scene.fog.enable = false;
 
 // 添加地球坐标轴
 addAxisGlobe(viewer)
-
 coneRotation(viewer);
+
+// Cesium.M
+// Cesium.
+// Cesium.Ma
+Cesium.Mat
