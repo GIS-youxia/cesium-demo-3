@@ -1,23 +1,19 @@
-// @ts-check
-
 import * as Cesium from 'cesium';
-import { coneRotation } from './show'
-
 // @ts-ignore
 window.Cesium = Cesium;
-
 // @ts-ignore
 console.log(Cesium.VERSION);
-import { setCamera, } from './tool/camera'
-import { addGaode } from './tool/provider'
 
-import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
-import Tileset from './src/Titleset'
-import Primitives from './src/Primitive'
-import Manager from './src/effects/Manager'
-import RoadNetwork from './src/lines/RoadNetwork'
 
+/*--------------------------------------- tool ------------------------------------------ */
 import { addAxisGlobe } from './tool/axis'
+import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
+import { setCamera, setComeraPosition } from './tool/camera'
+import { addGaode } from './tool/provider'
+import { addGeoJson } from './tool/geojson'
+
+/*--------------------------------------- show ------------------------------------------ */
+import { coneRotation } from './show'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -60,7 +56,7 @@ getClickPointAdd(viewer, pos => {
 });
 
 // @ts-ignore
-viewer.scene.globe.show = false;
+// viewer.scene.globe.show = false;
 // @ts-ignore
 viewer.scene.globe.enableLighting = false;
 // @ts-ignore
@@ -76,8 +72,11 @@ viewer.scene.fog.enable = false;
 
 // 添加地球坐标轴
 addAxisGlobe(viewer)
-coneRotation(viewer);
+// coneRotation(viewer);
 
-// Cesium.M
-// Cesium.
-// Cesium.Ma
+addGeoJson(viewer,"./res/网格.geojson")
+setComeraPosition(viewer, {
+  longitude: 116.4715397068917,
+  latitude: 39.9945712104195,
+  height: 100000,
+})

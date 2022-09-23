@@ -97,3 +97,19 @@ export function getCesiumViewerExtend() {
   }
   return params; //返回屏幕所在经纬度范围
 }
+
+export function setComeraPosition(viewer, options) {
+  const { longitude, latitude, height } = options;
+
+  const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
+  viewer.camera.setView({
+    destination: position,
+    orientation: {
+      // 水平旋转
+      heading: Cesium.Math.toRadians(0),
+      // 垂直旋转
+      pitch: Cesium.Math.toRadians(-45),
+      roll: 0
+    }
+  })
+}
