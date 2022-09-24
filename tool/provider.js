@@ -1,5 +1,7 @@
 
 import * as Cesium from 'cesium';
+window.Cesium = Cesium;
+require('@dvgis/cesium-map')
 
 import { AmapMercatorTilingScheme } from './AmapMercatorTilingScheme'
 export function addDebug(params) {
@@ -7,6 +9,10 @@ export function addDebug(params) {
 
 viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider())
 
+}
+
+export function removeGaode(viewer) {
+  viewer.imageryLayers.remove(viewer.imageryLayers._layers[1])
 }
 
 export function addGaode(viewer) {
@@ -23,13 +29,28 @@ export function addGaode(viewer) {
   // })
   // viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
 
-  // 添加高德矢量图
-  var atLayer = new Cesium.UrlTemplateImageryProvider({
-    url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
-    minimumLevel: 3,
-    maximumLevel: 18
-  })
-  viewer.imageryLayers.addImageryProvider(atLayer);
+  // var options = {
+  //   style: 'img', // style: img、elec、cva
+  //   crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
+  // }
+  // // console.error(Cesium.AmapImageryProvider);
+
+  // viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
+
+  var options = {
+    style: 'elec', // style: img elec cva
+    crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
+  }
+  viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
+
+
+  // // 添加高德矢量图
+  // var atLayer = new Cesium.UrlTemplateImageryProvider({
+  //   url: "http://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",
+  //   minimumLevel: 3,
+  //   maximumLevel: 18
+  // })
+  // viewer.imageryLayers.addImageryProvider(atLayer);
 
   // 如果需要叠加高德/百度注记地图则添加以下代码
   // viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({

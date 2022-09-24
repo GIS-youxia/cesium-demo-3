@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "shape": "Marker",
+        "name": "a1",
+        "category": "default",
+        "time": "7:00-15:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.539073,
+          39.755307
+        ]
+      },
+      "id": "936b084e-7725-4e65-890b-f7d3c268ebb3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape": "Marker",
+        "name": "a2",
+        "category": "default",
+        "time": "7:30-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.538158,
+          39.759744
+        ]
+      },
+      "id": "c5cc9767-fa69-42fd-97c7-1516210abfe7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape": "Marker",
+        "name": "a3",
+        "category": "default",
+        "time": "8:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.53522,
+          39.757138
+        ]
+      },
+      "id": "6cf79474-dd9f-4977-b73c-0549fe647aac"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape": "Marker",
+        "name": "a4",
+        "category": "default",
+        "time": "18:00-22:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.537858,
+          39.754036
+        ]
+      },
+      "id": "89623c26-895c-407e-a787-fb5686885b95"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape": "Marker",
+        "name": "a5",
+        "category": "default",
+        "time": "13:00-20:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.534662,
+          39.751463
+        ]
+      },
+      "id": "e7d7fa47-d134-42a5-9a12-908e671b8b8b"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import * as Cesium from 'cesium';
+import './src/Cesium_EX'
 // @ts-ignore
 window.Cesium = Cesium;
 // @ts-ignore
@@ -9,11 +10,11 @@ console.log(Cesium.VERSION);
 import { addAxisGlobe } from './tool/axis'
 import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 import { setCamera, setComeraPosition } from './tool/camera'
-import { addGaode } from './tool/provider'
-import { addGeoJson } from './tool/geojson'
+import { addGaode } from './tool/provider';
 
-/*--------------------------------------- show ------------------------------------------ */
+/*--------------------------------------- case ------------------------------------------ */
 import { coneRotation } from './show'
+import { MjqGrid } from './case/mjq/mjq_grid'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -40,6 +41,8 @@ var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 // @ts-ignore
 window.viewer = viewer;
 
+viewer.shadows = false;
+
 // addGaode(viewer)
 // setCamera(viewer, "beiJing")
 
@@ -51,9 +54,9 @@ updateResolutionScale(viewer)
 viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
-getClickPointAdd(viewer, pos => {
-  // addAxis(viewer, pos);
-});
+// getClickPointAdd(viewer, pos => {
+//   // addAxis(viewer, pos);
+// });
 
 // @ts-ignore
 // viewer.scene.globe.show = false;
@@ -69,14 +72,18 @@ viewer.scene.moon.show = false;
 viewer.scene.skyAtmosphere.show = false;
 // @ts-ignore
 viewer.scene.fog.enable = false;
+viewer.scene.globe.enableLighting = false;
 
 // 添加地球坐标轴
-addAxisGlobe(viewer)
+// addAxisGlobe(viewer)
 // coneRotation(viewer);
 
-addGeoJson(viewer,"./res/网格.geojson")
-setComeraPosition(viewer, {
-  longitude: 116.4715397068917,
-  latitude: 39.9945712104195,
-  height: 100000,
-})
+// setComeraPosition(viewer, {
+//   longitude: 116.4715397068917,
+//   latitude: 39.9945712104195,
+//   height: 100000,
+// })
+
+
+// fnLoadKML(viewer, "./res/daolubiaozhu.kml")
+window.mjq = new MjqGrid(viewer)
