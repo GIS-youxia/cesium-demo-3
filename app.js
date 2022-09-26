@@ -15,6 +15,7 @@ import { addGaode } from './tool/provider';
 /*--------------------------------------- case ------------------------------------------ */
 import { coneRotation } from './show'
 import { MjqGrid } from './case/mjq/mjq_grid'
+import { Tile } from './case/tile/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -59,7 +60,7 @@ viewer.scene.debugShowFramesPerSecond = true;
 // });
 
 // @ts-ignore
-// viewer.scene.globe.show = false;
+viewer.scene.globe.show = false;
 // @ts-ignore
 viewer.scene.globe.enableLighting = false;
 // @ts-ignore
@@ -86,4 +87,5 @@ viewer.scene.globe.enableLighting = false;
 
 
 // fnLoadKML(viewer, "./res/daolubiaozhu.kml")
-window.mjq = new MjqGrid(viewer)
+// window.mjq = new MjqGrid(viewer)
+window.case = new Tile(viewer)
