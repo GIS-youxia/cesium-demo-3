@@ -19,7 +19,7 @@ class Cesium3DTile{
 }
 
 class Cesium3DTileContent{
-  _model:Model
+  _model: Model
 }
 
 class Model3DTileContent{

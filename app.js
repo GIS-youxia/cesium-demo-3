@@ -60,7 +60,7 @@ viewer.scene.debugShowFramesPerSecond = true;
 // });
 
 // @ts-ignore
-viewer.scene.globe.show = false;
+// viewer.scene.globe.show = false;
 // @ts-ignore
 viewer.scene.globe.enableLighting = false;
 // @ts-ignore
