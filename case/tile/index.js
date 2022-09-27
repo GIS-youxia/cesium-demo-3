@@ -21,7 +21,9 @@ export class Tile {
 
 
     tileset.readyPromise.then(function (tileset) {
-      viewer.flyTo(tileset);
+      viewer.flyTo(tileset, {
+        duration: 0
+      });
       tileset.style = new Cesium.Cesium3DTileStyle({
         color: {
           conditions: [
