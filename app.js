@@ -16,6 +16,9 @@ import { addGaode } from './tool/provider';
 import { coneRotation } from './show'
 import { MjqGrid } from './case/mjq/mjq_grid'
 import { Tile } from './case/tile/index'
+import { Draw } from './case/draw/draw'
+import { Radar } from './case/radar/index'
+
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -39,10 +42,10 @@ const viewOptions = {
 }
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
+viewer.shadows = false;
 // @ts-ignore
 window.viewer = viewer;
 
-viewer.shadows = false;
 
 // addGaode(viewer)
 // setCamera(viewer, "beiJing")
@@ -88,4 +91,5 @@ viewer.scene.globe.enableLighting = false;
 
 // fnLoadKML(viewer, "./res/daolubiaozhu.kml")
 // window.mjq = new MjqGrid(viewer)
-window.case = new Tile(viewer)
+// window.case = new Tile(viewer)
+window.case = new Radar(viewer)

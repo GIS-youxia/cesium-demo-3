@@ -132,3 +132,40 @@ export function addPoint(viewer, position, pixelSize=10) {
     }
   })
 }
+
+/**
+ * 加载图片纹理
+ *
+ * @export
+ * @param {*} viewer
+ * @param {*} imageUri
+ * @return {*}
+ */
+export function getImageTexture(viewer, imageUri) {
+  return new Promise((resolve, reject) => {
+    Cesium.Resource.createIfNeeded(imageUri).fetchImage().then(function (image) {
+      console.log('image loaded!');
+      var texture;
+      var context = viewer.scene.context;
+      if (Cesium.defined(image.internalFormat)) {
+        texture = new Cesium.Texture({
+          context: context,
+          pixelFormat: image.internalFormat,
+          width: image.width,
+          height: image.height,
+          source: {
+            arrayBufferView: image.bufferView
+          }
+        });
+      } else {
+        texture = new Cesium.Texture({
+          context: context,
+          source: image
+        });
+      }
+
+      // myAppearance.uniforms.myImage = texture;
+      resolve(texture);
+    });
+  })
+}
