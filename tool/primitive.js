@@ -1,4 +1,5 @@
 import * as Cesium from 'cesium';
+// https://github.com/cesiumlab/cesium-custom-primitive/
 
 const idManager = {
   cylinder: 0,
@@ -37,6 +38,26 @@ export function getCylinderPrimitive(options) {
     appearance: new Cesium.PerInstanceColorAppearance({
       closed: true,
       translucent: false
-    })
+    }),
+    modelMatrix: modelMatrix,
+    asynchronous: false
+  });
+}
+
+
+export function getPrimitive(options) {
+  options = options || {};
+
+  const { modelMatrix, geometry, appearance } = options;
+
+  const geometryInstances = new Cesium.GeometryInstance({
+    geometry,
+    modelMatrix,
+  });
+
+  return new Cesium.Primitive({
+    appearance,
+    geometryInstances,
+    asynchronous: false
   });
 }
