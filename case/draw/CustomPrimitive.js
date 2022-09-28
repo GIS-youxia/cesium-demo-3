@@ -1,3 +1,7 @@
+// https://www.cnblogs.com/onsummer/p/14141907.html
+// https://www.cnblogs.com/onsummer/p/14059205.html
+// https://www.cnblogs.com/onsummer/p/14059204.html
+
 // 1.9 创建command
 function createCommand({ context, vtxfVertexShader, vtxfFragmentShader, owner, vertexArray }) {
   var translucent = false;
