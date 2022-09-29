@@ -1,0 +1,8 @@
+.dynamiclabel-container{
+  position: fixed;
+  z-index: 999;
+}
+
+.dynamiclabel-marker__boder{
+  color:#0f0
+}

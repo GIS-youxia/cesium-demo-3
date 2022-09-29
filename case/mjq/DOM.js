@@ -48,4 +48,10 @@ export class DOM {
       this.container.innerHTML = ""
     })
   }
+
+  createTell() {
+    //   < !-- < div id = "tell" >
+    //   免责声明, 所有数据均是虚构数据, 不具有任何实际意义。用途是演示的测试数据。
+    // </div > -->
+  }
 }

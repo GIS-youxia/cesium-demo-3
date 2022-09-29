@@ -102,6 +102,8 @@ export function setComeraPosition(viewer, options) {
   const { longitude, latitude, height } = options;
 
   const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
+  console.error(position);
+
   viewer.camera.setView({
     destination: position,
     orientation: {

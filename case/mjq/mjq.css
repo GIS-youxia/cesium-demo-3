@@ -1,3 +1,14 @@
+#tell {
+        position: fixed;
+        bottom: 0px;
+        color: #ff0303;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 8px;
+        user-select: none;
+      }
+
 .info {
     background-color: #ddd;
     border-radius: 4px;

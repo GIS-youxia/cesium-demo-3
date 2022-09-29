@@ -121,7 +121,6 @@ export function flyTo(view) {
   })
 }
 
-
 // 添加点
 export function addPoint(viewer, position, pixelSize=10) {
   viewer.entities.add({

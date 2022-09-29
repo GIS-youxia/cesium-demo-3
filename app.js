@@ -9,8 +9,6 @@ console.log(Cesium.VERSION);
 /*--------------------------------------- tool ------------------------------------------ */
 import { addAxisGlobe } from './tool/axis'
 import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
-import { setCamera, setComeraPosition } from './tool/camera'
-import { addGaode } from './tool/provider';
 
 /*--------------------------------------- case ------------------------------------------ */
 import { coneRotation } from './show'
@@ -18,11 +16,16 @@ import { MjqGrid } from './case/mjq/mjq_grid'
 import { Tile } from './case/tile/index'
 import { Draw } from './case/draw/draw'
 import { Radar } from './case/radar/index'
+import { Road } from './case/road/index'
+import { DynamicLabel} from './case/DynamicLabel/DynamicLabel'
+import { addCSS } from './tool/helper';
 
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
+addCSS("./node_modules/cesium/Build/CesiumUnminified/Widgets/widgets.css")
+
 const viewOptions = {
   //-------------------------- UI控件 --------------------
   //动画
@@ -45,10 +48,6 @@ var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
 viewer.shadows = false;
 // @ts-ignore
 window.viewer = viewer;
-
-
-// addGaode(viewer)
-// setCamera(viewer, "beiJing")
 
 // 解决模糊
 updateResolutionScale(viewer)
@@ -80,16 +79,9 @@ viewer.scene.globe.enableLighting = false;
 
 // 添加地球坐标轴
 // addAxisGlobe(viewer)
-// coneRotation(viewer);
 
-// setComeraPosition(viewer, {
-//   longitude: 116.4715397068917,
-//   latitude: 39.9945712104195,
-//   height: 100000,
-// })
-
-
-// fnLoadKML(viewer, "./res/daolubiaozhu.kml")
-// window.mjq = new MjqGrid(viewer)
+// window.case = new MjqGrid(viewer)
 // window.case = new Tile(viewer)
-window.case = new Radar(viewer)
+// window.case = new Radar(viewer)
+// window.case = new Road(viewer)
+window.case = new DynamicLabel(viewer, [116.4715397068917, 39.9945712104195, 9], '北京望京Soho');
