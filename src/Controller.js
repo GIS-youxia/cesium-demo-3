@@ -2,7 +2,7 @@
 /* eslint-disable no-debugger */
 
 // import Cesium from './Cesium'
-import * as Cesium from 'cesium'';
+import * as Cesium from 'cesium';
 import { colorRgb } from './color'
 import { evil } from './common'
 // import CesiumNavigation from 'cesium-navigation-es6'

@@ -28,7 +28,12 @@ module.exports = {
   ],
   module: {
     unknownContextCritical: /^.\/.*$/,
-    unknownContextCritical: false
+    unknownContextCritical: false,
+    rules: [
+      {
+        test: /\.glsl$/,
+        loader: 'webpack-glsl-loader'
+      },
+    ]
   }
-
 }
