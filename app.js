@@ -20,6 +20,7 @@ import { Radar } from './case/radar/index'
 // import { Road } from './case/road/index'
 import { DomLabelDemo } from './case/DynamicLabel/index'
 // import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
+import { RiverDemo } from './case/river/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -85,4 +86,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new Radar(viewer)
 // window.case = new Road(viewer)
 // window.case = new FlowLine(viewer);
-window.case = new DomLabelDemo(viewer);
+// window.case = new DomLabelDemo(viewer);
+window.case = new RiverDemo(viewer);
