@@ -18,8 +18,8 @@ import { Tile } from './case/tile/index'
 import { Draw } from './case/draw/draw'
 import { Radar } from './case/radar/index'
 // import { Road } from './case/road/index'
-// import { DynamicLabel} from './case/DynamicLabel/DynamicLabel'
-import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
+import { DomLabelDemo } from './case/DynamicLabel/index'
+// import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -84,5 +84,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new Tile(viewer)
 // window.case = new Radar(viewer)
 // window.case = new Road(viewer)
-// window.case = new DynamicLabel(viewer, [116.4715397068917, 39.9945712104195, 9], '北京望京Soho');
-window.case = new FlowLine(viewer);
+// window.case = new FlowLine(viewer);
+window.case = new DomLabelDemo(viewer);
