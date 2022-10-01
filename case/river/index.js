@@ -157,7 +157,8 @@ export class RiverDemo {
     }, {
       label: "江",
       point: [104.99607133247369, 33.137824085943095, 0]
-    }];
+      }
+    ];
 
     labelDatas.forEach(item => {
       this.viewer.entities.add({

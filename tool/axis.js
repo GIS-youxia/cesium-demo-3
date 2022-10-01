@@ -43,41 +43,42 @@ export function addAxisGlobe(viewer) {
 
 
 /**
- * 绑定在图元的坐标轴
+ * 绑定在对象的坐标轴
  * @export
- * @class AxisByPrimitive
+ * @class AxisByObject
  */
-export class AxisByPrimitive {
+export class AxisByObject {
   /**
-   * Creates an instance of AxisByPrimitive.
+   * Creates an instance of AxisByObject.
    * @param {*} viewer
-   * @param {*} targetPrimitive 目标图元
-   * @memberof AxisByPrimitive
+   * @param {Cesium.Entity|Cesium.Primitive} target 目标对象
+   * @memberof AxisByObject
    */
-  constructor(viewer, targetPrimitive) {
+  constructor(viewer, target, scale=1) {
+    this.scale = scale;
     this.viewer = viewer;
     this.linePrimitives = []
-    this.targetPrimitive = targetPrimitive;
+    this.target = target;
 
-    this._floowPrimitive = false;
+    this._floow = false;
     this.init()
   }
 
-  get floowPrimitive() {
-    return this._floowPrimitive;
+  get floow() {
+    return this._floow;
   }
 
   /**
-   * 旋转跟随目标图元
+   * 旋转跟随目标对象
    */
-  set floowPrimitive(v) {
-    this._floowPrimitive = v;
+  set floow(v) {
+    this._floow = v;
   }
 
   init() {
     const { viewer } = this;
-    const length = 2000000;
-    const width = 10000;
+    const length = 2000000 * this.scale;
+    const width = 10000 * this.scale;
 
     const lineInfos = [
       {
@@ -119,12 +120,20 @@ export class AxisByPrimitive {
   }
 
   update() {
-    const modelMatrixTarget = this.targetPrimitive.modelMatrix;
+    let modelMatrixTarget;
+    if (this.target instanceof Cesium.Entity) {
+      modelMatrixTarget = this.computeModelMatrix(this.target.orientation._value, this.target.position._value);
+    }
+
+    if (this.target instanceof Cesium.Primitive) {
+      modelMatrixTarget = this.target.modelMatrix;
+    }
+
     const translate = new Cesium.Cartesian3()
     Cesium.Matrix4.getTranslation(modelMatrixTarget, translate)
 
     const rotation = new Cesium.Cartesian3(1,0,0)
-    if (this.floowPrimitive) {
+    if (this.floow) {
       Cesium.Matrix4.getRotation(modelMatrixTarget, rotation)
     } else {
       Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotation)
@@ -138,5 +147,12 @@ export class AxisByPrimitive {
         Cesium.Matrix4.fromRotationTranslation(rotation, new Cesium.Cartesian3(translate.x, translate.y, translate.z)),
         line.modelMatrix);
     }
+  }
+
+  computeModelMatrix(quaternion,position) {
+    const modelMatrix = new Cesium.Matrix4();
+    const rotationMat = Cesium.Matrix3.fromQuaternion(quaternion, new Cesium.Matrix3())
+    Cesium.Matrix4.fromRotationTranslation(rotationMat, position, modelMatrix)
+    return modelMatrix;
   }
 }

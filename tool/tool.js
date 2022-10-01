@@ -43,7 +43,12 @@ export function getClickPointAdd(_viewer,cb) {
     let radiansPos = Cesium.Cartographic.fromCartesian(clickPosition);
 
     // 转角度
-    console.log("log" + Cesium.Math.toDegrees(radiansPos.longitude) + "lat" + Cesium.Math.toDegrees(radiansPos.latitude));
+    const lon = Cesium.Math.toDegrees(radiansPos.longitude);
+    const lat = Cesium.Math.toDegrees(radiansPos.latitude);
+    console.log(`{
+      longitude: ${lon},
+      latitude: ${lat},
+    }`);
 
     cb && cb(clickPosition);
 

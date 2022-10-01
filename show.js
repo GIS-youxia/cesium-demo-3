@@ -1,6 +1,6 @@
 import * as Cesium from 'cesium';
 import { getCylinderPrimitive } from './tool/primitive'
-import { AxisByPrimitive } from './tool/axis'
+import { AxisByObject } from './tool/axis'
 
 /**
  * 圆锥自动旋转
@@ -19,8 +19,8 @@ export function coneRotation(viewer) {
     color:'#00ff00'
   })
   viewer.scene.primitives.add(conePrimitive)
-  const axis = new AxisByPrimitive(viewer, conePrimitive)
-  axis.floowPrimitive = true;
+  const axis = new AxisByObject(viewer, conePrimitive)
+  axis.floow = true;
 
   var counter = 90;
   setInterval( () => {

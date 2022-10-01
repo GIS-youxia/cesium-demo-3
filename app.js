@@ -10,6 +10,8 @@ console.log(Cesium.VERSION);
 import { addAxisGlobe } from './tool/axis'
 import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 import { addCSS } from './tool/helper';
+import { addGaode } from './tool/provider';
+
 
 /*--------------------------------------- case ------------------------------------------ */
 import { coneRotation } from './show'
@@ -19,8 +21,9 @@ import { Draw } from './case/draw/draw'
 import { Radar } from './case/radar/index'
 // import { Road } from './case/road/index'
 import { DomLabelDemo } from './case/DynamicLabel/index'
-// import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
+import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 import { RiverDemo } from './case/river/index'
+import { PowerDemo } from './case/power/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -78,6 +81,9 @@ viewer.scene.skyAtmosphere.show = false;
 viewer.scene.fog.enable = false;
 viewer.scene.globe.enableLighting = false;
 
+// 添加高德底图
+// addGaode(viewer);
+
 // 添加地球坐标轴
 // addAxisGlobe(viewer)
 
@@ -87,4 +93,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new Road(viewer)
 // window.case = new FlowLine(viewer);
 // window.case = new DomLabelDemo(viewer);
-window.case = new RiverDemo(viewer);
+// window.case = new RiverDemo(viewer);
+window.case = new PowerDemo(viewer);
