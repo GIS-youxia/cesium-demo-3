@@ -77,7 +77,7 @@ export function customMaterial(params) {
     fabric: {
       type: 'MyCustomShader1',
       uniforms: {
-        image: '../../SampleData/models/CesiumBalloon/CesiumBalloonPrint_singleDot.png',
+        myImage: './res/pic/hexagon.png',
         color: new Cesium.Color(1.0, 1.0, 0.0, 1.0),
         cellAlpha: 0.3
       },
@@ -91,9 +91,9 @@ export function customMaterial(params) {
 
             vec2 st = materialInput.st;
             float aa = st.s * st.t;
-            vec3 halfColor = color.rgb * aa + texture2D(image, materialInput.st).rgb * (1.0 - aa);
+            vec3 halfColor = color.rgb * aa + texture2D(myImage, materialInput.st).rgb * (1.0 - aa);
             halfColor *= 0.5;
-            material.diffuse = halfColor;
+            material.diffuse = vec3(1.0,0.,0.);
             material.emission = halfColor;
             // material.alpha = color.a * aa;
             material.alpha = 1.0;

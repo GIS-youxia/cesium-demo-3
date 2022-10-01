@@ -1,6 +1,6 @@
 import * as Cesium from 'cesium';
 import { getPrimitive } from '../../tool/primitive'
-import { colorMaterial } from '../../tool/material'
+import { colorMaterial, customMaterial } from '../../tool/material'
 import { CustormAppearance } from './CustomAppearance'
 import { getImageTexture } from '../../tool/tool'
 
@@ -21,14 +21,18 @@ export class Draw {
     const planePrimitive = getPrimitive({
       geometry,
       modelMatrix,
-      appearance: this.getCustomAppearance()
+      // appearance: this.getCustomAppearance()
+      appearance: new Cesium.MaterialAppearance({
+         flat : true,
+         translucent : false
+     }),
     });
-    getImageTexture(viewer, './res/pic/background.png').then(texture => {
-      planePrimitive.appearance.uniforms.myImage = texture;
-    })
+    // getImageTexture(viewer, './res/pic/background.png').then(texture => {
+    //   planePrimitive.appearance.uniforms.myImage = texture;
+    // })
 
     // 更改材质
-    // planePrimitive.appearance.material = colorMaterial({ color :"#ff0000"});
+    planePrimitive.appearance.material = customMaterial({ color :"#ff0000"});
 
     viewer.scene.primitives.add(planePrimitive)
     viewer.camera.flyToBoundingSphere(new Cesium.BoundingSphere(position, 1000), {

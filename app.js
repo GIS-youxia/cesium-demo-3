@@ -12,7 +12,6 @@ import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 import { addCSS } from './tool/helper';
 import { addGaode } from './tool/provider';
 
-
 /*--------------------------------------- case ------------------------------------------ */
 import { coneRotation } from './show'
 // import { MjqGrid } from './case/mjq/mjq_grid'
@@ -24,6 +23,7 @@ import { DomLabelDemo } from './case/DynamicLabel/index'
 import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 import { RiverDemo } from './case/river/index'
 import { PowerDemo } from './case/power/index'
+import { WallDemo } from './case/wall';
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -91,7 +91,9 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new Tile(viewer)
 // window.case = new Radar(viewer)
 // window.case = new Road(viewer)
+// window.case = new Draw(viewer)
 // window.case = new FlowLine(viewer);
 // window.case = new DomLabelDemo(viewer);
 // window.case = new RiverDemo(viewer);
-window.case = new PowerDemo(viewer);
+// window.case = new PowerDemo(viewer);
+window.case = new WallDemo(viewer);
