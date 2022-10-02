@@ -24,6 +24,7 @@ import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 import { RiverDemo } from './case/river/index'
 import { PowerDemo } from './case/power/index'
 import { WallDemo } from './case/wall';
+import { S3MDemo } from './case/s3m/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -96,4 +97,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new DomLabelDemo(viewer);
 // window.case = new RiverDemo(viewer);
 // window.case = new PowerDemo(viewer);
-window.case = new WallDemo(viewer);
+// window.case = new WallDemo(viewer);
+window.case = new S3MDemo(viewer);
