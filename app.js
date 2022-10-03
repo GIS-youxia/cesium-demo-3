@@ -64,9 +64,9 @@ updateResolutionScale(viewer)
 viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
-// getClickPointAdd(viewer, pos => {
-//   // addAxis(viewer, pos);
-// });
+getClickPointAdd(viewer, pos => {
+  // addAxis(viewer, pos);
+});
 
 // @ts-ignore
 // viewer.scene.globe.show = false;
@@ -101,5 +101,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new PowerDemo(viewer);
 // window.case = new WallDemo(viewer);
 // window.case = new S3MDemo(viewer);
-// window.case = new CircleDemo(viewer);
-window.case = new StatelliteDemo(viewer);
+window.case = new CircleDemo(viewer);
+// window.case = new StatelliteDemo(viewer);

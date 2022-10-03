@@ -50,7 +50,7 @@ export class CircleWaveProperty {
 
     equals (other) {
         return this === other ||
-            (other instanceof CircleWave &&
+            (other instanceof CircleWaveProperty &&
                 Cesium.Property.equals(this._color, other._color))
     };
 }
