@@ -1,12 +1,14 @@
 import * as Cesium from 'cesium';
 import { getPureColor, createBuildingShader } from '../../tool/shader'
+import { addArcgis } from '../../tool/provider';
+
 export class Tile {
   constructor(viewer) {
     this.init(viewer);
   }
 
   async init(viewer) {
-    // await this.addMap(viewer);
+    // await this.addArcgis(viewer);
     this.addTile(viewer);
    }
 
@@ -36,25 +38,5 @@ export class Tile {
       tileset.customShader = getPureColor();
     });
   }
-  addMap(viewer) {
-    return new Promise((resolve, reject) => {
-      const imageryProvider = new Cesium.ArcGisMapServerImageryProvider({
-        // url: 'http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer'
-        // url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
-        url: "http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer"
-      });
-      viewer.imageryLayers.addImageryProvider(imageryProvider);
-      // var options = {
-      //   style: 'vec', // style: img vec normal dark
-      //   crs: 'WGS84' // 使用84坐标系，默认为：BD09
-      // }
-      // var imageryProvider = new Cesium.BaiduImageryProvider(options)
-      // viewer.imageryLayers.addImageryProvider(
-      //   imageryProvider
-      // )
-      // resolve();
-      imageryProvider.readyPromise.then(resolve)
-    })
 
-  }
 }

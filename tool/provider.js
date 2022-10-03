@@ -18,30 +18,9 @@ export function removeGaode(viewer) {
   viewer.imageryLayers.remove(viewer.imageryLayers._layers[1])
 }
 
-export function addGaode(viewer) {
-  // 添加高德影像
-  // var gaodeImageProvider = new Cesium.UrlTemplateImageryProvider({
-  //   // url: "https://webst{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7",
-  //   // "http://wprd02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=1&style=7"
-  //   url: "https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}",
-  //   subdomains: ["01", "02", "03", "04"], //多域名请求
-  //   // tilingScheme: new AmapMercatorTilingScheme(),
-  //   // crs: "WGS84",
-  //   minimumLevel: 3,
-  //   maximumLevel: 18
-  // })
-  // viewer.imageryLayers.addImageryProvider(gaodeImageProvider);
-
-  // var options = {
-  //   style: 'img', // style: img、elec、cva
-  //   crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
-  // }
-  // // console.error(Cesium.AmapImageryProvider);
-
-  // viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
-
+export function addGaode(viewer, style ="elec") {
   var options = {
-    style: 'elec', // style: img elec cva
+    style: style, // style: img elec cva
     crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
   }
   viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
@@ -200,4 +179,16 @@ export function arcgis(viewer) {
 //   var esri = new Cesium.ArcGisMapServerImageryProvider({
 //     url : 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
 // });
+}
+
+
+export function addArcgis(viewer) {
+  return new Promise((resolve, reject) => {
+    const imageryProvider = new Cesium.ArcGisMapServerImageryProvider({
+      url: "http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer"
+    });
+    viewer.imageryLayers.addImageryProvider(imageryProvider);
+    imageryProvider.readyPromise.then(resolve)
+  })
+
 }

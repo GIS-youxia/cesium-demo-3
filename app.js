@@ -27,6 +27,7 @@ import { WallDemo } from './case/wall';
 import { S3MDemo } from './case/s3m/index'
 import { CircleDemo } from './case/circle/index'
 import { StatelliteDemo } from './case/satellite/index'
+import { StretchGeogsonDemo } from './case/stretchGeogson/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -64,9 +65,9 @@ updateResolutionScale(viewer)
 viewer.scene.debugShowFramesPerSecond = true;
 
 // 开启拾取
-getClickPointAdd(viewer, pos => {
-  // addAxis(viewer, pos);
-});
+// getClickPointAdd(viewer, pos => {
+//   // addAxis(viewer, pos);
+// });
 
 // @ts-ignore
 // viewer.scene.globe.show = false;
@@ -101,5 +102,6 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new PowerDemo(viewer);
 // window.case = new WallDemo(viewer);
 // window.case = new S3MDemo(viewer);
-window.case = new CircleDemo(viewer);
+// window.case = new CircleDemo(viewer);
 // window.case = new StatelliteDemo(viewer);
+window.case = new StretchGeogsonDemo(viewer);
