@@ -25,6 +25,8 @@ import { RiverDemo } from './case/river/index'
 import { PowerDemo } from './case/power/index'
 import { WallDemo } from './case/wall';
 import { S3MDemo } from './case/s3m/index'
+import { CircleDemo } from './case/circle/index'
+import { StatelliteDemo } from './case/satellite/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -45,7 +47,7 @@ const viewOptions = {
   selectionIndicator: false,
   timeline: false,
   navigationHelpButton: false,
-  shouldAnimate: false,
+  shouldAnimate: true,
   imageryProvider: undefined,
 }
 
@@ -98,4 +100,6 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new RiverDemo(viewer);
 // window.case = new PowerDemo(viewer);
 // window.case = new WallDemo(viewer);
-window.case = new S3MDemo(viewer);
+// window.case = new S3MDemo(viewer);
+// window.case = new CircleDemo(viewer);
+window.case = new StatelliteDemo(viewer);
