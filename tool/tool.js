@@ -173,3 +173,18 @@ export function getImageTexture(viewer, imageUri) {
     });
   })
 }
+
+
+export function screenToWorld(viewer, screenPos){
+  return viewer.scene.globe.pick(viewer.camera.getPickRay(new Cesium.Cartesian2(screenPos.x, screenPos.y)), viewer.scene);
+  // let clickPosition = viewer.scene.camera.pickEllipsoid(screenPos);
+  // return clickPosition
+}
+
+export function worldToWGS84(viewer, worldPos){
+  var cartographic = Cesium.Cartographic.fromCartesian(worldPos);
+  var lat = Cesium.Math.toDegrees(cartographic.latitude);
+  var lng = Cesium.Math.toDegrees(cartographic.longitude);
+  var alt = cartographic.height;
+  return { lng, lat, alt };
+}

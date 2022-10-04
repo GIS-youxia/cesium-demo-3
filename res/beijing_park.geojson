@@ -1,0 +1,2412 @@
+{
+  "type": "FeatureCollection",
+  "name": "beijing_park",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "昌平新城滨河森林公园",
+        "lng": "116.306021",
+        "lat": 40.138062,
+        "address": "北京市昌平区沙河镇南门大道(巩华城地铁站东侧)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.293485868045096,
+          40.130615050990109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "南海子公园",
+        "lng": "116.475291",
+        "lat": 39.779661,
+        "address": "北京市大兴区黄亦路16号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.462553809727055,
+          39.772654331801284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "玉渊潭公园",
+        "lng": "116.326526",
+        "lat": 39.922467,
+        "address": "北京市海淀区西三环中路10号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.313877310619432,
+          39.915361882850796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "陶然亭公园",
+        "lng": "116.388442",
+        "lat": 39.88066,
+        "address": "北京市西城区太平街19号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.375770862735095,
+          39.873061810220506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "通州大运河森林公园",
+        "lng": "116.748887",
+        "lat": 39.8824,
+        "address": "北京市通州区通怀路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.736372794308892,
+          39.874960666929837
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "海淀公园",
+        "lng": "116.302269",
+        "lat": 39.99242,
+        "address": "北京市海淀区新建宫门路2号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.289765723970305,
+          39.984928886272257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "朝阳公园",
+        "lng": "116.489233",
+        "lat": 39.949861,
+        "address": "北京市朝阳区朝阳公园南路1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.476604408470536,
+          39.942704518983845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "紫竹院公园",
+        "lng": "116.32483",
+        "lat": 39.948437,
+        "address": "北京市海淀区中关村南大街35号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.312191769610493,
+          39.941306676491571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "后海公园",
+        "lng": "116.388809",
+        "lat": 39.948395,
+        "address": "北京市西城区羊房胡同"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.37616415662896,
+          39.94079945485305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京西山国家森林公园(昌华园区)",
+        "lng": "116.209193",
+        "lat": 39.978535,
+        "address": "闵庄路与香山南路交叉口西行100米"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.196489315522101,
+          39.971479643517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "万芳亭",
+        "lng": "116.382511",
+        "lat": 39.864933,
+        "address": "北京市丰台区南三环西路3号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.36981957668192,
+          39.857439716275415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "念坛公园",
+        "lng": "116.319323",
+        "lat": 39.712977,
+        "address": "北京市大兴区新源大街(近义和庄地铁站)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.306755471761022,
+          39.705777286259675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北海公园",
+        "lng": "116.39548",
+        "lat": 39.932909,
+        "address": "北京市西城区文津街1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.382861816383354,
+          39.925226202652659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "日坛公园",
+        "lng": "116.450437",
+        "lat": 39.921342,
+        "address": "北京市朝阳区朝阳门外日坛北路6号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.437663652576475,
+          39.914202702195432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "梨园主题公园",
+        "lng": "116.684007",
+        "lat": 39.880777,
+        "address": "北京市通州区梨园镇临河里轻轨站南侧"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.671520502729578,
+          39.873775969763628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "什刹海公园",
+        "lng": "116.391411",
+        "lat": 39.948054,
+        "address": "北京市西城区地安门西大街49号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.378775654986981,
+          39.940419943981503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "天坛公园",
+        "lng": "116.417246",
+        "lat": 39.888243,
+        "address": "北京市东城区天坛东里甲1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.40459203474083,
+          39.880539743241158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "台湖公园",
+        "lng": "116.654302",
+        "lat": 39.831184,
+        "address": "台湖镇玉甫上营南(近台湖文化艺术公园)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.64208724941308,
+          39.823794588894877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "未来科学城滨水公园",
+        "lng": "116.465452",
+        "lat": 40.128958,
+        "address": "北京市昌平区未来科学城内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.452619452922505,
+          40.121941492406762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "回龙园",
+        "lng": "116.331389",
+        "lat": 40.088853,
+        "address": "北京市昌平区回龙观镇风雅园二区1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.318667080238924,
+          40.081795709448777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "龙潭公园",
+        "lng": "116.444742",
+        "lat": 39.885848,
+        "address": "北京市东城区龙潭路16号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.43196215987156,
+          39.878605106909987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "莲花池公园",
+        "lng": "116.319451",
+        "lat": 39.8983,
+        "address": "北京市丰台区西三环中路38号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.306840000121497,
+          39.891079937166353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "中关村公园",
+        "lng": "116.291663",
+        "lat": 40.068669,
+        "address": "北京市海淀区唐家岭土井村路45号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.279232231245601,
+          40.06109905952534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北宫国家森林公园",
+        "lng": "116.12471",
+        "lat": 39.871839,
+        "address": "北京市丰台区长辛店镇大灰厂东路55号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.111814402269829,
+          39.864643047495385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东小口森林公园",
+        "lng": "116.399183",
+        "lat": 40.054594,
+        "address": "北京市昌平区黑泉路与西小口路交叉口东南侧"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.386557354604264,
+          40.046872066529097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "西海子公园",
+        "lng": "116.669195",
+        "lat": 39.918329,
+        "address": "北京市通州区西海子西路12号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.656865111682762,
+          39.911099370000258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "稻香湖公园",
+        "lng": "116.191011",
+        "lat": 40.09779,
+        "address": "北京市海淀区苏家坨稻香湖路28号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.178352231135179,
+          40.090382808639681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京园博园",
+        "lng": "116.197194",
+        "lat": 39.881733,
+        "address": "北京市丰台区射击场路15号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.184534102433702,
+          39.874456442476237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北坞公园",
+        "lng": "116.263064",
+        "lat": 39.993037,
+        "address": "北京市海淀区颐和园西门外"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.25054673081064,
+          39.985694206600648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "元土城遗址公园",
+        "lng": "116.368049",
+        "lat": 39.981348,
+        "address": "北京市海淀区北土城西路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.355281984307183,
+          39.97412901589383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东郊湿地公园",
+        "lng": "116.667815",
+        "lat": 40.025837,
+        "address": "北京市通州区东六环路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.655472164271728,
+          40.018578393011218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "八大处公园",
+        "lng": "116.190196",
+        "lat": 39.968527,
+        "address": "北京市石景山区八大处路3号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.177564605368261,
+          39.961113611719519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "昌平公园",
+        "lng": "116.24354",
+        "lat": 40.223851,
+        "address": "北京市昌平区鼓楼南街28号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.230866439448661,
+          40.216819887306521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "海子公园",
+        "lng": "116.355127",
+        "lat": 39.822631,
+        "address": "花乡新发地村"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.342382418232546,
+          39.815617711948185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "兴隆郊野公园",
+        "lng": "116.540303",
+        "lat": 39.919156,
+        "address": "北京市朝阳区高碑店乡兴隆庄甲8号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.527999771580241,
+          39.911757245195446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "将府公园",
+        "lng": "116.518823",
+        "lat": 39.977849,
+        "address": "北京市朝阳区东八间房村临甲10号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.506432400724194,
+          39.970318883898102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "罗马湖公园",
+        "lng": "116.524562",
+        "lat": 40.108763,
+        "address": "后沙峪镇罗各庄村罗东路8号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.512179435017259,
+          40.101214530763187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京十三陵国家森林公园蟒山景区",
+        "lng": "116.299772",
+        "lat": 40.270755,
+        "address": "北京市昌平区蟒山路4号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.287272121010361,
+          40.263216028249346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东坝郊野公园",
+        "lng": "116.580687",
+        "lat": 39.960096,
+        "address": "北京市朝阳区东坝乡东五环外康各庄路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.568269294240778,
+          39.953372061057266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "通州运河公园",
+        "lng": "116.694863",
+        "lat": 39.914052,
+        "address": "北京市通州区通胡大街70号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.6823155031352,
+          39.907190725129198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "妙峰山森林公园",
+        "lng": "116.033186",
+        "lat": 40.07123,
+        "address": "北京市门头沟区涧沟村"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.020572717714586,
+          40.063689422226695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "双秀公园",
+        "lng": "116.381297",
+        "lat": 39.972598,
+        "address": "北京市西城区北三环中路20号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.368595958589523,
+          39.96512600491404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "中山公园",
+        "lng": "116.400582",
+        "lat": 39.916702,
+        "address": "北京市东城区中华路4号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.387966741945689,
+          39.908973376553362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "奥林匹克森林公园",
+        "lng": "116.396797",
+        "lat": 40.025231,
+        "address": "北京市朝阳区科荟路33号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.384150928399279,
+          40.017524296954882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京鹫峰国家森林公园",
+        "lng": "116.086286",
+        "lat": 40.061584,
+        "address": "北京市海淀区苏家坨镇秀峰寺路5号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.073408324598091,
+          40.054371504046578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "三里河公园",
+        "lng": "116.411521",
+        "lat": 39.900612,
+        "address": "北京市东城区南芦草园胡同与群智胡同交叉口东50米三里河公园"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.39888952862249,
+          39.892869924842358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "绿堤公园",
+        "lng": "116.232938",
+        "lat": 39.846416,
+        "address": "北京市丰台区左堤路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.220273874465903,
+          39.839517167685948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "永定河休闲森林公园",
+        "lng": "116.183872",
+        "lat": 39.895685,
+        "address": "北京市石景山区京原路55号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.171259400398696,
+          39.888159331552131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "常营马拉松体育公园",
+        "lng": "116.588743",
+        "lat": 39.941066,
+        "address": "北京市朝阳区常营中路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.576345618088453,
+          39.93436985099995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "元大都城垣遗址公园",
+        "lng": "116.396681",
+        "lat": 39.982606,
+        "address": "北京市朝阳区健安东路与安贞路交叉路口往东北"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.384026331096891,
+          39.974897542916537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "世纪森林公园",
+        "lng": "116.250868",
+        "lat": 39.830842,
+        "address": "北京市丰台区农场路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.238321057504976,
+          39.823734561391561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "昌平新城滨河森林公园",
+        "lng": "116.274663",
+        "lat": 40.218578,
+        "address": "北京市昌平区南环路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.262181901877526,
+          40.211049568117744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "昊天公园",
+        "lng": "116.161341",
+        "lat": 39.740006,
+        "address": "北京市房山区东关街73号东关村附近"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.148724639145698,
+          39.73232916211996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "大望京公园",
+        "lng": "116.501132",
+        "lat": 40.002958,
+        "address": "北京市朝阳区崔各庄乡大望京村望京东路甲6号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.488582237661433,
+          39.995609076466117
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "顺义公园",
+        "lng": "116.668642",
+        "lat": 40.127054,
+        "address": "北京市顺义区光明南街26号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.656264265967167,
+          40.119795831188917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "人定湖公园",
+        "lng": "116.392391",
+        "lat": 39.963629,
+        "address": "北京市西城区六铺炕15号(黄寺大街南侧)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.379743959519288,
+          39.955976578681096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "百望山",
+        "lng": "116.262167",
+        "lat": 40.036088,
+        "address": "北京市海淀区黑山扈北口19号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.249667023639077,
+          40.028768578034324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "清河营郊野公园",
+        "lng": "116.451397",
+        "lat": 40.060944,
+        "address": "北京市朝阳区北苑东路4号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.438607795734384,
+          40.053814482629448
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "圆明园遗址公园",
+        "lng": "116.309804",
+        "lat": 40.012658,
+        "address": "北京市海淀区清华西路28号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.297252003302589,
+          40.00527394002404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "方庄体育公园",
+        "lng": "116.434788",
+        "lat": 39.872164,
+        "address": "北京市丰台区芳古路芳古园三区1号楼(近芳城路)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.422054157398449,
+          39.864732921290035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "顺义新城滨河森林公园",
+        "lng": "116.722509",
+        "lat": 40.11349,
+        "address": "北京市顺义区双河大街"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.709857201684216,
+          40.106510586168795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "青年湖公园",
+        "lng": "116.408933",
+        "lat": 39.961277,
+        "address": "北京市东城区安德里北街"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.396307503496061,
+          39.953527175594374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "鬼笑石",
+        "lng": "116.193957",
+        "lat": 39.985331,
+        "address": "北京市海淀区西山国家森林公园内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.181297437968936,
+          39.977985890650885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "柳荫公园",
+        "lng": "116.408397",
+        "lat": 39.967217,
+        "address": "北京市东城区安外黄寺大街8号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.395765456947501,
+          39.959463984139646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "太阳宫公园",
+        "lng": "116.460467",
+        "lat": 39.98142,
+        "address": "北京市朝阳区太阳宫中路6号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.447647359899776,
+          39.974385544631289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "玲珑公园",
+        "lng": "116.301607",
+        "lat": 39.935269,
+        "address": "西八里庄北里3号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.289152168360928,
+          39.927785138950327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "翠湖国家城市湿地公园",
+        "lng": "116.192626",
+        "lat": 40.10931,
+        "address": "北京市海淀区上庄镇翠湖北路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.179953585254864,
+          40.101931149454344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京国际雕塑公园",
+        "lng": "116.249823",
+        "lat": 39.912256,
+        "address": "北京市石景山区石景山路2号地铁玉泉路A出口西侧"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.237251318404816,
+          39.905159196745579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东单公园",
+        "lng": "116.423745",
+        "lat": 39.911124,
+        "address": "北京市东城区大华路4号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.411083664338904,
+          39.903507208043131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "太平郊野公园",
+        "lng": "116.401525",
+        "lat": 40.069679,
+        "address": "北京市昌平区东小口镇太平庄中街"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.3888958764758,
+          40.061939634395706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "宣武艺园",
+        "lng": "116.365768",
+        "lat": 39.900955,
+        "address": "北京市西城区槐柏树街12号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.353011954345959,
+          39.893782584540439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "野鸭湖湿地公园",
+        "lng": "115.864188",
+        "lat": 40.416672,
+        "address": "北京市延庆区康野路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.851500321466403,
+          40.409882039600284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "丰台花园",
+        "lng": "116.292561",
+        "lat": 39.870093,
+        "address": "丰台区西四环南路60号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.28011886620024,
+          39.862524516315368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "皇城根遗址公园",
+        "lng": "116.412997",
+        "lat": 39.929613,
+        "address": "北京市东城区北河沿大街与地安门东大街交叉口南"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.400382182056305,
+          39.921885409823822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "南苑公园",
+        "lng": "116.384999",
+        "lat": 39.812567,
+        "address": "北京市丰台区南苑西路5号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.372359381703376,
+          39.805043693779453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "老山城市休闲公园",
+        "lng": "116.231188",
+        "lat": 39.920565,
+        "address": "北京市石景山区老山南路与上庄大街交叉口西"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.218521731236493,
+          39.913674306632295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "万寿公园",
+        "lng": "116.37434",
+        "lat": 39.885845,
+        "address": "北京市西城区白纸坊东街甲29号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.361608254860499,
+          39.878509141981496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "仰山公园",
+        "lng": "116.418171",
+        "lat": 40.02457,
+        "address": "北京市朝阳区安立路(近奥林匹克森林公园)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.405510697146198,
+          40.016875155297392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "古城公园",
+        "lng": "116.199908",
+        "lat": 39.917701,
+        "address": "北京市石景山区古城南路1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.18726303266223,
+          39.910486819403232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京朝来森林公园",
+        "lng": "116.460808",
+        "lat": 40.036727,
+        "address": "北京市朝阳区来广营乡新北路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4480051655284,
+          40.029700862057183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "百花山国家级自然保护区",
+        "lng": "115.597528",
+        "lat": 39.840111,
+        "address": "北京市门头沟区109国道"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.584972715474962,
+          39.833116090392572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "常营体育公园",
+        "lng": "116.612543",
+        "lat": 39.928692,
+        "address": "东十里堡路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.600248030428745,
+          39.92173050860255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "古塔公园",
+        "lng": "116.541838",
+        "lat": 39.884924,
+        "address": "北京市朝阳区高碑店路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.529508336387096,
+          39.877540349312639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "望和公园",
+        "lng": "116.455794",
+        "lat": 39.992587,
+        "address": "北京市朝阳区北四环东路41号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.442969090112285,
+          39.985505541505447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "霞云岭国家森林公园",
+        "lng": "115.756825",
+        "lat": 39.742479,
+        "address": "北京市房山区G108"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.743983103962819,
+          39.735580966497388
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "望湖公园",
+        "lng": "116.463329",
+        "lat": 40.016951,
+        "address": "北京市朝阳区望京北路51号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.450512918385201,
+          40.009934975243496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京野生动物园",
+        "lng": "116.341913",
+        "lat": 39.502905,
+        "address": "北京市大兴区榆垡镇万亩森林"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.329198007349305,
+          39.495990885410862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东风公园",
+        "lng": "116.526641",
+        "lat": 39.964128,
+        "address": "东风乡姚家园北二路1号(梵谷水郡东1.1公里)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.514303841288694,
+          39.956598170364941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "杜仲公园",
+        "lng": "116.575839",
+        "lat": 39.899004,
+        "address": "北京市朝阳区王四营北路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.563421133882358,
+          39.892234529335767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "奥林匹克森林公园-北园",
+        "lng": "116.398874",
+        "lat": 40.034046,
+        "address": "北京市朝阳区科荟路33号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.386239308312227,
+          40.026323656463525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京喇叭沟原始森林公园",
+        "lng": "116.495711",
+        "lat": 40.965737,
+        "address": "北京市怀柔区喇叭沟门满族乡孙栅子村西300号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.482984237015231,
+          40.958039674211868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "燕山公园",
+        "lng": "115.963453",
+        "lat": 39.732795,
+        "address": "北京市房山区迎风中路14号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.950944756712488,
+          39.725853929494633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "黄草湾郊野公园",
+        "lng": "116.441745",
+        "lat": 40.01194,
+        "address": "北京市朝阳区大屯乡北五环路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.428965420126062,
+          40.004637961229399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京奥林匹克公园",
+        "lng": "116.399576",
+        "lat": 40.007228,
+        "address": "北京市朝阳区北辰东路15号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.386922314889233,
+          39.999493574275242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "康庄公园",
+        "lng": "116.348778",
+        "lat": 39.761127,
+        "address": "北京市大兴区康庄路2号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.336008441442345,
+          39.75415131104365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北小河公园",
+        "lng": "116.461515",
+        "lat": 40.010893,
+        "address": "北京市朝阳区师家坟村156号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.448692538906201,
+          40.00386489312698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "庆丰公园",
+        "lng": "116.471207",
+        "lat": 39.908668,
+        "address": "北京市朝阳区厂坡村街甲2号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.4584405994337,
+          39.901671855339906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "老君堂公园",
+        "lng": "116.525875",
+        "lat": 39.837861,
+        "address": "北京市朝阳区十八里店乡老君堂村五环近康化桥"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.513556197180691,
+          39.830337355049373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京世园公园",
+        "lng": "115.957449",
+        "lat": 40.450315,
+        "address": "北京市延庆区220省道西侧"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.944903114480852,
+          40.443181674286009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "南宫体育公园",
+        "lng": "116.149983",
+        "lat": 39.804322,
+        "address": "北京市丰台区南宫滨河路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.137321536752353,
+          39.796740431230745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "四得公园",
+        "lng": "116.481193",
+        "lat": 39.977947,
+        "address": "北京市朝阳区将台西路9号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.468465885181402,
+          39.970880133469784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "颐和园",
+        "lng": "116.278749",
+        "lat": 40.004869,
+        "address": "北京市海淀区新建宫门路19号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.266299608912988,
+          39.997318025897989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "菖蒲河公园",
+        "lng": "116.409932",
+        "lat": 39.914756,
+        "address": "北京市东城区天安门东侧(劳动人民文化宫东侧)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.39731485085224,
+          39.907011898870039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京朝来农艺园",
+        "lng": "116.45335",
+        "lat": 40.035171,
+        "address": "北京市朝阳区来广营乡新生村新北路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.440550464804559,
+          40.028066778211063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "长阳音乐主题公园",
+        "lng": "116.203608",
+        "lat": 39.765733,
+        "address": "北京市房山区长阳体育公园西侧"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.190942323601874,
+          39.758591078156051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "丽都花园",
+        "lng": "116.486323",
+        "lat": 39.980518,
+        "address": "北京市朝阳区芳园西路6号(近宵云桥)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.473636492491522,
+          39.973390577255991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "红领巾公园",
+        "lng": "116.498608",
+        "lat": 39.9319,
+        "address": "北京市朝阳区后八里庄5号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.486078283546377,
+          39.924604446699597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "黄村公园",
+        "lng": "116.341416",
+        "lat": 39.747544,
+        "address": "北京市大兴区清源路与兴华大街交叉路口往东南约200米(北京市大兴区第七小学北侧约100米)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.328669444030382,
+          39.740574411520967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "中华文化园",
+        "lng": "116.300439",
+        "lat": 39.79059,
+        "address": "北京市大兴区芦花路40号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.28799421206493,
+          39.783096688742077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "龙潭西湖公园",
+        "lng": "116.437777",
+        "lat": 39.886193,
+        "address": "北京市东城区龙潭路甲1号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.42502867915772,
+          39.87881935859707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "石花洞风景名胜区",
+        "lng": "115.949587",
+        "lat": 39.803892,
+        "address": "北京市房山区河北镇南车营村111号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.937202436047841,
+          39.796729435315257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "上方山国家森林公园",
+        "lng": "115.83208",
+        "lat": 39.680012,
+        "address": "北京市房山区韩村河镇圣水峪村东"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.819534622025955,
+          39.672830281603225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "团结湖公园",
+        "lng": "116.47092",
+        "lat": 39.931495,
+        "address": "北京市朝阳区团结湖南里16号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.458165162787225,
+          39.924503888522416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "奥林匹克森林公园-南园",
+        "lng": "116.397837",
+        "lat": 40.022658,
+        "address": "北京市朝阳区科荟路33号奥林匹克森林公园内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.385190854862017,
+          40.01494097817347
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "天通苑街心花园",
+        "lng": "116.427079",
+        "lat": 40.067348,
+        "address": "中滩村北二街与立水桥东一路交叉口西南150米"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.414393268517699,
+          40.059780378036876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "牛口峪公园",
+        "lng": "115.97366",
+        "lat": 39.701791,
+        "address": "北京市房山区X201"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.961104733887552,
+          39.694987827846383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "明城墙遗址公园",
+        "lng": "116.434545",
+        "lat": 39.907209,
+        "address": "北京市东城区崇文门东大街9号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.421827696757333,
+          39.899778338719521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "长阳公园",
+        "lng": "116.201434",
+        "lat": 39.754543,
+        "address": "北京市房山区中央休闲购物区CSD()的万亩滨河公园"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.188774550463179,
+          39.747359990790493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "东升八家郊野公园",
+        "lng": "116.344821",
+        "lat": 40.025958,
+        "address": "北京市海淀区东升乡双清路5号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.332044180893689,
+          40.01898195622725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "长阳体育公园",
+        "lng": "116.208914",
+        "lat": 39.76704,
+        "address": "北京市房山区长阳镇长阳体育公园"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.196233593499841,
+          39.759991329033014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北滨河公园",
+        "lng": "116.397491",
+        "lat": 39.956317,
+        "address": "北京市西城区安德路102号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.384864934911704,
+          39.948610061105455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "大杨山国家森林公园",
+        "lng": "116.466056",
+        "lat": 40.28323,
+        "address": "北京市昌平区木厂村"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.453234334671279,
+          40.276203016554454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "潮白河森林公园",
+        "lng": "116.675633",
+        "lat": 40.139931,
+        "address": "北京市顺义区右堤路潮白河森林公园"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.663201756938804,
+          40.132786242310729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "宋庄文化公园",
+        "lng": "116.704711",
+        "lat": 39.961453,
+        "address": "潞苑北大街"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.692106289903037,
+          39.954632268817981
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "望承公园",
+        "lng": "116.45866",
+        "lat": 40.000879,
+        "address": "北京市朝阳区南湖渠西路220号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.445832721680588,
+          39.993826953424239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "翠城公园",
+        "lng": "116.513567",
+        "lat": 39.865698,
+        "address": "北京市朝阳区东垡头路临70号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.501147861040593,
+          39.858204568211008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "首钢园",
+        "lng": "116.16061",
+        "lat": 39.921415,
+        "address": "北京市石景山区石景山路68号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.147994322728465,
+          39.9137364033569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "金田公园",
+        "lng": "116.569249",
+        "lat": 39.893202,
+        "address": "北京市朝阳区双桥路与王四营北路交叉口北"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.556841527984261,
+          39.886340189736416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "马家湾湿地公园",
+        "lng": "116.567914",
+        "lat": 39.846982,
+        "address": "北京市朝阳区大鲁店北路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.555526912345513,
+          39.840104346630923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "密虹公园",
+        "lng": "116.843115",
+        "lat": 40.381412,
+        "address": "北京市密云区新西路75号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.830475754526134,
+          40.374446207886059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "国际企业文化园(西园)",
+        "lng": "116.492851",
+        "lat": 39.81438,
+        "address": "亦庄开发区五环文化园西路6号院"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.480279101960122,
+          39.807179249495206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "月坛公园",
+        "lng": "116.358874",
+        "lat": 39.922132,
+        "address": "月坛北街6号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.346117054951051,
+          39.915069500550729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "曙光防灾教育公园",
+        "lng": "116.288869",
+        "lat": 39.953313,
+        "address": "北京市海淀区紫竹院路正福寺76号(四季青桥东)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.276455454545868,
+          39.945740030502222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "圆明园遗址公园-西北景区",
+        "lng": "116.296149",
+        "lat": 40.017358,
+        "address": "北京市海淀区清华西路28号圆明园遗址公园内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.283685283240956,
+          40.009808527910273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "通明湖公园",
+        "lng": "116.5859",
+        "lat": 39.781494,
+        "address": "北京市通州区荣华街道经济技术开发区科创十七街与经惠西路交口西200米"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.573495801406168,
+          39.774799164286584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "青龙湖森林公园一号观景台",
+        "lng": "116.052192",
+        "lat": 39.779914,
+        "address": "北京市房山区S319(良坨路)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.039562278304686,
+          39.772266031330773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "陶然亭公园-冰雪嘉年华",
+        "lng": "116.386663",
+        "lat": 39.878718,
+        "address": "北京市西城区太平街9号陶然亭公园内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.373984720492246,
+          39.871148955908396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "玉渊潭公园八一湖",
+        "lng": "116.324769",
+        "lat": 39.919523,
+        "address": "玉渊潭南路11号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.312132164845053,
+          39.912392014362766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "圆明园遗址公园-长春园景区",
+        "lng": "116.319749",
+        "lat": 40.01596,
+        "address": "北京市海淀区清华西路28号圆明园遗址公园"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.307118711100799,
+          40.008739225253379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "首农英狮体育公园",
+        "lng": "116.623752",
+        "lat": 39.942138,
+        "address": "北京市朝阳区东高路28号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.611516711961485,
+          39.934970402081355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京云蒙山风景区",
+        "lng": "116.797566",
+        "lat": 40.56496,
+        "address": "北京市密云区水库西线公路8号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.784905078911862,
+          40.557634705775889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "团河行宫遗址公园",
+        "lng": "116.385257",
+        "lat": 39.753739,
+        "address": "北京市大兴区团河路"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.372588462526906,
+          39.746203964841612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "红墅文化产业公园",
+        "lng": "116.51312",
+        "lat": 40.000124,
+        "address": "北京市朝阳区草场地a8栋"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.500678665734654,
+          39.99262768627608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "北京环球度假区",
+        "lng": "116.68782",
+        "lat": 39.86099,
+        "address": "北京市通州区京哈高速与东六环路交汇处西北角"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.675309142283766,
+          39.854045945056455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "南海子公园-南2门",
+        "lng": "116.478807",
+        "lat": 39.774547,
+        "address": "北京市大兴区瀛海镇南海子公园南门牌楼"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.466088758308715,
+          39.767514377083714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "古崖居风景名胜区",
+        "lng": "115.781963",
+        "lat": 40.469104,
+        "address": "北京市延庆区张山营镇东门营村北"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.769179915568429,
+          40.461709744805589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "霞云岭山水人家金水湖景区",
+        "lng": "115.758059",
+        "lat": 39.743278,
+        "address": "北京市房山区霞云岭村山水人家"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.745220841381609,
+          39.736367262281576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "大众公园",
+        "lng": "116.459018",
+        "lat": 40.027008,
+        "address": "北京市朝阳区来广营西路518号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.446206659767469,
+          40.019964686592594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "什刹海-后海",
+        "lng": "116.392212",
+        "lat": 39.948636,
+        "address": "北京市西城区什刹海内"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.37957884008749,
+          39.940990857686344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "回龙观体育文化公园",
+        "lng": "116.348467",
+        "lat": 40.084608,
+        "address": "北京市昌平区西大街9号院8-6号"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.335675840918725,
+          40.077621798739571
+        ]
+      }
+    }
+  ]
+}

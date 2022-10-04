@@ -28,7 +28,7 @@ import { S3MDemo } from './case/s3m/index'
 import { CircleDemo } from './case/circle/index'
 import { StatelliteDemo } from './case/satellite/index'
 import { StretchGeogsonDemo } from './case/stretchGeogson/index'
-
+import { POIDemo } from './case/poi';
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
@@ -104,4 +104,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new S3MDemo(viewer);
 // window.case = new CircleDemo(viewer);
 // window.case = new StatelliteDemo(viewer);
-window.case = new StretchGeogsonDemo(viewer);
+// window.case = new StretchGeogsonDemo(viewer);
+window.case = new POIDemo(viewer);
