@@ -30,6 +30,7 @@ import { StatelliteDemo } from './case/satellite/index'
 import { StretchGeogsonDemo } from './case/stretchGeogson/index'
 import { POIDemo } from './case/poi';
 import { KFCDemo } from './case/kfc/index'
+import { PersonDemo } from './case/person/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -108,4 +109,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new StatelliteDemo(viewer);
 // window.case = new StretchGeogsonDemo(viewer);
 // window.case = new POIDemo(viewer);
-window.case = new KFCDemo(viewer);
+// window.case = new KFCDemo(viewer);
+window.case = new PersonDemo(viewer);
