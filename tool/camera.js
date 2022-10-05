@@ -115,3 +115,39 @@ export function setComeraPosition(viewer, options) {
     }
   })
 }
+
+
+
+function name(params) {
+  //监听地图移动完成事件
+  viewer.camera.moveEnd.addEventListener(() => {
+    //获取当前相机高度
+    let height = Math.ceil(viewer.camera.positionCartographic.height);
+    let zoom = this.heightToZoom(height);
+    let bounds = this.getCurrentExtent();
+    // console.log('地图变化监听事件', zoom, bounds);
+    // this.handlePOI(bounds, viewer)
+  });
+
+
+  function heightToZoom(height) {
+    var A = 40487.57;
+    var B = 0.00007096758;
+    var C = 91610.74;
+    var D = -40467.74;
+    return Math.round(D + (A - D) / (1 + Math.pow(height / C, B)));
+  }
+
+  /*
+    *获取当前三维范围
+    *extent,返回当前模式下地图范围[xmin,ymin,xmax,ymax]
+    *extent,返回当前模式下地图范围{xmin,ymin,xmax,ymax}
+  */
+  function getCurrentExtent() {
+    //获取当前三维地图范围
+    var Rectangle = viewer.camera.computeViewRectangle();
+    //地理坐标（弧度）转经纬度坐标
+    var extent = [Rectangle.west / Math.PI * 180, Rectangle.south / Math.PI * 180, Rectangle.east / Math.PI * 180, Rectangle.north / Math.PI * 180];
+    return extent;
+  }
+}

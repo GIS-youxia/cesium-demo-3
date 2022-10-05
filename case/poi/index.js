@@ -44,65 +44,13 @@ export class POIDemo {
   constructor(viewer) {
     this.viewer = viewer;
     this.init(viewer);
-    // addGaode(viewer,"img");
     addCSS("./case/poi/style.css")
     this.initEvent();
     this.loop();
     this.setCamera(viewer);
     this.dom = new DOM(document.querySelector("#UIContainer"));
-
-
-    //监听地图移动完成事件
-    viewer.camera.moveEnd.addEventListener(() => {
-      //获取当前相机高度
-      let height = Math.ceil(viewer.camera.positionCartographic.height);
-      let zoom = this.heightToZoom(height);
-      let bounds = this.getCurrentExtent();
-      // console.log('地图变化监听事件', zoom, bounds);
-      // this.handlePOI(bounds, viewer)
-    });
   }
 
-  // 处理在线的高德POI
-  handleGaodePOI(bound, viewer) {
-    let base = 'https://restapi.amap.com/v3/place/polygon?types=150000&output=json&key=076a3fa73337d15503f258ef71037186&polygon='
-    base += `${bound[0]},${bound[1]},${bound[2]},${bound[3]}&offset=25`;
-    // console.error(base);
-    Cesium.Resource.fetchJson({
-      url: base
-    }).then(res => {
-      console.error(res);
-      const pois = res.pois
-      pois.forEach(item => {
-        const {location,name} = item;
-        const lon = location.split(",")[0]
-        const lat = location.split(",")[1]
-
-        viewer.entities.add({
-          name: name,
-          position: Cesium.Cartesian3.fromDegrees(+lon, +lat),
-          label: {
-            text: name,
-            font: '14pt monospace',
-            style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-            outlineWidth: 2,
-            verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-            pixelOffset: new Cesium.Cartesian2(0, 0)
-          }
-        });
-      });
-    })
-
-    // https://restapi.amap.com/v3/place/polygon?types=120000%7C130000%7C190000&output=json&key=076a3fa73337d15503f258ef71037186&polygon=117.221369%2C31.789704%7C117.222742%2C31.78833&offset=25
-  }
-
-  heightToZoom (height) {
-    var A = 40487.57;
-    var B = 0.00007096758;
-    var C = 91610.74;
-    var D = -40467.74;
-    return Math.round(D + (A - D) / (1 + Math.pow(height / C, B)));
-  }
 
   setCamera(viewer) {
     let info = {};
@@ -115,24 +63,14 @@ export class POIDemo {
       }
     })
   }
-  /*
-    *获取当前三维范围
-    *extent,返回当前模式下地图范围[xmin,ymin,xmax,ymax]
-    *extent,返回当前模式下地图范围{xmin,ymin,xmax,ymax}
-  */
-  getCurrentExtent  () {
-    //获取当前三维地图范围
-    var Rectangle = viewer.camera.computeViewRectangle();
-    //地理坐标（弧度）转经纬度坐标
-    var extent = [Rectangle.west / Math.PI * 180, Rectangle.south / Math.PI * 180, Rectangle.east / Math.PI * 180, Rectangle.north / Math.PI * 180];
-    return extent;
-  }
+
+
 
   async init(viewer) {
     this.gridDataSource = await addGeoJson(viewer, {
       url: "./res/beijing_park.geojson",
     });
-    fnHandleGrid(this.gridDataSource,null,1)
+    fnHandleGrid(this.gridDataSource, null, 1)
   }
 
   loop() {

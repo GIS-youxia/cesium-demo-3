@@ -23,7 +23,9 @@ export function addGaode(viewer, style ="elec") {
     style: style, // style: img elec cva
     crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
   }
-  viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
+
+  let layer = viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
+  return layer
 
 
   // // 添加高德矢量图
