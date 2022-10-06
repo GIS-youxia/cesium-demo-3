@@ -33,7 +33,8 @@ import { KFCDemo } from './case/kfc/index'
 import { PersonDemo } from './case/person/index'
 import { TdtDemo } from './case/tdt/index'
 import { AQIDemo } from './case/aqi/index'
-
+import { TextDemo } from './case/text';
+import { WindTurbineDemo } from './case/windTurbine';
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
@@ -116,4 +117,6 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new KFCDemo(viewer);
 // window.case = new PersonDemo(viewer);
 // window.case = new TdtDemo(viewer);
-window.case = new AQIDemo(viewer);
+// window.case = new AQIDemo(viewer);
+// window.case = new TextDemo(viewer);
+window.case = new WindTurbineDemo(viewer);

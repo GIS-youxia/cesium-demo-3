@@ -39,3 +39,18 @@ export function getCylinderEntity(options) {
 //   const mat1 = Cesium.Transforms.eastNorthUpToFixedFrame(entity.position);
 //   Cesium.Matrix4.fromRotationTranslation(rotMatrix, new Cesium.Cartesian3(0.0, 0.0, length * 0.5)
 // }
+
+function rotation(params) {
+
+  // 1、由四元数计算三维旋转矩阵
+
+  var mtx3 = Cesium.Matrix3.fromQuaternion(orientation, matrix3Scratch)
+
+  // 2、计算四维转换矩阵：
+  var mtx4 = Cesium.Matrix4.fromRotationTranslation(mtx3, position, new Cesium.Matrix4());
+
+  // 3、计算角度：
+
+  var hpr = Cesium.Transforms.fixedFrameToHeadingPitchRoll(mtx4, ellipsoid, fixedFrameTransform, new Cesium.HeadingPitchRoll());
+  var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, new Cesium.HeadingPitchRoll(heading, pitch, roll));
+}
