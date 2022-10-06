@@ -76,6 +76,8 @@ viewer.scene.debugShowFramesPerSecond = true;
 
 // @ts-ignore
 // viewer.scene.globe.show = false;
+//去cesium logo
+// viewer.cesiumWidget.creditContainer.style.display = "none";
 // @ts-ignore
 viewer.scene.globe.enableLighting = false;
 // @ts-ignore

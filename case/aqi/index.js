@@ -4,6 +4,7 @@ import { DataManager } from './DataManager'
 import { addGaode, removeGaode } from '../../tool/provider';
 import { DOM } from './DOM'
 import { addCSS } from '../../tool/helper';
+import { MouseDownView } from '../../src/MouseDownView/index'
 
 /**
  * 是否相交
@@ -87,6 +88,7 @@ function getCircleImage(text, color) {
 
 export class AQIDemo {
   constructor(viewer) {
+    new MouseDownView(viewer);
     this.viewer = viewer;
     this.onEvent(viewer)
 
