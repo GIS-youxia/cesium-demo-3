@@ -241,7 +241,7 @@ export class AQIDemo {
    */
   processImageData() {
     var nWidth = 500
-    var canvas = document.querySelector("#canvas")
+    var canvas = document.createElement("canvas")
     canvas.width = nWidth
     canvas.height = nWidth
     var ctx = canvas.getContext("2d")
