@@ -32,6 +32,7 @@ import { POIDemo } from './case/poi';
 import { KFCDemo } from './case/kfc/index'
 import { PersonDemo } from './case/person/index'
 import { TdtDemo } from './case/tdt/index'
+import { AQIDemo } from './case/aqi/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -112,4 +113,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new POIDemo(viewer);
 // window.case = new KFCDemo(viewer);
 // window.case = new PersonDemo(viewer);
-window.case = new TdtDemo(viewer);
+// window.case = new TdtDemo(viewer);
+window.case = new AQIDemo(viewer);
