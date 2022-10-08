@@ -35,6 +35,8 @@ import { TdtDemo } from './case/tdt/index'
 import { AQIDemo } from './case/aqi/index'
 import { TextDemo } from './case/text';
 import { WindTurbineDemo } from './case/windTurbine';
+import { HelloDemo } from './case/hello'
+
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
 Cesium.Ion.defaultAccessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NTM5NzhjYy0yYzRjLTQwYWUtODA1NC1lMTRiMzIyOWFkZmYiLCJpZCI6NTU4NzksImlhdCI6MTYyMTM3Nzc5OX0.vqIWYzqg7zdA9ubxUBVY5bUCSQ3NnsSsaE8VI_A8ThU`;
@@ -76,7 +78,7 @@ viewer.scene.debugShowFramesPerSecond = true;
 // });
 
 // @ts-ignore
-// viewer.scene.globe.show = false;
+viewer.scene.globe.show = false;
 //去cesium logo
 // viewer.cesiumWidget.creditContainer.style.display = "none";
 // @ts-ignore
@@ -119,4 +121,5 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new TdtDemo(viewer);
 // window.case = new AQIDemo(viewer);
 // window.case = new TextDemo(viewer);
-window.case = new WindTurbineDemo(viewer);
+// window.case = new WindTurbineDemo(viewer);
+window.case = new HelloDemo(viewer);

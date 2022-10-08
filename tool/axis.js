@@ -7,38 +7,71 @@ import { getCylinderPrimitive } from './primitive'
  * @param {*} viewer
  */
 export function addAxisGlobe(viewer) {
-  const width = 40000;
-  const length = 6000*500;
+  // const width = 40000;
+  // const length = 6000*500;
 
-  const lineX = getCylinderEntity({
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-    length,
-    topRadius: width,
-    bottomRadius: width,
-    color: '#ff0000',
-    position: new Cesium.Cartesian3(1, 0, 0)
-  })
-  viewer.entities.add(lineX)
+  // const lineX = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#ff0000',
+  //   position: new Cesium.Cartesian3(1, 0, 0)
+  // })
+  // viewer.entities.add(lineX)
 
-  const lineY = getCylinderEntity({
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-    length,
-    topRadius: width,
-    bottomRadius: width,
-    color: '#00ff00',
-    position: new Cesium.Cartesian3(0, 1, 0)
-  })
-  viewer.entities.add(lineY)
+  // const lineY = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#00ff00',
+  //   position: new Cesium.Cartesian3(0, 1, 0)
+  // })
+  // viewer.entities.add(lineY)
 
-  const lineZ = getCylinderEntity({
-    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-    length,
-    topRadius: width,
-    bottomRadius: width,
-    color: '#0000ff',
-    position: new Cesium.Cartesian3(0, 0, 1)
-  })
-  viewer.entities.add(lineZ)
+  // const lineZ = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#0000ff',
+  //   position: new Cesium.Cartesian3(0, 0, 1)
+  // })
+  // viewer.entities.add(lineZ)
+
+  let xAxis = viewer.entities.add({
+    name: 'X axis',
+    polyline: {
+      positions: [new Cesium.Cartesian3(0.000001, 0, 0), new Cesium.Cartesian3(10000000, 0, 0)],
+      width: 10,
+      arcType: Cesium.ArcType.NONE,
+      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.RED),
+      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(1.0, 0, 0, 0.2))
+    }
+  });
+
+  let yAxis = viewer.entities.add({
+    name: 'Y axis',
+    polyline: {
+      positions: [new Cesium.Cartesian3(0, 0.000001, 0), new Cesium.Cartesian3(0, 10000000, 0)],
+      width: 10,
+      arcType: Cesium.ArcType.NONE,
+      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.GREEN),
+      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 1, 0, 0.2))
+    }
+  });
+
+  let zAxis = viewer.entities.add({
+    name: 'Z axis',
+    polyline: {
+      positions: [new Cesium.Cartesian3(0, 0, 0.000001), new Cesium.Cartesian3(0, 0, 10000000)],
+      width: 10,
+      arcType: Cesium.ArcType.NONE,
+      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.BLUE),
+      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 0, 1, 0.2))
+    }
+  });
 }
 
 
@@ -122,7 +155,14 @@ export class AxisByObject {
   update() {
     let modelMatrixTarget;
     if (this.target instanceof Cesium.Entity) {
-      modelMatrixTarget = this.computeModelMatrix(this.target.orientation._value, this.target.position._value);
+      let orientation;
+      if (this.target.orientation) {
+        orientation = this.target.orientation._value;
+      } else {
+        const headingPitchRoll = new Cesium.HeadingPitchRoll(0, 0, 0);
+        orientation = Cesium.Quaternion.fromHeadingPitchRoll(headingPitchRoll, new Cesium.Quaternion());
+      }
+      modelMatrixTarget = this.computeModelMatrix(orientation, this.target.position._value);
     }
 
     if (this.target instanceof Cesium.Primitive) {
