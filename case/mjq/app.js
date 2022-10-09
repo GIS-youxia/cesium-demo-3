@@ -7,7 +7,7 @@ console.log(Cesium.VERSION);
 
 
 /*--------------------------------------- tool ------------------------------------------ */
-import { addAxisGlobe } from './tool/axis'
+// import { addAxisGlobe } from './tool/axis'
 import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 import { setCamera, setComeraPosition } from './tool/camera'
 import { addGaode } from './tool/provider';

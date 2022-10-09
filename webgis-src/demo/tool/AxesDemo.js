@@ -1,8 +1,8 @@
 import * as Cesium from 'cesium';
 import { GUI } from 'dat.gui';
-import { AxisByObject, CoordinateSystem, addAxisGlobe } from '../../tool/axis'
+import { AxesHelperObject, CoordinateSystem, AxesHelperGlobe } from '../../mesh/axis'
 
-export class HelloDemo {
+export class AxesDemo {
   constructor(viewer) {
     const redPlane = viewer.entities.add({
       name: "Red plane with black outline",
@@ -11,22 +11,20 @@ export class HelloDemo {
         plane: new Cesium.Plane(Cesium.Cartesian3.UNIT_Z, 0.0),
         dimensions: new Cesium.Cartesian2(4000000.0, 3000000.0),
         material: Cesium.Color.RED.withAlpha(0.5),
-        // outline: true,
-        // outlineColor: Cesium.Color.BLACK,
       },
     });
-    window.redPlane = redPlane;
-    const axis = new AxisByObject(viewer, redPlane);
+
+    const axis = new AxesHelperObject(viewer, redPlane);
     axis.coordinateSystem = CoordinateSystem.ENU;
     // axis.floow = true;
     axis.update();
     this.axis = axis;
-    // viewer.extend(Cesium.viewerCesiumInspectorMixin);
-    this.initGui()
 
     // 添加地球坐标轴
-    this.axisGlobe = addAxisGlobe(viewer)
+    this.axisGlobe = new AxesHelperGlobe(viewer)
     // viewer.zoomTo(redPlane);
+
+    this.initGui()
   }
 
   initGui() {

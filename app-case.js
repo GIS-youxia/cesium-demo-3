@@ -7,7 +7,7 @@ console.log(Cesium.VERSION);
 
 
 /*--------------------------------------- tool ------------------------------------------ */
-import { addAxisGlobe } from './tool/axis'
+// import { addAxisGlobe } from './tool/axis'
 import { updateResolutionScale, getClickPointAdd, addPoint } from './tool/tool'
 import { addCSS } from './tool/helper';
 import { addGaode } from './tool/provider';
@@ -94,6 +94,7 @@ viewer.scene.skyAtmosphere.show = false;
 // @ts-ignore
 viewer.scene.fog.enable = false;
 viewer.scene.globe.enableLighting = false;
+    // viewer.extend(Cesium.viewerCesiumInspectorMixin);
 
 // 添加高德底图
 // addGaode(viewer);

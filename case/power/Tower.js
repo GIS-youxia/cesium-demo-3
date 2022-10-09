@@ -1,5 +1,5 @@
 import * as Cesium from 'cesium';
-import { AxisByObject } from '../../tool/axis'
+import { AxisByObject } from '../../webgis-src/mesh/axis'
 
 // 塔
 export class Tower {

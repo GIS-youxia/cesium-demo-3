@@ -1,82 +1,6 @@
 import * as Cesium from 'cesium';
-import { getCylinderEntity } from './entity'
-import { getCylinderPrimitive } from './primitive'
+import { getCylinderPrimitive } from '../../tool/primitive'
 
-/**
- * 添加地球的坐标轴,ECEF
- * @param {*} viewer
- */
-export function addAxisGlobe(viewer) {
-  // const width = 40000;
-  // const length = 6000*500;
-
-  // const lineX = getCylinderEntity({
-  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  //   length,
-  //   topRadius: width,
-  //   bottomRadius: width,
-  //   color: '#ff0000',
-  //   position: new Cesium.Cartesian3(1, 0, 0)
-  // })
-  // viewer.entities.add(lineX)
-
-  // const lineY = getCylinderEntity({
-  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  //   length,
-  //   topRadius: width,
-  //   bottomRadius: width,
-  //   color: '#00ff00',
-  //   position: new Cesium.Cartesian3(0, 1, 0)
-  // })
-  // viewer.entities.add(lineY)
-
-  // const lineZ = getCylinderEntity({
-  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-  //   length,
-  //   topRadius: width,
-  //   bottomRadius: width,
-  //   color: '#0000ff',
-  //   position: new Cesium.Cartesian3(0, 0, 1)
-  // })
-  // viewer.entities.add(lineZ)
-
-  const group = new Cesium.PrimitiveCollection()
-  viewer.entities.add(group);
-
-  let xAxis = group.add({
-    name: 'X axis',
-    polyline: {
-      positions: [new Cesium.Cartesian3(0.000001, 0, 0), new Cesium.Cartesian3(10000000, 0, 0)],
-      width: 10,
-      arcType: Cesium.ArcType.NONE,
-      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.RED),
-      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(1.0, 0, 0, 0.2))
-    }
-  });
-
-  let yAxis = group.add({
-    name: 'Y axis',
-    polyline: {
-      positions: [new Cesium.Cartesian3(0, 0.000001, 0), new Cesium.Cartesian3(0, 10000000, 0)],
-      width: 10,
-      arcType: Cesium.ArcType.NONE,
-      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.GREEN),
-      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 1, 0, 0.2))
-    }
-  });
-
-  let zAxis = group.add({
-    name: 'Z axis',
-    polyline: {
-      positions: [new Cesium.Cartesian3(0, 0, 0.000001), new Cesium.Cartesian3(0, 0, 10000000)],
-      width: 10,
-      arcType: Cesium.ArcType.NONE,
-      material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.BLUE),
-      depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 0, 1, 0.2))
-    }
-  });
-  return group;
-}
 
 const CoordinateSystem = {
   // 东-北-天坐标系ENU/站心直角坐标系/局部坐标系
@@ -90,9 +14,8 @@ export { CoordinateSystem }
 /**
  * 绑定在对象的坐标轴
  * @export
- * @class AxisByObject
  */
-export class AxisByObject {
+export class AxesHelperObject {
   /**
    * Creates an instance of AxisByObject.
    * @param {*} viewer
@@ -285,4 +208,99 @@ function axis(params) {
       depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 0, 1, 0.2))
     }
   });
+}
+
+
+/**
+ * 添加地球的坐标轴,ECEF
+ * @param {*} viewer
+ */
+export class AxesHelperGlobe {
+  constructor(viewer) {
+    this._show = true;
+    this._lines = [];
+    this._addLine(viewer);
+  }
+
+  _addLine(viewer) {
+    let xAxis = viewer.entities.add({
+      name: 'X axis',
+      polyline: {
+        positions: [new Cesium.Cartesian3(0.000001, 0, 0), new Cesium.Cartesian3(10000000, 0, 0)],
+        width: 10,
+        arcType: Cesium.ArcType.NONE,
+        material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.RED),
+        depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(1.0, 0, 0, 0.2))
+      }
+    });
+
+    let yAxis = viewer.entities.add({
+      name: 'Y axis',
+      polyline: {
+        positions: [new Cesium.Cartesian3(0, 0.000001, 0), new Cesium.Cartesian3(0, 10000000, 0)],
+        width: 10,
+        arcType: Cesium.ArcType.NONE,
+        material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.GREEN),
+        depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 1, 0, 0.2))
+      }
+    });
+
+    let zAxis = viewer.entities.add({
+      name: 'Z axis',
+      polyline: {
+        positions: [new Cesium.Cartesian3(0, 0, 0.000001), new Cesium.Cartesian3(0, 0, 10000000)],
+        width: 10,
+        arcType: Cesium.ArcType.NONE,
+        material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.BLUE),
+        depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 0, 1, 0.2))
+      }
+    });
+
+    this._lines.push(xAxis, yAxis, zAxis);
+  }
+
+  get show() {
+    return this._show;
+  }
+
+  set show(v) {
+    if (this._show === v) return;
+
+    this._show = v;
+    this._lines.forEach(line => {
+      line.show = v;
+    })
+  }
+  // const width = 40000;
+  // const length = 6000*500;
+
+  // const lineX = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#ff0000',
+  //   position: new Cesium.Cartesian3(1, 0, 0)
+  // })
+  // viewer.entities.add(lineX)
+
+  // const lineY = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#00ff00',
+  //   position: new Cesium.Cartesian3(0, 1, 0)
+  // })
+  // viewer.entities.add(lineY)
+
+  // const lineZ = getCylinderEntity({
+  //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  //   length,
+  //   topRadius: width,
+  //   bottomRadius: width,
+  //   color: '#0000ff',
+  //   position: new Cesium.Cartesian3(0, 0, 1)
+  // })
+  // viewer.entities.add(lineZ)
 }

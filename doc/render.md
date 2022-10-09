@@ -73,6 +73,10 @@ Scene.prototype.updateAndExecuteCommands (){
 }
 ```
 
+viewer到entity的关系：
+Viewer ==> DataSourceDisplay ==> DataSourceCollection ==> CustomDataSource ==> EntityCollection ==> Entity
+
+
 ### entity 转化为 primitive
 ```js
 [Module CesiumWidget.js]

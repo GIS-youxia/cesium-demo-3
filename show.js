@@ -1,6 +1,6 @@
 import * as Cesium from 'cesium';
 import { getCylinderPrimitive } from './tool/primitive'
-import { AxisByObject } from './tool/axis'
+import { AxisByObject } from './webgis-src/mesh/axis'
 
 /**
  * 圆锥自动旋转
