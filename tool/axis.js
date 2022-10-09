@@ -3,7 +3,7 @@ import { getCylinderEntity } from './entity'
 import { getCylinderPrimitive } from './primitive'
 
 /**
- * 添加地球的坐标轴
+ * 添加地球的坐标轴,ECEF
  * @param {*} viewer
  */
 export function addAxisGlobe(viewer) {
@@ -40,7 +40,10 @@ export function addAxisGlobe(viewer) {
   // })
   // viewer.entities.add(lineZ)
 
-  let xAxis = viewer.entities.add({
+  const group = new Cesium.PrimitiveCollection()
+  viewer.entities.add(group);
+
+  let xAxis = group.add({
     name: 'X axis',
     polyline: {
       positions: [new Cesium.Cartesian3(0.000001, 0, 0), new Cesium.Cartesian3(10000000, 0, 0)],
@@ -51,7 +54,7 @@ export function addAxisGlobe(viewer) {
     }
   });
 
-  let yAxis = viewer.entities.add({
+  let yAxis = group.add({
     name: 'Y axis',
     polyline: {
       positions: [new Cesium.Cartesian3(0, 0.000001, 0), new Cesium.Cartesian3(0, 10000000, 0)],
@@ -62,7 +65,7 @@ export function addAxisGlobe(viewer) {
     }
   });
 
-  let zAxis = viewer.entities.add({
+  let zAxis = group.add({
     name: 'Z axis',
     polyline: {
       positions: [new Cesium.Cartesian3(0, 0, 0.000001), new Cesium.Cartesian3(0, 0, 10000000)],
@@ -72,8 +75,17 @@ export function addAxisGlobe(viewer) {
       depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(0, 0, 1, 0.2))
     }
   });
+  return group;
 }
 
+const CoordinateSystem = {
+  // 东-北-天坐标系ENU/站心直角坐标系/局部坐标系
+  "ENU": "ENU",
+  // Earth-Centered,Earth-Fixed,地心地固坐标系/世界坐标系
+  "ECEF":"ECEF",
+};
+
+export { CoordinateSystem }
 
 /**
  * 绑定在对象的坐标轴
@@ -94,7 +106,38 @@ export class AxisByObject {
     this.target = target;
 
     this._floow = false;
-    this.init()
+    this._coordinateSystem = CoordinateSystem.ECEF;
+    this._group = new Cesium.PrimitiveCollection()
+    viewer.scene.primitives.add(this._group)
+    this._show = true;
+    this.transformMatrix = null;
+    this.init();
+  }
+
+  get show() {
+    return this._show;
+  }
+
+  set show(v) {
+    this._show = v;
+    this._group.show = v;
+  }
+
+  get coordinateSystem() {
+    return this._coordinateSystem;
+  }
+
+  set coordinateSystem(v) {
+    if (this._coordinateSystem === v) return;
+    this._coordinateSystem = v;
+
+    if (this._coordinateSystem === CoordinateSystem.ENU) {
+      this.transformMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(this.target.position._value);
+    } else {
+      this.transformMatrix = null;
+    }
+
+    this.update();
   }
 
   get floow() {
@@ -148,11 +191,13 @@ export class AxisByObject {
         color
       })
       this.linePrimitives.push(linePrimitive)
-      viewer.scene.primitives.add(linePrimitive)
+      this._group.add(linePrimitive)
+      // viewer.scene.primitives.add(linePrimitive)
     }
   }
 
   update() {
+    // 计算目标的模型矩阵
     let modelMatrixTarget;
     if (this.target instanceof Cesium.Entity) {
       let orientation;
@@ -164,27 +209,36 @@ export class AxisByObject {
       }
       modelMatrixTarget = this.computeModelMatrix(orientation, this.target.position._value);
     }
-
     if (this.target instanceof Cesium.Primitive) {
       modelMatrixTarget = this.target.modelMatrix;
     }
 
+    // 取出模型矩阵的位置信息
     const translate = new Cesium.Cartesian3()
     Cesium.Matrix4.getTranslation(modelMatrixTarget, translate)
 
-    const rotation = new Cesium.Cartesian3(1,0,0)
+    // 取出模型矩阵的旋转信息
+    let rotationMat3 = new Cesium.Matrix3();
     if (this.floow) {
-      Cesium.Matrix4.getRotation(modelMatrixTarget, rotation)
+      Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
     } else {
-      Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotation)
+      Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotationMat3)
     }
+
+    if (this.transformMatrix) {
+      const tempMat3 = new Cesium.Matrix3();
+      Cesium.Matrix4.getRotation(this.transformMatrix, tempMat3)
+      Cesium.Matrix3.multiply(rotationMat3, tempMat3, rotationMat3)
+    }
+    // Cesium.Matrix3.getRotation(rotationMat, rotation)
+
 
     for (let i = 0; i < this.linePrimitives.length; i++){
       const line = this.linePrimitives[i];
 
       Cesium.Matrix4.multiply(
         Cesium.Matrix4.IDENTITY,
-        Cesium.Matrix4.fromRotationTranslation(rotation, new Cesium.Cartesian3(translate.x, translate.y, translate.z)),
+        Cesium.Matrix4.fromRotationTranslation(rotationMat3, translate),
         line.modelMatrix);
     }
   }

@@ -98,8 +98,7 @@ viewer.scene.globe.enableLighting = false;
 // 添加高德底图
 // addGaode(viewer);
 
-// 添加地球坐标轴
-// addAxisGlobe(viewer)
+
 
 // window.case = new MjqGrid(viewer)
 // window.case = new Tile(viewer)
