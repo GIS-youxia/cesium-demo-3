@@ -3,6 +3,7 @@ import { addCSS } from '../ui/helper';
 
 // @ts-ignore
 console.log(Cesium.VERSION);
+window.Cesium = Cesium;
 
 export function getViewer() {
 

@@ -132,6 +132,7 @@ export class AxesHelperObject {
       }
       modelMatrixTarget = this.computeModelMatrix(orientation, this.target.position._value);
     }
+
     if (this.target instanceof Cesium.Primitive) {
       modelMatrixTarget = this.target.modelMatrix;
     }
