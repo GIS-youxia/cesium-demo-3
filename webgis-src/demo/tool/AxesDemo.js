@@ -17,7 +17,7 @@ export class AxesDemo {
       },
     }));
 
-    const euler = new Cesium.HeadingPitchRoll(0.8, 0.7, 0.3)
+    const euler = new Cesium.HeadingPitchRoll(0,0,0)
     redPlane.orientation = Cesium.Transforms.headingPitchRollQuaternion(position, euler)
     window.redPlane = redPlane;
     this.redPlane = redPlane;
