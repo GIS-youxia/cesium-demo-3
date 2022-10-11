@@ -1,11 +1,12 @@
 import * as Cesium from 'cesium';
 import { GUI } from 'dat.gui';
-import { getRotation, setRotation, getPosition } from '../../math/math';
-import { AxesHelperObject, CoordinateSystem, AxesHelperGlobe } from '../../mesh/axis'
+import { CoordinateSystem } from '../../enum/CoordinateSystem';
+import { getHeadingPitchRoll, setHeadingPitchRoll, getRotationMatrix } from '../../math/math';
+import { AxesHelperGlobe } from '../../mesh/AxesHelperGlobe'
+import { AxesHelperObject } from '../../mesh/AxesHelperObject';
 
 export class AxesDemo {
   constructor(viewer) {
-
     const position = Cesium.Cartesian3.fromDegrees(0, 0.0, 0.0);
     const redPlane = viewer.entities.add(new Cesium.Entity({
       name: "Red plane with black outline",
@@ -25,36 +26,38 @@ export class AxesDemo {
     this.redPlane = redPlane;
 
     // 实体坐标轴
-    const axis = new AxesHelperObject(viewer, redPlane,2 );
-    axis.coordinateSystem = CoordinateSystem.ENU;
-    axis.floow = true;
-    axis.update();
-    this.axis = axis;
+    this.entityAxis = new AxesHelperObject({
+      viewer,
+      target: redPlane,
+      scale: 2
+    } );
+    this.entityAxis.update()
 
     // 添加地球坐标轴
-    this.axisGlobe = new AxesHelperGlobe(viewer)
-    this.axisGlobe.show = false;
+    this.axisGlobe = new AxesHelperGlobe({viewer,show:false})
+
+    // 初始化UI
     this.initGui()
   }
 
   initGui() {
     // 模型坐标轴
     let controls = {
-      '可见': this.axis.show,
-      "坐标系": this.axis.coordinateSystem,
-      '跟随': this.axis.floow
+      '可见': this.entityAxis.show,
+      "坐标系": this.entityAxis.coordinateSystem,
+      '跟随': this.entityAxis.floow
     }
     const gui = new GUI()
     const axis = gui.addFolder("实体坐标轴")
     axis.open();
     axis.add(controls, '可见').onChange(value => {
-      this.axis.show = value;
+      this.entityAxis.show = value;
     })
     axis.add(controls, '跟随').onChange(value => {
-      this.axis.floow = value;
+      this.entityAxis.floow = value;
     })
     axis.add(controls, '坐标系', [CoordinateSystem.ECEF, CoordinateSystem.ENU]).onChange(value => {
-      this.axis.coordinateSystem = value
+      this.entityAxis.coordinateSystem = value
     })
 
     // 地球坐标轴
@@ -66,52 +69,52 @@ export class AxesDemo {
       this.axisGlobe.show = value;
     })
 
-    const euler = getRotation(this.redPlane);
-    const position = getPosition(this.redPlane)
+    const euler = getHeadingPitchRoll(this.redPlane);
+    // const position = getPosition(this.redPlane)
     // 实体
     let controls3 = {
       'heading': +Cesium.Math.toDegrees(euler.heading),
       'pitch': +Cesium.Math.toDegrees(euler.pitch),
       'roll': +Cesium.Math.toDegrees(euler.roll),
-      'x': position.x,
-      'y': position.y,
-      'z': position.z,
+      // 'x': position.x,
+      // 'y': position.y,
+      // 'z': position.z,
     }
     const entity = gui.addFolder("实体")
     entity.open();
     entity.add(controls3, 'heading', 0, 360,).step(0.1).onChange(value => {
-      setRotation(this.redPlane, {
+      setHeadingPitchRoll(this.redPlane, {
         pitch: euler.pitch,
         roll: euler.roll,
         heading: Cesium.Math.toRadians(value)
       });
-      this.axis.update();
+      this.entityAxis.update()
     })
     entity.add(controls3, 'pitch', 0, 360).step(0.1).onChange(value => {
-      setRotation(this.redPlane, {
+      setHeadingPitchRoll(this.redPlane, {
         roll: euler.roll,
         heading: euler.heading,
         pitch: Cesium.Math.toRadians(value),
       })
-      this.axis.update();
+      this.entityAxis.update()
     })
     entity.add(controls3, 'roll', 0, 360).step(0.1).onChange(value => {
-      setRotation(this.redPlane, {
+      setHeadingPitchRoll(this.redPlane, {
         pitch: euler.pitch,
         heading: euler.heading,
         roll: Cesium.Math.toRadians(value),
       })
-      this.axis.update();
+      this.entityAxis.update()
     })
 
-    entity.add(controls3, 'x', -100, 100).step(0.1).onChange(value => {
-      this.axis.update();
-    })
-    entity.add(controls3, 'y', -100, 100).step(0.1).onChange(value => {
-      this.axis.update();
-    })
-    entity.add(controls3, 'z', -100, 100).step(0.1).onChange(value => {
-      this.axis.update();
-    })
+    // entity.add(controls3, 'x', -100, 100).step(0.1).onChange(value => {
+    //   this.this.axis.update()
+    // })
+    // entity.add(controls3, 'y', -100, 100).step(0.1).onChange(value => {
+    //   this.this.axis.update()
+    // })
+    // entity.add(controls3, 'z', -100, 100).step(0.1).onChange(value => {
+    //   this.this.axis.update()
+    // })
   }
 }

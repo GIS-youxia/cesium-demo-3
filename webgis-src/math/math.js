@@ -2,11 +2,11 @@ import * as Cesium from 'cesium';
 import { CoordinateSystem } from '../enum/CoordinateSystem';
 
 /**
- * 获取实体ENU坐标系的旋转信息
+ * 获取实体相对于当前位姿的俯仰角
  * @param {Cesium.Entity} target
  * @return {Cesium.HeadingPitchRoll}
  */
-export function getRotation(target) {
+export function getHeadingPitchRoll(target) {
   const position = target.position.getValue(Cesium.JulianDate.now());
   const modelMatrixTarget = target.computeModelMatrix(Cesium.JulianDate.now())
 
@@ -27,37 +27,14 @@ export function getRotation(target) {
 }
 
 /**
- *
- * @param {Object} options
- * @param {Object} options.coordinateSystem 坐标系, 默认 CoordinateSystem.ENU
- * @param {boolean} options.coordinateSystem 旋转跟随目标实体, 默认 false
- * @param {Cesium.Entity} options.target 实体对象, 默认 false
- */
-export function getRotationMatrix(options) {
-  const { target  } = options;
-  const coordinateSystem = options.coordinateSystem !== undefined ? options.coordinateSystem : CoordinateSystem.ENU;
-  const floow = options.floow !== undefined ? options.floow: ;
-
-  const modelMatrix = this.target.computeModelMatrix(Cesium.JulianDate.now())
-  // 取出位置信息
-  const translate = Cesium.Matrix4.getTranslation(modelMatrixTarget, new Cesium.Cartesian3());
-
-  if (coordinateSystem === CoordinateSystem.ECEF) {
-    Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotationMat3)
-  } else {
-    Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
-  }
-}
-
-/**
- * 设置实体的旋转
+ * 设置实体的相对于当前位姿的俯仰角
  * @param  {Cesium.Entity} target
  * @param {Object} options 弧度
  * @param {number} options.heading 绕 Z 轴旋转
  * @param {number} options.pitch  绕 Y 轴旋转
  * @param {number} options.roll  绕 X 轴旋转
  */
-export function setRotation(target, options) {
+export function setHeadingPitchRoll(target, options) {
   const { heading, pitch, roll } = options;
   const position = target.position.getValue(Cesium.JulianDate.now());
 
@@ -69,9 +46,32 @@ export function setRotation(target, options) {
   }, false)
 }
 
-export function getPosition(target) {
-  const modelMatrixTarget = target.computeModelMatrix(Cesium.JulianDate.now())
-  const position = Cesium.Matrix4.getTranslation(modelMatrixTarget, new Cesium.Cartesian3())
-  console.error(position);
-  return position;
+/**
+ * 获取实体的旋转矩阵
+ * @param {Object} options
+ * @param {CoordinateSystem} options.coordinateSystem 坐标系, 默认 CoordinateSystem.ENU
+ * @param {boolean} options.coordinateSystem 旋转跟随目标实体, 默认 false
+ * @param {Cesium.Entity} options.target 实体对象
+ * @returns {Cesium.Matrix3} 旋转矩阵
+ */
+export function getRotationMatrix(options) {
+  const { target } = options;
+  const coordinateSystem = options.coordinateSystem !== undefined ? options.coordinateSystem : CoordinateSystem.ENU;
+  const floow = options.floow !== undefined ? options.floow : false;
+
+  const modelMatrix = target.computeModelMatrix(Cesium.JulianDate.now())
+
+  // 取出旋转
+  const rotationMat3 = new Cesium.Matrix3();
+  if (coordinateSystem === CoordinateSystem.ECEF) {
+    Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotationMat3)
+  } else {
+    Cesium.Matrix4.getRotation(modelMatrix, rotationMat3)
+  }
+  // 只使用东北天旋转信息
+  if (floow === false && coordinateSystem === CoordinateSystem.ENU) {
+    const transformMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(target.position._value);
+    Cesium.Matrix4.getRotation(transformMatrix, rotationMat3)
+  }
+  return rotationMat3;
 }
