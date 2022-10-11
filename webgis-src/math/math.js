@@ -1,4 +1,5 @@
 import * as Cesium from 'cesium';
+import { CoordinateSystem } from '../enum/CoordinateSystem';
 
 /**
  * 获取实体ENU坐标系的旋转信息
@@ -25,8 +26,27 @@ export function getRotation(target) {
   return euler;
 }
 
-export function getRotationDirction(target) {
-  // const euler = getRotation(target);
+/**
+ *
+ * @param {Object} options
+ * @param {Object} options.coordinateSystem 坐标系, 默认 CoordinateSystem.ENU
+ * @param {boolean} options.coordinateSystem 旋转跟随目标实体, 默认 false
+ * @param {Cesium.Entity} options.target 实体对象, 默认 false
+ */
+export function getRotationMatrix(options) {
+  const { target  } = options;
+  const coordinateSystem = options.coordinateSystem !== undefined ? options.coordinateSystem : CoordinateSystem.ENU;
+  const floow = options.floow !== undefined ? options.floow: ;
+
+  const modelMatrix = this.target.computeModelMatrix(Cesium.JulianDate.now())
+  // 取出位置信息
+  const translate = Cesium.Matrix4.getTranslation(modelMatrixTarget, new Cesium.Cartesian3());
+
+  if (coordinateSystem === CoordinateSystem.ECEF) {
+    Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotationMat3)
+  } else {
+    Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
+  }
 }
 
 /**
