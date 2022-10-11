@@ -28,13 +28,12 @@ export class AxesHelperObject {
     this.linePrimitives = []
     this.target = target;
 
-    this._floow = false;
-    this._coordinateSystem = CoordinateSystem.ECEF;
+    this._coordinateSystem = CoordinateSystem.ENU;
     this._group = new Cesium.PrimitiveCollection()
     viewer.scene.primitives.add(this._group)
     this._show = true;
-    this.transformMatrix = null;
-    this.init();
+    this._floow = false;
+    this._init();
   }
 
   get show() {
@@ -53,13 +52,6 @@ export class AxesHelperObject {
   set coordinateSystem(v) {
     if (this._coordinateSystem === v) return;
     this._coordinateSystem = v;
-
-    if (this._coordinateSystem === CoordinateSystem.ENU) {
-      this.transformMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(this.target.position._value);
-    } else {
-      this.transformMatrix = null;
-    }
-
     this.update();
   }
 
@@ -68,13 +60,15 @@ export class AxesHelperObject {
   }
 
   /**
-   * 旋转跟随目标对象
+   * 旋转跟随目标对象,CoordinateSystem.ENU 时有效
    */
   set floow(v) {
+    if (this._floow === v) return;
     this._floow = v;
+    this.update();
   }
 
-  init() {
+  _init() {
     const { viewer } = this;
     const length = 2000000 * this.scale;
     const width = 10000 * this.scale;
@@ -123,14 +117,16 @@ export class AxesHelperObject {
     // 计算目标的模型矩阵
     let modelMatrixTarget;
     if (this.target instanceof Cesium.Entity) {
-      let orientation;
-      if (this.target.orientation) {
-        orientation = this.target.orientation._value;
-      } else {
-        const headingPitchRoll = new Cesium.HeadingPitchRoll(0, 0, 0);
-        orientation = Cesium.Quaternion.fromHeadingPitchRoll(headingPitchRoll, new Cesium.Quaternion());
-      }
-      modelMatrixTarget = this.computeModelMatrix(orientation, this.target.position._value);
+      // let orientation;
+      // if (this.target.orientation) {
+      //   orientation = this.target.orientation._value;
+      // } else {
+      //   const headingPitchRoll = new Cesium.HeadingPitchRoll(0, 0, 0);
+      //   orientation = Cesium.Quaternion.fromHeadingPitchRoll(headingPitchRoll, new Cesium.Quaternion());
+      // }
+      modelMatrixTarget = this.target.computeModelMatrix(Cesium.JulianDate.now())
+
+      // modelMatrixTarget = this._computeModelMatrix(orientation, this.target.position._value);
     }
 
     if (this.target instanceof Cesium.Primitive) {
@@ -141,37 +137,27 @@ export class AxesHelperObject {
     const translate = new Cesium.Cartesian3()
     Cesium.Matrix4.getTranslation(modelMatrixTarget, translate)
 
-    // 取出模型矩阵的旋转信息
-    let rotationMat3 = new Cesium.Matrix3();
-    if (this.floow) {
-      Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
-    } else {
+    // 旋转信息
+    const rotationMat3 = new Cesium.Matrix3();
+    if (this._coordinateSystem === CoordinateSystem.ECEF) {
       Cesium.Matrix4.getRotation(Cesium.Matrix4.IDENTITY, rotationMat3)
+    } else {
+      Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
     }
 
-    if (this.transformMatrix) {
-      const tempMat3 = new Cesium.Matrix3();
-      Cesium.Matrix4.getRotation(this.transformMatrix, tempMat3)
-      Cesium.Matrix3.multiply(rotationMat3, tempMat3, rotationMat3)
+    // 只使用东北天旋转信息
+    if (this.floow === false && this._coordinateSystem === CoordinateSystem.ENU) {
+      const transformMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(this.target.position._value);
+      Cesium.Matrix4.getRotation(transformMatrix, rotationMat3)
     }
-    // Cesium.Matrix3.getRotation(rotationMat, rotation)
-
 
     for (let i = 0; i < this.linePrimitives.length; i++){
       const line = this.linePrimitives[i];
-
       Cesium.Matrix4.multiply(
         Cesium.Matrix4.IDENTITY,
         Cesium.Matrix4.fromRotationTranslation(rotationMat3, translate),
         line.modelMatrix);
     }
-  }
-
-  computeModelMatrix(quaternion,position) {
-    const modelMatrix = new Cesium.Matrix4();
-    const rotationMat = Cesium.Matrix3.fromQuaternion(quaternion, new Cesium.Matrix3())
-    Cesium.Matrix4.fromRotationTranslation(rotationMat, position, modelMatrix)
-    return modelMatrix;
   }
 }
 

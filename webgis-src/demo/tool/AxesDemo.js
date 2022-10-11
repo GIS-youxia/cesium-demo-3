@@ -1,6 +1,6 @@
 import * as Cesium from 'cesium';
 import { GUI } from 'dat.gui';
-import { getRotation } from '../../math/math';
+import { getRotation, setRotation, getPosition } from '../../math/math';
 import { AxesHelperObject, CoordinateSystem, AxesHelperGlobe } from '../../mesh/axis'
 
 export class AxesDemo {
@@ -13,7 +13,9 @@ export class AxesDemo {
       plane: {
         plane: new Cesium.Plane(Cesium.Cartesian3.UNIT_Z, 0.0),
         dimensions: new Cesium.Cartesian2(4000000.0, 3000000.0),
-        material: Cesium.Color.RED.withAlpha(0.5),
+        material: new Cesium.ImageMaterialProperty({
+          image: "./res/pic/text.png"
+        })
       },
     }));
 
@@ -22,7 +24,8 @@ export class AxesDemo {
     window.redPlane = redPlane;
     this.redPlane = redPlane;
 
-    const axis = new AxesHelperObject(viewer, redPlane);
+    // 实体坐标轴
+    const axis = new AxesHelperObject(viewer, redPlane,2 );
     axis.coordinateSystem = CoordinateSystem.ENU;
     axis.floow = true;
     axis.update();
@@ -30,22 +33,25 @@ export class AxesDemo {
 
     // 添加地球坐标轴
     this.axisGlobe = new AxesHelperGlobe(viewer)
-    // viewer.zoomTo(redPlane);
-
+    this.axisGlobe.show = false;
     this.initGui()
   }
 
   initGui() {
     // 模型坐标轴
     let controls = {
-      '可见': true,
-      "坐标系": CoordinateSystem.ENU,
+      '可见': this.axis.show,
+      "坐标系": this.axis.coordinateSystem,
+      '跟随': this.axis.floow
     }
     const gui = new GUI()
     const axis = gui.addFolder("实体坐标轴")
     axis.open();
     axis.add(controls, '可见').onChange(value => {
       this.axis.show = value;
+    })
+    axis.add(controls, '跟随').onChange(value => {
+      this.axis.floow = value;
     })
     axis.add(controls, '坐标系', [CoordinateSystem.ECEF, CoordinateSystem.ENU]).onChange(value => {
       this.axis.coordinateSystem = value
@@ -60,20 +66,52 @@ export class AxesDemo {
       this.axisGlobe.show = value;
     })
 
-    const euler = getRotation(this.redPlane)
+    const euler = getRotation(this.redPlane);
+    const position = getPosition(this.redPlane)
     // 实体
     let controls3 = {
       'heading': +Cesium.Math.toDegrees(euler.heading),
       'pitch': +Cesium.Math.toDegrees(euler.pitch),
       'roll': +Cesium.Math.toDegrees(euler.roll),
+      'x': position.x,
+      'y': position.y,
+      'z': position.z,
     }
     const entity = gui.addFolder("实体")
     entity.open();
-    entity.add(controls3, 'heading',-360,360,).onChange(value => {
+    entity.add(controls3, 'heading', 0, 360,).step(0.1).onChange(value => {
+      setRotation(this.redPlane, {
+        pitch: euler.pitch,
+        roll: euler.roll,
+        heading: Cesium.Math.toRadians(value)
+      });
+      this.axis.update();
     })
-    entity.add(controls3, 'pitch',-360, 360).onChange(value => {
+    entity.add(controls3, 'pitch', 0, 360).step(0.1).onChange(value => {
+      setRotation(this.redPlane, {
+        roll: euler.roll,
+        heading: euler.heading,
+        pitch: Cesium.Math.toRadians(value),
+      })
+      this.axis.update();
     })
-    entity.add(controls3, 'roll', -360, 360).onChange(value => {
+    entity.add(controls3, 'roll', 0, 360).step(0.1).onChange(value => {
+      setRotation(this.redPlane, {
+        pitch: euler.pitch,
+        heading: euler.heading,
+        roll: Cesium.Math.toRadians(value),
+      })
+      this.axis.update();
+    })
+
+    entity.add(controls3, 'x', -100, 100).step(0.1).onChange(value => {
+      this.axis.update();
+    })
+    entity.add(controls3, 'y', -100, 100).step(0.1).onChange(value => {
+      this.axis.update();
+    })
+    entity.add(controls3, 'z', -100, 100).step(0.1).onChange(value => {
+      this.axis.update();
     })
   }
 }

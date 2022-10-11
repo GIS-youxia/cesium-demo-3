@@ -1,50 +1,57 @@
 import * as Cesium from 'cesium';
 
-//Heading -> Z
-// Pitch -> Y
-// Roll -> X
+/**
+ * 获取实体ENU坐标系的旋转信息
+ * @param {Cesium.Entity} target
+ * @return {Cesium.HeadingPitchRoll}
+ */
 export function getRotation(target) {
-  // const position = target.position._value;
+  const position = target.position.getValue(Cesium.JulianDate.now());
+  const modelMatrixTarget = target.computeModelMatrix(Cesium.JulianDate.now())
 
-  // // 实体上的变换信息
-  // if (target instanceof Cesium.Entity) {
-  //   let orientation;
-  //   if (target.orientation) {
-  //     orientation = target.orientation._value;
-  //   } else {
-  //     const headingPitchRoll = new Cesium.HeadingPitchRoll(0, 0, 0);
-  //     orientation = Cesium.Quaternion.fromHeadingPitchRoll(headingPitchRoll, new Cesium.Quaternion());
-  //   }
-  //   // console.error(orientation);
-  //   // const euler = ;
-  //   let a = Cesium.HeadingPitchRoll.fromQuaternion(orientation, new Cesium.HeadingPitchRoll())
-  //   console.error(a);
+  const transformMatrix4 = Cesium.Transforms.eastNorthUpToFixedFrame(position);
+  Cesium.Matrix4.setTranslation(transformMatrix4, new Cesium.Cartesian3(0, 0, 0), transformMatrix4);
+  Cesium.Matrix4.inverse(transformMatrix4, transformMatrix4)
 
-  //   const rotationMat3 = Cesium.Matrix3.fromQuaternion(orientation, new Cesium.Matrix3())
+  // 相对于 ENU的旋转
+  const relativeMat4 = Cesium.Matrix4.multiply(
+    transformMatrix4,
+    modelMatrixTarget,
+    new Cesium.Matrix4());
+  const rotationMat3 = Cesium.Matrix4.getRotation(relativeMat4, new Cesium.Matrix3())
 
-  //   // 实体上挂载几何对象的变换信息
-  //   const tempMat3 = new Cesium.Matrix3();
-  //   const transformMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(position);
-  //   Cesium.Matrix4.getRotation(transformMatrix, tempMat3);
+  const quaternion = Cesium.Quaternion.fromRotationMatrix(rotationMat3, new Cesium.Quaternion())
+  const euler = Cesium.HeadingPitchRoll.fromQuaternion(quaternion, new Cesium.HeadingPitchRoll())
+  return euler;
+}
 
-  //   // 最后组合后的旋转
-  //   Cesium.Matrix3.multiply(rotationMat3, tempMat3, rotationMat3)
+export function getRotationDirction(target) {
+  // const euler = getRotation(target);
+}
 
-  //   const quaternion = Cesium.Quaternion.fromRotationMatrix(rotationMat3, new Cesium.Quaternion())
-  //   const euler = new Cesium.HeadingPitchRoll();
-  //   Cesium.HeadingPitchRoll.fromQuaternion(quaternion)
-  //   console.error(euler);
+/**
+ * 设置实体的旋转
+ * @param  {Cesium.Entity} target
+ * @param {Object} options 弧度
+ * @param {number} options.heading 绕 Z 轴旋转
+ * @param {number} options.pitch  绕 Y 轴旋转
+ * @param {number} options.roll  绕 X 轴旋转
+ */
+export function setRotation(target, options) {
+  const { heading, pitch, roll } = options;
+  const position = target.position.getValue(Cesium.JulianDate.now());
 
-  //   return euler;
-  let rotationMat3 = new Cesium.Matrix3();
-  let modelMatrixTarget = target.computeModelMatrix(Cesium.JulianDate.now())
-  Cesium.Matrix4.getRotation(modelMatrixTarget, rotationMat3)
+  const euler = new Cesium.HeadingPitchRoll(heading, pitch, roll)
+  const quaternion = Cesium.Transforms.headingPitchRollQuaternion(position, euler)
 
-      const quaternion = Cesium.Quaternion.fromRotationMatrix(rotationMat3, new Cesium.Quaternion())
-    const euler = new Cesium.HeadingPitchRoll();
-    Cesium.HeadingPitchRoll.fromQuaternion(quaternion)
-    console.error(euler);
+  target.orientation = new Cesium.CallbackProperty(() => {
+    return quaternion;
+  }, false)
+}
 
-    return euler;
-
+export function getPosition(target) {
+  const modelMatrixTarget = target.computeModelMatrix(Cesium.JulianDate.now())
+  const position = Cesium.Matrix4.getTranslation(modelMatrixTarget, new Cesium.Cartesian3())
+  console.error(position);
+  return position;
 }

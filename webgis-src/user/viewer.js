@@ -1,6 +1,6 @@
 import * as Cesium from 'cesium';
 import { addCSS } from '../ui/helper';
-
+import { updateResolutionScale } from '../misc/index'
 // @ts-ignore
 console.log(Cesium.VERSION);
 window.Cesium = Cesium;
@@ -57,5 +57,8 @@ export function getViewer() {
   viewer.scene.fog.enable = false;
   viewer.scene.globe.enableLighting = false;
     // viewer.extend(Cesium.viewerCesiumInspectorMixin);
+
+  // 解决模糊
+  updateResolutionScale(viewer)
   return viewer;
 }
