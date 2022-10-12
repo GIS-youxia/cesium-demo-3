@@ -1,6 +1,6 @@
 import { getCylinderPrimitive } from '../../tool/primitive'
 import { CoordinateSystem } from '../enum/CoordinateSystem';
-import { getRotationMatrix } from '../math/math';
+import { getRotationMatrixByEntity } from '../math/math';
 
 /**
  * 绑定在对象的坐标轴
@@ -100,13 +100,12 @@ export class AxesHelperObject {
       })
       this._linePrimitives.push(linePrimitive)
       this._group.add(linePrimitive)
-      // viewer.scene.primitives.add(linePrimitive)
     }
   }
 
   update() {
     const position = this._target.position.getValue(Cesium.JulianDate.now());
-    const rotation = getRotationMatrix({
+    const rotation = getRotationMatrixByEntity({
       target: this._target,
       floow: this.floow,
       coordinateSystem: this._coordinateSystem

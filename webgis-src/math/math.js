@@ -28,8 +28,8 @@ export function getHeadingPitchRoll(target) {
 
 /**
  * 设置实体的相对于当前位姿的俯仰角
- * @param  {Cesium.Entity} target
- * @param {Object} options 弧度
+ * @param {Object} options
+ * @param  {Cesium.Entity} options.target
  * @param {number} options.heading 绕 Z 轴旋转
  * @param {number} options.pitch  绕 Y 轴旋转
  * @param {number} options.roll  绕 X 轴旋转
@@ -54,7 +54,7 @@ export function setHeadingPitchRoll(target, options) {
  * @param {Cesium.Entity} options.target 实体对象
  * @returns {Cesium.Matrix3} 旋转矩阵
  */
-export function getRotationMatrix(options) {
+export function getRotationMatrixByEntity(options) {
   const { target } = options;
   const coordinateSystem = options.coordinateSystem !== undefined ? options.coordinateSystem : CoordinateSystem.ENU;
   const floow = options.floow !== undefined ? options.floow : false;
@@ -74,4 +74,26 @@ export function getRotationMatrix(options) {
     Cesium.Matrix4.getRotation(transformMatrix, rotationMat3)
   }
   return rotationMat3;
+}
+
+/**
+ * 获取实体的方向向量
+ * @param {*} options
+ */
+export function getDirectionVectorByEntity(options) {
+  const { target } = options;
+
+  const headingVector = new Cesium.Cartesian3(0,0,1);
+  const pitchVector = new Cesium.Cartesian3(0,1,0);
+  const rollVector = new Cesium.Cartesian3(1, 0, 0);
+  const rotation = getRotationMatrixByEntity({ target })
+
+  Cesium.Matrix3.multiplyByVector(rotation, headingVector, headingVector)
+  Cesium.Matrix3.multiplyByVector(rotation, pitchVector, pitchVector)
+  Cesium.Matrix3.multiplyByVector(rotation, rollVector, rollVector)
+  return {
+    heading: headingVector,
+    pitch: pitchVector,
+    roll: rollVector,
+  }
 }

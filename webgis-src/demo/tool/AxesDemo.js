@@ -1,9 +1,10 @@
 import * as Cesium from 'cesium';
 import { GUI } from 'dat.gui';
 import { CoordinateSystem } from '../../enum/CoordinateSystem';
-import { getHeadingPitchRoll, setHeadingPitchRoll, getRotationMatrix } from '../../math/math';
+import { getHeadingPitchRoll, setHeadingPitchRoll, getRotationMatrixByEntity, getDirectionVectorByEntity } from '../../math/math';
 import { AxesHelperGlobe } from '../../mesh/AxesHelperGlobe'
 import { AxesHelperObject } from '../../mesh/AxesHelperObject';
+import { VectorEntity } from '../../mesh/VectorEntity';
 
 export class AxesDemo {
   constructor(viewer) {
@@ -25,19 +26,27 @@ export class AxesDemo {
     window.redPlane = redPlane;
     this.redPlane = redPlane;
 
-    // 实体坐标轴
-    this.entityAxis = new AxesHelperObject({
+    const { heading } = getDirectionVectorByEntity({ target: redPlane })
+    new VectorEntity({
       viewer,
-      target: redPlane,
-      scale: 2
-    } );
-    this.entityAxis.update()
+      direction: heading,
+      position: position,
+      scale: 100,
+      width: 100
+    })
+    // 实体坐标轴
+    // this.entityAxis = new AxesHelperObject({
+    //   viewer,
+    //   target: redPlane,
+    //   scale: 2
+    // } );
+    // this.entityAxis.update()
 
     // 添加地球坐标轴
     this.axisGlobe = new AxesHelperGlobe({viewer,show:false})
 
     // 初始化UI
-    this.initGui()
+    // this.initGui()
   }
 
   initGui() {
