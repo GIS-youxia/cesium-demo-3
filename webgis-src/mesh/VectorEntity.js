@@ -1,4 +1,10 @@
 import * as Cesium from 'cesium';
+import { getCylinderPrimitive } from '../misc/primitive';
+import { Cartesian3Tool } from '../math/Cartesian3Tool'
+import { addPoint, pickEntity } from '../misc';
+import { Matrix4Tool } from '../math/Matrix4Tool';
+
+
 
 export class VectorEntity{
 
@@ -7,7 +13,7 @@ export class VectorEntity{
    * @param { Cesium.Viewer } options.viewer
    * @param { Cesium.Cartesian3 } options.direction
    * @param { Cesium.Cartesian3 } options.position
-   * @param { number } options.scale 默认 1
+   * @param { number } options.length 默认 1
    * @param { number } options.width 默认 10
    * @param { string } options.color 默认 "#FF0000"
    * @param { boolean } options.show 默认 true
@@ -15,34 +21,47 @@ export class VectorEntity{
   constructor(options) {
     const { viewer, direction, position } = options;
     const color = options.color !== undefined ? options.color : "#ff0000";
-    const scale = options.width !== undefined ? options.scale : 1;
+    const length = options.length !== undefined ? options.length : 1;
     const width = options.width !== undefined ? options.width : 10;
     const show = options.show !== undefined ? options.show : true;
+    // addPoint({
+    //   viewer,
+    //   position
+    // })
+    // addPoint({
+    //   viewer,
+    //   position: new Cesium.Cartesian3(0,0,0)
+    // })
+    Cesium.Cartesian3.multiplyByScalar(direction, length, direction)
 
-    const translation = Cesium.Matrix4.fromTranslation(position, new Cesium.Matrix4());
-    const positions = [
-      new Cesium.Cartesian3(0, 0, 0),
-      direction
-    ];
+    // Matrix4Tool.
+    // const angle = Cartesian3Tool.angleTo(Cesium.Cartesian3.UNIT_Z, direction);
+    // const rotMatrix = Cesium.Matrix3.fromRotationX(-angle, new Cesium.Matrix3());
+    // const pitch = Cartesian3Tool.angleTo(Cesium.Cartesian3.UNIT_Y, direction);
+    // const heading = Cartesian3Tool.angleTo(Cesium.Cartesian3.UNIT_Z, direction);
+    // console.error(heading, pitch, roll);
 
-    positions[1] = Cesium.Cartesian3.multiplyByScalar(positions[1], scale, positions[1])
-    positions.forEach(point => {
-      point = Cesium.Matrix4.multiplyByPoint(translation, point, point)
+    // const rotMatrix = Cesium.Matrix3.fromHeadingPitchRoll(new Cesium.HeadingPitchRoll(heading, pitch, roll), new Cesium.Matrix3())
+
+    // const length = Cartesian3Tool.length(direction);
+    this.primitive = getCylinderPrimitive({
+      color,
+      length: length,
+      geometryInstancesModelMatrix: Cesium.Matrix4.fromRotationTranslation(Cesium.Matrix3.IDENTITY, new Cesium.Cartesian3(0, 0, 0)),
+      topRadius: width,
+      bottomRadius: width,
     })
 
-    this.entity = viewer.entities.add({
-      // name: 'vector',
-      polyline: {
-        positions,
-        width,
-        arcType: Cesium.ArcType.NONE,
-        material: new Cesium.PolylineArrowMaterialProperty(Cesium.Color.fromCssColorString(color)),
-        depthFailMaterial: new Cesium.PolylineArrowMaterialProperty(new Cesium.Color(1.0, 0, 0, 0.2))
-      }
-    });
+    Cesium.Matrix4.multiply(
+      Cesium.Matrix4.IDENTITY,
+      Cesium.Matrix4.fromRotationTranslation(rotMatrix, position),
+      this.primitive.modelMatrix);
 
     this._show = show;
-    this.entity.show = show;
+    this.primitive.show = show;
+    viewer.scene.primitives.add(this.primitive);
+    console.error(this.primitive);
+
   }
 
   get show() {

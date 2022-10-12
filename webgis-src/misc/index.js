@@ -1,3 +1,6 @@
+import * as Cesium from 'cesium';
+
+
 // https://zhuanlan.zhihu.com/p/41794242
 // 解决Cesium显示画面模糊的问题
 export function updateResolutionScale(viewer) {
@@ -7,19 +10,36 @@ export function updateResolutionScale(viewer) {
   }
 }
 
+export function addPoint(options) {
+  const { viewer, position } = options;
+  const pixelSize = options.pixelSize !== undefined ? options.pixelSize : 10;
+  const color = options.color !== undefined ? options.color : "#ff0";
+
+  // 添加点
+  viewer.entities.add({
+    position,
+    point: {
+      pixelSize,
+      color: Cesium.Color.fromCssColorString(color),
+    }
+  })
+}
 
 /**
  * @description: 获取当前鼠标点击位置坐标，并添加到图上显示
- * @param {*} _viewer
+ * @param {*} viewer
  * @return {*}
  */
-export function getClickPointAdd(_viewer, cb) {
+export function getClickPoint(options) {
+  const { viewer } = options
+  const putPoint = options.putPoint !== undefined ? options.putPoint : true;
+
   // 注册屏幕点击事件
-  let handler = new Cesium.ScreenSpaceEventHandler(_viewer.scene.canvas);
+  let handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 
   handler.setInputAction(event => {
     // 拾取椭球表面
-    let clickPosition = _viewer.scene.camera.pickEllipsoid(event.position);
+    let clickPosition = viewer.scene.camera.pickEllipsoid(event.position);
 
     // 转经纬度（弧度）坐标
     let radiansPos = Cesium.Cartographic.fromCartesian(clickPosition);
@@ -32,15 +52,26 @@ export function getClickPointAdd(_viewer, cb) {
       latitude: ${lat},
     }`);
 
-    cb && cb(clickPosition);
+    const position = Cesium.Cartesian3.fromDegrees(lon, lat)
+    console.log("position", position);
 
-    // 添加点
-    _viewer.entities.add({
-      position: clickPosition,
-      point: {
-        color: Cesium.Color.YELLOW,
-        pixelSize: 10
-      }
+
+    // cb && cb(clickPosition);
+    putPoint && addPoint({
+      viewer: viewer,
+      position: clickPosition
     })
+
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+}
+
+export function pickEntity({ viewer }) {
+  var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+  handler.setInputAction(function (movement) {
+    var pick = viewer.scene.pick(movement.position);
+    console.error(pick);
+
+
+    // Cesium.Matrix4.getTranslation(modelMatrix, new Cesium.Cartesian3());
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 }

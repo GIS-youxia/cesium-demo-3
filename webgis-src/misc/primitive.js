@@ -5,15 +5,25 @@ const idManager = {
   cylinder: 0,
 }
 
-// 获取圆柱图元
+/**
+ * 获取圆柱图元
+ * @param {number} options
+ * @param {Cesium.Matrix4} options.geometryInstancesModelMatrix 几何体的模型矩阵, 默认单位矩阵
+ * @param {Cesium.Matrix4} options.modelMatrix 图元的模型矩阵, 默认单位矩阵
+ * @param {number} options.topRadius 默认 200000
+ * @param {number} options.bottomRadius 默认 200000
+ * @param {number} options.length 默认 200000
+ * @param { string } options.color 默认 '#ff0000'
+ * @returns {Cesium.Primitive}
+ */
 export function getCylinderPrimitive(options) {
   options = options || {};
-  const { modelMatrix } = options;
+  const { modelMatrix, geometryInstancesModelMatrix } = options;
 
   const topRadius = options.topRadius !== undefined ? options.topRadius: 200000;
   const bottomRadius = options.bottomRadius !== undefined ? options.bottomRadius: 200000;
   const length = options.length !== undefined ? options.length : 400000;
-  const color = options.color !== undefined ? options.color : '#ffffff';
+  const color = options.color !== undefined ? options.color : '#ff0000';
 
   idManager.cylinder += 1;
 
@@ -26,7 +36,7 @@ export function getCylinderPrimitive(options) {
 
   const cesiumColor = Cesium.Color.fromCssColorString(color);
   const coneGeometryInstance = new Cesium.GeometryInstance({
-    modelMatrix,
+    modelMatrix: geometryInstancesModelMatrix || Cesium.Matrix4.IDENTITY,
     id: 'cylinder_'+idManager.cylinder,
     geometry: coneGeometry,
     attributes: {
@@ -40,7 +50,7 @@ export function getCylinderPrimitive(options) {
       closed: true,
       translucent: false
     }),
-    modelMatrix: modelMatrix,
+    modelMatrix: modelMatrix || Cesium.Matrix4.IDENTITY,
     asynchronous: false
   });
 }

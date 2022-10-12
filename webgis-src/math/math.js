@@ -84,7 +84,7 @@ export function getDirectionVectorByEntity(options) {
   const { target } = options;
 
   const headingVector = new Cesium.Cartesian3(0,0,1);
-  const pitchVector = new Cesium.Cartesian3(0,1,0);
+  const pitchVector = new Cesium.Cartesian3(0, 1,0);
   const rollVector = new Cesium.Cartesian3(1, 0, 0);
   const rotation = getRotationMatrixByEntity({ target })
 

@@ -1,4 +1,4 @@
-import { getCylinderPrimitive } from '../../tool/primitive'
+import { getCylinderPrimitive } from '../misc/primitive'
 import { CoordinateSystem } from '../enum/CoordinateSystem';
 import { getRotationMatrixByEntity } from '../math/math';
 
@@ -95,7 +95,7 @@ export class AxesHelperObject {
         topRadius: width,
         bottomRadius: width,
         length,
-        modelMatrix,
+        geometryInstancesModelMatrix: modelMatrix,
         color
       })
       this._linePrimitives.push(linePrimitive)

@@ -5,10 +5,11 @@ import { getHeadingPitchRoll, setHeadingPitchRoll, getRotationMatrixByEntity, ge
 import { AxesHelperGlobe } from '../../mesh/AxesHelperGlobe'
 import { AxesHelperObject } from '../../mesh/AxesHelperObject';
 import { VectorEntity } from '../../mesh/VectorEntity';
+import { addPoint } from '../../misc';
 
 export class AxesDemo {
   constructor(viewer) {
-    const position = Cesium.Cartesian3.fromDegrees(0, 0.0, 0.0);
+    const position = Cesium.Cartesian3.fromDegrees(0, 45, 0.0);
     const redPlane = viewer.entities.add(new Cesium.Entity({
       name: "Red plane with black outline",
       position,
@@ -20,33 +21,68 @@ export class AxesDemo {
         })
       },
     }));
+    redPlane.show = false;
 
     const euler = new Cesium.HeadingPitchRoll(0,0,0)
     redPlane.orientation = Cesium.Transforms.headingPitchRollQuaternion(position, euler)
     window.redPlane = redPlane;
     this.redPlane = redPlane;
 
-    const { heading } = getDirectionVectorByEntity({ target: redPlane })
+    const { heading, pitch, roll } = getDirectionVectorByEntity({ target: redPlane })
+    // addPoint({
+    //   viewer,
+    //   position: heading,
+    //   color: "#00f"
+    // })
+    // addPoint({
+    //   viewer,
+    //   position: pitch,
+    //   color: "#0f0"
+    // })
+    // addPoint({
+    //   viewer,
+    //   position: roll,
+    //   color: "#f00"
+    // })
     new VectorEntity({
       viewer,
       direction: heading,
       position: position,
-      scale: 100,
-      width: 100
+      length: 1000000,
+      width: 100000,
+      color: "#0000ff",
     })
-    // 实体坐标轴
-    // this.entityAxis = new AxesHelperObject({
+
+    // new VectorEntity({
     //   viewer,
-    //   target: redPlane,
-    //   scale: 2
-    // } );
-    // this.entityAxis.update()
+    //   direction: pitch,
+    //   position: position,
+    //   scale: 1000000,
+    //   width: 100000,
+    //   color: "#00ff00"
+    // })
+
+    // new VectorEntity({
+    //   viewer,
+    //   direction: roll,
+    //   position: position,
+    //   scale: 1000000,
+    //   width: 100000,
+    //   color: "#ff0000"
+    // })
+    // 实体坐标轴
+    this.entityAxis = new AxesHelperObject({
+      viewer,
+      target: redPlane,
+      scale: 2
+    } );
+    this.entityAxis.update()
 
     // 添加地球坐标轴
     this.axisGlobe = new AxesHelperGlobe({viewer,show:false})
 
     // 初始化UI
-    // this.initGui()
+    this.initGui()
   }
 
   initGui() {
