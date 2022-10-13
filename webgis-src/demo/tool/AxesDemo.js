@@ -1,18 +1,23 @@
 import * as Cesium from 'cesium';
 import { GUI } from 'dat.gui';
 import { CoordinateSystem } from '../../enum/CoordinateSystem';
-import { getHeadingPitchRoll, setHeadingPitchRoll, getRotationMatrixByEntity, getDirectionVectorByEntity } from '../../math/math';
+import {
+  getHeadingPitchRoll,
+  setHeadingPitchRoll,
+  getDirectionVectorByEntity,
+} from '../../math/math';
 import { AxesHelperGlobe } from '../../mesh/AxesHelperGlobe'
 import { AxesHelperObject } from '../../mesh/AxesHelperObject';
-import { VectorEntity } from '../../mesh/VectorEntity';
-import { addPoint } from '../../misc';
+import { VectorMesh } from '../../mesh/VectorMesh';
 
 export class AxesDemo {
   constructor(viewer) {
-    const position = Cesium.Cartesian3.fromDegrees(0, 45, 0.0);
+    const position = Cesium.Cartesian3.fromDegrees(0, 0, 0.0);
     const redPlane = viewer.entities.add(new Cesium.Entity({
       name: "Red plane with black outline",
-      position,
+      position: new Cesium.CallbackProperty(() => {
+        return position;
+        }, false),
       plane: {
         plane: new Cesium.Plane(Cesium.Cartesian3.UNIT_Z, 0.0),
         dimensions: new Cesium.Cartesian2(4000000.0, 3000000.0),
@@ -21,72 +26,29 @@ export class AxesDemo {
         })
       },
     }));
-    redPlane.show = false;
 
-    const euler = new Cesium.HeadingPitchRoll(0,0,0)
-    redPlane.orientation = Cesium.Transforms.headingPitchRollQuaternion(position, euler)
+    const euler = new Cesium.HeadingPitchRoll(0, 0, 0)
+    const quaternion = Cesium.Transforms.headingPitchRollQuaternion(position, euler);
+    redPlane.orientation = new Cesium.CallbackProperty(() => {
+      return quaternion;
+    }, false)
+
     window.redPlane = redPlane;
     this.redPlane = redPlane;
 
-    const { heading, pitch, roll } = getDirectionVectorByEntity({ target: redPlane })
-    // addPoint({
-    //   viewer,
-    //   position: heading,
-    //   color: "#00f"
-    // })
-    // addPoint({
-    //   viewer,
-    //   position: pitch,
-    //   color: "#0f0"
-    // })
-    // addPoint({
-    //   viewer,
-    //   position: roll,
-    //   color: "#f00"
-    // })
-    console.error(heading);
-
-    new VectorEntity({
-      viewer,
-      from: Cesium.Cartesian3.UNIT_Z,
-      direction: heading,
-      position: position,
-      length: 1000000,
-      width: 100000,
-      color: "#0000ff",
-    })
-
-    // new VectorEntity({
-    //   viewer,
-    //   from: Cesium.Cartesian3.UNIT_Y,
-    //   direction: pitch,
-    //   position: position,
-    //   length: 1000000,
-    //   width: 100000,
-    //   color: "#ff0000"
-    // })
-
-    // new VectorEntity({
-    //   viewer,
-    //   from: Cesium.Cartesian3.UNIT_X,
-    //   direction: roll,
-    //   position: position,
-    //   length: 1000000,
-    //   width: 100000,
-    //   color: "#0000ff"
-    // })
     // 实体坐标轴
     this.entityAxis = new AxesHelperObject({
       viewer,
       target: redPlane,
       scale: 2,
-      coordinateSystem: CoordinateSystem.ECEF
+      coordinateSystem: CoordinateSystem.ENU
     } );
     this.entityAxis.update()
 
     // 添加地球坐标轴
     this.axisGlobe = new AxesHelperGlobe({viewer,show:false})
 
+    this.translatePosition = this.translatePosition.bind(this);
     // 初始化UI
     this.initGui()
   }
@@ -120,16 +82,19 @@ export class AxesDemo {
       this.axisGlobe.show = value;
     })
 
-    const euler = getHeadingPitchRoll(this.redPlane);
-    // const position = getPosition(this.redPlane)
+    const that = this;
     // 实体
+    const euler = getHeadingPitchRoll(this.redPlane);
     let controls3 = {
       'heading': +Cesium.Math.toDegrees(euler.heading),
       'pitch': +Cesium.Math.toDegrees(euler.pitch),
       'roll': +Cesium.Math.toDegrees(euler.roll),
-      // 'x': position.x,
-      // 'y': position.y,
-      // 'z': position.z,
+      '平移X+': function () { that.translatePosition('平移X+') },
+      '平移X-': function () { that.translatePosition('平移X-') },
+      '平移Y+': function () { that.translatePosition('平移Y+') },
+      '平移Y-': function () { that.translatePosition('平移Y-') },
+      '平移Z+': function () { that.translatePosition('平移Z+') },
+      '平移Z-': function () { that.translatePosition('平移Z-') },
     }
     const entity = gui.addFolder("实体")
     entity.open();
@@ -158,14 +123,80 @@ export class AxesDemo {
       this.entityAxis.update()
     })
 
-    // entity.add(controls3, 'x', -100, 100).step(0.1).onChange(value => {
-    //   this.this.axis.update()
-    // })
-    // entity.add(controls3, 'y', -100, 100).step(0.1).onChange(value => {
-    //   this.this.axis.update()
-    // })
-    // entity.add(controls3, 'z', -100, 100).step(0.1).onChange(value => {
-    //   this.this.axis.update()
-    // })
+    entity.add(controls3, '平移X+');
+    entity.add(controls3, '平移X-');
+    entity.add(controls3, '平移Y+');
+    entity.add(controls3, '平移Y-');
+    entity.add(controls3, '平移Z+');
+    entity.add(controls3, '平移Z-');
+  }
+
+  /**
+   * 平移变换
+   * @param {*} name
+   */
+  translatePosition(name) {
+    const { heading, pitch, roll } = getDirectionVectorByEntity(
+      {
+        target: this.redPlane,
+        floow: this.entityAxis.floow,
+        coordinateSystem: this.entityAxis.coordinateSystem
+      })
+    let flag = name[name.length - 1] === "+" ? 1 : -1;
+    let deriction;
+    const offset = 100000;
+
+    if (name.includes("X")) {
+      deriction = roll.clone()
+    } else if (name.includes("Y")) {
+      deriction = pitch.clone()
+    } else {
+      deriction = heading.clone()
+    }
+    Cesium.Cartesian3.multiplyByScalar(deriction, offset * flag, deriction);
+
+    const position = this.redPlane.position.getValue(Cesium.JulianDate)
+    const newPosition = Cesium.Cartesian3.add(position, deriction, new Cesium.Matrix3())
+
+    this.redPlane.position = new Cesium.CallbackProperty(() => {
+      return newPosition;
+    }, false)
+    this.entityAxis.update()
+  }
+
+  // 添加方向向量
+  addDircionVector(viewer) {
+
+    const { heading, pitch, roll } = getDirectionVectorByEntity({ target: this.redPlane })
+    const position = this.redPlane.position.getValue(Cesium.JulianDate)
+
+    const length = 1000000;
+    const width = 80000;
+    new VectorMesh({
+      viewer,
+      position,
+      length,
+      width,
+      direction: roll,
+      color: "#ff0000"
+    })
+
+    new VectorMesh({
+      viewer,
+      length,
+      width,
+      position,
+      direction: pitch,
+      color: "#00ff00"
+    })
+
+    new VectorMesh({
+      viewer,
+      position,
+      length,
+      width,
+      direction: heading,
+      color: "#0000ff",
+    })
   }
 }

@@ -8,6 +8,19 @@ const _z = new Cesium.Cartesian3();
 
 export class Matrix4Tool {
 
+  static _clearTemp() {
+    _x.x = 0;
+    _x.y = 0;
+    _x.z = 0;
+
+    _y.x = 0;
+    _y.y = 0;
+    _y.z = 0;
+
+    _z.x = 0;
+    _z.y = 0;
+    _z.z = 0;
+  }
   /**
    *
    * @param {Cesium.Cartesian3} eye
@@ -16,7 +29,12 @@ export class Matrix4Tool {
    * @param {Cesium.Matrix4} result
    */
   static lookAt(eye, target, up, result) {
-    if (!result) result = new Cesium.Matrix4();
+    this._clearTemp();
+    if (!result) result = Cesium.Matrix4.IDENTITY;
+
+    if (eye.equalsEpsilon(target, 0.1)) {
+      return result;
+    }
 
     Cartesian3Tool.subVectors(eye, target, _z)
     if (Cartesian3Tool.lengthSq(_z) === 0) {
