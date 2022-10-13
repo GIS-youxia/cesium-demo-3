@@ -44,8 +44,11 @@ export class AxesDemo {
     //   position: roll,
     //   color: "#f00"
     // })
+    console.error(heading);
+
     new VectorEntity({
       viewer,
+      from: Cesium.Cartesian3.UNIT_Z,
       direction: heading,
       position: position,
       length: 1000000,
@@ -55,26 +58,29 @@ export class AxesDemo {
 
     // new VectorEntity({
     //   viewer,
+    //   from: Cesium.Cartesian3.UNIT_Y,
     //   direction: pitch,
     //   position: position,
-    //   scale: 1000000,
+    //   length: 1000000,
     //   width: 100000,
-    //   color: "#00ff00"
+    //   color: "#ff0000"
     // })
 
     // new VectorEntity({
     //   viewer,
+    //   from: Cesium.Cartesian3.UNIT_X,
     //   direction: roll,
     //   position: position,
-    //   scale: 1000000,
+    //   length: 1000000,
     //   width: 100000,
-    //   color: "#ff0000"
+    //   color: "#0000ff"
     // })
     // 实体坐标轴
     this.entityAxis = new AxesHelperObject({
       viewer,
       target: redPlane,
-      scale: 2
+      scale: 2,
+      coordinateSystem: CoordinateSystem.ECEF
     } );
     this.entityAxis.update()
 

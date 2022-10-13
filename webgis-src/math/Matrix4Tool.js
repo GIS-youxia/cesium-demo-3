@@ -19,7 +19,7 @@ export class Matrix4Tool {
     if (!result) result = new Cesium.Matrix4();
 
     Cartesian3Tool.subVectors(eye, target, _z)
-    if (_z.lengthSq() === 0) {
+    if (Cartesian3Tool.lengthSq(_z) === 0) {
       // eye and target are in the same position
       _z.z = 1;
     }
@@ -45,5 +45,6 @@ export class Matrix4Tool {
     result[0] = _x.x; result[4] = _y.x; result[8] = _z.x;
     result[1] = _x.y; result[5] = _y.y; result[9] = _z.y;
     result[2] = _x.z; result[6] = _y.z; result[10] = _z.z;
+    return result;
   }
 }

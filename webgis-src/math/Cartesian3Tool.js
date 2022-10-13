@@ -10,7 +10,7 @@ export class Cartesian3Tool {
    * @returns {number}
    */
   static length(v) {
-    return Math.sqrt(this.lengthSquared(v));
+    return Math.sqrt(this.lengthSq(v));
   }
 
   /**
@@ -18,7 +18,7 @@ export class Cartesian3Tool {
    * @param {Cesium.Cartesian3} v
    * @returns {number}
    */
-  static lengthSquared(v) {
+  static lengthSq(v) {
     return v.x * v.x + v.y * v.y + v.z * v.z;
   }
 
@@ -39,7 +39,7 @@ export class Cartesian3Tool {
    * @returns
    */
   static angleTo(left, right) {
-    const denominator = Math.sqrt(this.lengthSquared(left) * this.lengthSquared(right));
+    const denominator = Math.sqrt(this.lengthSq(left) * this.lengthSq(right));
     if (denominator === 0) return Math.PI / 2;
     const theta = this.dot(left, right) / denominator;
     return Math.acos(MathUtils.clamp(theta, - 1, 1));

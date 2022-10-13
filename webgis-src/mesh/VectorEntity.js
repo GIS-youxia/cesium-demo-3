@@ -3,6 +3,7 @@ import { getCylinderPrimitive } from '../misc/primitive';
 import { Cartesian3Tool } from '../math/Cartesian3Tool'
 import { addPoint, pickEntity } from '../misc';
 import { Matrix4Tool } from '../math/Matrix4Tool';
+import { Matrix3Tool } from '../math/Matrix3Tool';
 
 
 
@@ -19,7 +20,7 @@ export class VectorEntity{
    * @param { boolean } options.show 默认 true
    */
   constructor(options) {
-    const { viewer, direction, position } = options;
+    const { viewer, direction, position,from } = options;
     const color = options.color !== undefined ? options.color : "#ff0000";
     const length = options.length !== undefined ? options.length : 1;
     const width = options.width !== undefined ? options.width : 10;
@@ -32,9 +33,24 @@ export class VectorEntity{
     //   viewer,
     //   position: new Cesium.Cartesian3(0,0,0)
     // })
-    Cesium.Cartesian3.multiplyByScalar(direction, length, direction)
+    // Cesium.Cartesian3.multiplyByScalar(direction, length, direction)
 
-    // Matrix4Tool.
+    //
+    const mat4ToStart = Matrix4Tool.lookAt(Cesium.Cartesian3.UNIT_Z, from, Cesium.Cartesian3.UNIT_Z, new Cesium.Matrix4())
+    const mat42 = Matrix4Tool.lookAt(from, direction, Cesium.Cartesian3.UNIT_Z, new Cesium.Matrix4())
+    // const mat4Y = Matrix4Tool.lookAt(Cesium.Cartesian3.UNIT_Y, direction, Cesium.Cartesian3.UNIT_Y, new Cesium.Matrix4())
+    // const mat4Z = Matrix4Tool.lookAt(Cesium.Cartesian3.UNIT_Z, direction, Cesium.Cartesian3.UNIT_Y, new Cesium.Matrix4())
+    const mat4 = Cesium.Matrix4.multiply(mat42, mat4ToStart, new Cesium.Matrix4());
+    // Cesium.Matrix4.multiply(mat4Z, mat4, mat4);
+
+    // Cesium.Cartesian3.multiplyByScalar(direction, length, direction)
+
+    // const rotation = Cesium.Matrix3.fromM
+    const rotation = Matrix3Tool.setFromMatrix4(mat4, new Cesium.Matrix3())
+    const q = Cesium.Quaternion.fromRotationMatrix(rotation);
+    const hpr = Cesium.HeadingPitchRoll.fromQuaternion(q);
+    console.error(hpr);
+
     // const angle = Cartesian3Tool.angleTo(Cesium.Cartesian3.UNIT_Z, direction);
     // const rotMatrix = Cesium.Matrix3.fromRotationX(-angle, new Cesium.Matrix3());
     // const pitch = Cartesian3Tool.angleTo(Cesium.Cartesian3.UNIT_Y, direction);
@@ -54,7 +70,7 @@ export class VectorEntity{
 
     Cesium.Matrix4.multiply(
       Cesium.Matrix4.IDENTITY,
-      Cesium.Matrix4.fromRotationTranslation(rotMatrix, position),
+      Cesium.Matrix4.fromRotationTranslation(rotation, position),
       this.primitive.modelMatrix);
 
     this._show = show;
