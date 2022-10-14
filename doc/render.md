@@ -76,30 +76,3 @@ Scene.prototype.updateAndExecuteCommands (){
 viewer到entity的关系：
 Viewer ==> DataSourceDisplay ==> DataSourceCollection ==> CustomDataSource ==> EntityCollection ==> Entity
 
-
-### entity 转化为 primitive
-```js
-[Module CesiumWidget.js]
-- fn startRenderLoop{
-    - widget.render();
-}
-```
-
-
-```js
-// https://segmentfault.com/a/1190000041685672?utm_source=sf-similar-article
-
-[Module Scene.js]
-- fn render() {
-  - Scene.updateAndExecuteCommands()
-    - fn executeCommandsInViewport()
-      - fn updateAndRenderPrimitives()
-        - Scene._groundPrimitives.update();
-          [Module PrimitiveCollection.js]
-          - PrimitiveCollection.update();
-            - primitives[i].update();
-              [Module Primitive.js]
-              Primitive.update();
-}
-
-```
