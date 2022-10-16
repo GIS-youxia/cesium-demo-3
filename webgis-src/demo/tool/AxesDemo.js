@@ -22,8 +22,10 @@ export class AxesDemo {
         plane: new Cesium.Plane(Cesium.Cartesian3.UNIT_Z, 0.0),
         dimensions: new Cesium.Cartesian2(4000000.0, 3000000.0),
         material: new Cesium.ImageMaterialProperty({
-          image: "./res/pic/text.png"
-        })
+          image: "./res/pic/text.png",
+          transparent: true
+        }),
+
       },
     }));
 
