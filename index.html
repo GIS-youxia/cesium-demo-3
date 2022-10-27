@@ -15,6 +15,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
+        font-family: "微软雅黑";
       }
 
       #UIContainer {
@@ -24,18 +25,131 @@
       }
 
       #canvas {
-            position: fixed;
-    top: 0;
+        position: fixed;
+        top: 0;
       }
+
     </style>
+
+    <link rel="stylesheet" href="./leaflet.css">
+    <link rel="stylesheet" href="./leatgeo.css">
   </head>
 
   <body>
     <div id="cesiumContainer"></div>
 
-    <div id="UIContainer"></div>
-    <canvas id="canvas"></canvas>
+    <!-- <div id="UIContainer"></div>
+    <canvas id="canvas"></canvas> -->
 
+
+    <div class="leaflet-top leaflet-left">
+      <!-- <div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#"
+           title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#"
+           title="Zoom out" role="button" aria-label="Zoom out">−</a></div> -->
+
+      <div class="leaflet-pm-toolbar leaflet-pm-draw leaflet-bar leaflet-control">
+
+        <div class="button-container" title="绘制点元素">
+          <a class="leaflet-buttons-control-button" role="button"  href="#">
+            <div class="control-icon leaflet-pm-icon-marker"></div>
+          </a>
+
+          <div class="leaflet-pm-actions-container marker-menu">
+            <a class="leaflet-pm-action  action-cancel" role="button"  href="#">取消</a>
+          </div>
+        </div>
+
+        <div class="button-container" title="绘制线元素">
+          <a class="leaflet-buttons-control-button" role="button" href="#">
+            <div class="control-icon leaflet-pm-icon-polyline"></div>
+          </a>
+
+          <div class="leaflet-pm-actions-container polyline-menu">
+            <a class="leaflet-pm-action  action-finish" role="button" href="#">完成</a>
+            <!-- <a class="leaflet-pm-action  action-removeLastVertex" role="button" href="#">移除最后一个点</a> -->
+            <a class="leaflet-pm-action  action-cancel" role="button"  href="#">取消</a>
+          </div>
+        </div>
+
+        <!-- <div class="button-container  " title="Draw Rectangle"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-rectangle"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+        <div class="button-container  " title="Draw Polygons"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-polygon"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finish" role="button"
+               tabindex="0" href="#">Finish</a><a class="leaflet-pm-action  action-removeLastVertex" role="button"
+               tabindex="0" href="#">Remove Last Vertex</a><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+        <div class="button-container  " title="Draw Circle"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-circle"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+        <div class="button-container  " title="Draw Circle Marker"><a class="leaflet-buttons-control-button"
+             role="button" tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-circle-marker"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+        <div class="button-container  " title="Draw Text"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-text"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+      </div> -->
+
+        <!-- <div class="leaflet-pm-toolbar leaflet-pm-edit leaflet-bar leaflet-control">
+        <div class="button-container  " title="Edit Layers"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-edit"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finishMode" role="button"
+               tabindex="0" href="#">Finish</a></div>
+        </div>
+        <div class="button-container  " title="Drag Layers"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-drag"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finishMode" role="button"
+               tabindex="0" href="#">Finish</a></div>
+        </div>
+        <div class="button-container  " title="Cut Layers"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-cut"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finish" role="button"
+               tabindex="0" href="#">Finish</a><a class="leaflet-pm-action  action-removeLastVertex" role="button"
+               tabindex="0" href="#">Remove Last Vertex</a><a class="leaflet-pm-action  action-cancel" role="button"
+               tabindex="0" href="#">Cancel</a></div>
+        </div>
+        <div class="button-container  " title="Remove Layers"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-delete"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finishMode" role="button"
+               tabindex="0" href="#">Finish</a></div>
+        </div>
+        <div class="button-container  " title="Rotate Layers"><a class="leaflet-buttons-control-button" role="button"
+             tabindex="0" href="#">
+            <div class="control-icon leaflet-pm-icon-rotate"></div>
+          </a>
+          <div class="leaflet-pm-actions-container "><a class="leaflet-pm-action  action-finishMode" role="button"
+               tabindex="0" href="#">Finish</a></div>
+        </div>
+      </div> -->
+      </div>
   </body>
 
 </html>
