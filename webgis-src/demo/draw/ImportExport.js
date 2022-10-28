@@ -73,4 +73,8 @@ export class ImportExport {
     });
     saveAs(blob, type + parseInt(Cesium.getTimestamp()) + '.geojson');
   }
+
+  fromGeoJson() {
+
+  }
 }
