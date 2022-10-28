@@ -74,7 +74,7 @@ export class DrawDemo {
       }
       this.polylineMarker.position = this.lastPosition;
 
-      this.polylineMarker = this.viewer.entities.add({
+      this.polyline = this.viewer.entities.add({
         polyline: {
           positions: new Cesium.CallbackProperty(this.getPositions, false),
           clampToGround: true,
@@ -155,7 +155,7 @@ export class DrawDemo {
           this.polylineMarker.position = this.lastPosition;
         }
 
-        if (this.polylineMarker && this.positions.length>=1) {
+        if (this.polyline && this.positions.length>=1) {
           this.positions[this.positions.length - 1] = this.lastPosition;
           // this.shape.position = this.lastPosition;
         }
