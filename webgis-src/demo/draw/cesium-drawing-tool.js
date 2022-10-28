@@ -1,5 +1,5 @@
 import * as Cesium from 'cesium';
-import $ from 'jquery'
+// import $ from 'jquery'
 
 export class CesiumDrawingTool {
 

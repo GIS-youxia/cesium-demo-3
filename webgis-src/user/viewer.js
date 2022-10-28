@@ -27,7 +27,9 @@ export function getViewer() {
     timeline: false,
     navigationHelpButton: false,
     shouldAnimate: true,
-    imageryProvider: undefined,
+    imageryProvider: new Cesium.SingleTileImageryProvider({
+      url: "./res/pic/bg.png",
+    }),
   }
 
   var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);

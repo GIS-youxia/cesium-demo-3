@@ -7,10 +7,17 @@ require('@dvgis/cesium-map')
 // Cesium.AmapImageryProvider = Cesium.AmapImageryProvider;
 
 import { AmapMercatorTilingScheme } from './AmapMercatorTilingScheme'
-export function addDebug(params) {
-  viewer.imageryLayers.addImageryProvider(new Cesium.GridImageryProvider());
+export function addDebug(viewer) {
+  // var gridImageryLayer = new Cesium.GridImageryProvider()
+  // viewer.imageryLayers.addImageryProvider(gridImageryLayer);
 
-viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider())
+  viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
+    url: "./res/pic/bg.png",
+  }));
+
+  //将图层置顶
+  // viewer.imageryLayers.raiseToTop(gridImageryLayer);
+// viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider())
 
 }
 
