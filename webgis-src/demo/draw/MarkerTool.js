@@ -4,6 +4,7 @@ export class MarkerTool {
     this._activeMarker = null;
     this._markers = [];
     this._iconPath = "./res/pic/marker.png"
+    this.type = "Point";
   }
 
   get enable() {
@@ -17,6 +18,10 @@ export class MarkerTool {
       this._viewer.entities.remove(this._activeMarker);
       this._activeMarker = null;
     }
+  }
+
+  get children() {
+    return this._markers;
   }
 
   _addMarker(position) {
@@ -43,7 +48,7 @@ export class MarkerTool {
   mouseClick(position) {
     if (!this._enable) return;
 
-    this._markers.push(this._activeMarker)
     this._activeMarker = this._addMarker(position);
+    this._markers.push(this._activeMarker)
   }
 }

@@ -12,24 +12,6 @@ export class PolygonTool {
 
     this._enable = false;
 
-    // // 虚线数组
-    // this._dashPositions = [];
-
-    // // 虚线
-    // this._polylineDash = this._viewer.entities.add({
-    //   polyline: {
-    //     positions: new Cesium.CallbackProperty(() => {
-    //       return this._dashPositions
-    //     }, false),
-    //     clampToGround: true,
-    //     width: 5,
-    //     material: new Cesium.PolylineDashMaterialProperty({
-    //       color: Cesium.Color.RED,
-    //       dashLength: 20 //短划线长度
-    //     })
-    //   }
-    // });
-
     this._activePolygon = null;
     this._activePolygonPointCount = 0;
     this._polygons = [];
@@ -41,6 +23,10 @@ export class PolygonTool {
 
   set enable(v) {
     this._enable = v;
+  }
+
+  get children() {
+    return this._markers;
   }
 
   cancle() {
@@ -61,7 +47,7 @@ export class PolygonTool {
       this._viewer.entities.remove(marker);
     });
 
-    this._activePolygon.positions.length = this._activePolygonPointCount
+    // this._activePolygon.positions.length = this._activePolygonPointCount
     this._polygons.push(this._activePolygon)
     this._activePolygon = null;
     this._activeMarker = null;
@@ -101,12 +87,13 @@ export class PolygonTool {
   mouseClick(position) {
     if (!this._enable) return;
 
-    this._activePolygon.positions.push(position);
+    this._activePolygon.positions[this._activePolygonPointCount] = position;
     this._activePolygonPointCount += 1
 
     const first = this._activePolygon.positions[0];
 
     if (this._activePolygon.positions.length >= 3 && Cesium.Cartesian3.distance(first, position) < 50) {
+      this._activePolygon.positions[this._activePolygon.positions.length - 1] = first;
       this.finish();
       console.log("finish...");
       return;

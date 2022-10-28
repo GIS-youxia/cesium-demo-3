@@ -13,7 +13,8 @@ export class PolygonEntity {
         }, false),
         material: new Cesium.Color.fromCssColorString('rgba(255,0,0,0.5)'),
         outline: false,
-        perPositionHeight: false
+        perPositionHeight: false,
+        loop: true
       }
     });
 

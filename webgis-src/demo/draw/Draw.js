@@ -6,7 +6,10 @@ import { addCSS } from '../../ui/helper';
 import { CesiumDrawingTool } from './cesium-drawing-tool'
 import { PolylineTool } from './PolylineTool'
 import { MarkerTool } from './MarkerTool'
-import {PolygonTool} from './PolygonTool'
+import { PolygonTool } from './PolygonTool'
+import { ImportExport } from './ImportExport'
+
+
 addCSS("./webgis-src/demo/draw/cesium-drawing-tool.css")
 
 const DrawState = {
@@ -20,13 +23,14 @@ export class DrawDemo {
     this._viewer = viewer
     window.aaa = this;
     // addGaode(viewer)
-    addDebug(viewer)
+    addDebug(this._viewer)
     this.drawState = DrawState.NONE;
 
     this._polylineTool = new PolylineTool(this._viewer)
     this._markerTool = new MarkerTool(this._viewer);
     this._polygonTool = new PolygonTool(this._viewer);
     this._cesiumContainer = document.querySelector("#cesiumContainer");
+    this._importExport = new ImportExport(this._viewer);
 
     this._setCamera()
     this._initEvent();
