@@ -1,10 +1,13 @@
 import { saveAs } from 'file-saver'
 import { CVT } from './utils'
-
+import * as Cesium from 'cesium'
 
 export class ImportExport {
-  constructor(viewer) {
+  constructor(viewer, tools) {
     this._viewer = viewer;
+    this._process = {
+      "Point": tools.markerTool,
+    }
   }
 
   _coordinates(entity) {
@@ -74,7 +77,21 @@ export class ImportExport {
     saveAs(blob, type + parseInt(Cesium.getTimestamp()) + '.geojson');
   }
 
-  fromGeoJson() {
+  fromGeoJson(text) {
+    const json = JSON.parse(text)
+    console.error(json);
 
+    const { type } = json.features[0].geometry;
+    const tool = this._process[type]
+
+    json.features.forEach(item => {
+      const coord = {
+        lon: item.geometry.coordinates[0],
+        lat: item.geometry.coordinates[1],
+        height: item.geometry.coordinates[2]
+      };
+      const position = Cesium.Cartesian3.fromDegrees(coord.lon, coord.lat, coord.height)
+      tool.addMarker(position);
+    })
   }
 }

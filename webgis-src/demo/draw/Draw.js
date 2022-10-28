@@ -30,15 +30,33 @@ export class DrawDemo {
     this._markerTool = new MarkerTool(this._viewer);
     this._polygonTool = new PolygonTool(this._viewer);
     this._cesiumContainer = document.querySelector("#cesiumContainer");
-    this._importExport = new ImportExport(this._viewer);
+    this._importExport = new ImportExport(this._viewer, {
+      markerTool: this._markerTool
+    });
 
     this._setCamera()
     this._initEvent();
     this._initPointUI();
     this._initPolylineUI();
     this._initPolygonUI();
+
+    this._initReadFile()
   }
 
+  _initReadFile() {
+    const input = document.querySelector('input[type=file]')
+
+    input.addEventListener('change', () => {
+      const reader = new FileReader()
+      reader.readAsText(input.files[0], 'utf8') // input.files[0]为第一个文件
+      reader.onload = () => {
+        // document.body.innerHTML += reader.result  // reader.result为获取结果
+        // console.error(reader.result);
+        this._importExport.fromGeoJson(reader.result);
+      }
+    }, false)
+
+  }
   _initPointUI() {
     const dom = document.querySelector(".leaflet-pm-icon-marker")
     const meun = document.querySelector(".marker-menu");
