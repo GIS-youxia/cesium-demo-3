@@ -27,7 +27,7 @@ export class PolylineTool {
         clampToGround: true,
         width: this._lineWidth,
         material: new Cesium.PolylineDashMaterialProperty({
-          color: Cesium.Color.RED,
+          color: Cesium.Color.GREEN,
           dashLength: 20 //短划线长度
         })
       }

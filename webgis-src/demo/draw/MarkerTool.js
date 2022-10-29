@@ -28,12 +28,12 @@ export class MarkerTool {
     return this.children;
   }
 
-  addMarker(position) {
-    this._markers.push(this._addMarker(position))
+  addMarker(position, properties) {
+    this._markers.push(this._addMarker(position, properties))
   }
 
-  _addMarker(position) {
-    return this._viewer.entities.add({
+  _addMarker(position, properties) {
+    const entity = this._viewer.entities.add({
       position: position,
       billboard: {
         image: this._iconPath,
@@ -41,6 +41,10 @@ export class MarkerTool {
         verticalOrigin: Cesium.VerticalOrigin.BOTTOM
       }
     });
+    if (properties && properties.userData) {
+      entity.userData = properties.userData;
+    }
+    return entity;
   }
 
   mouseMove(position) {

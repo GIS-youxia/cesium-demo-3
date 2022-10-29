@@ -127,14 +127,34 @@
 
       .show {
         opacity: 1 !important;
-               transition: all 0.2s;
+        transition: all 0.2s;
 
       }
 
-      .hide{
+      .hide {
         opacity: 0;
         transition: all 0.2s;
       }
+
+      .setUserData {
+        display: none;
+        position: fixed;
+        top: 264px;
+        left: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 10px #ccc;
+      }
+
+      .data-btn{
+        display: flex;
+        justify-content: space-around;
+      }
+      .data-btn .btn {
+        cursor: pointer;
+      }
+
     </style>
 
     <link rel="stylesheet" href="./leaflet.css">
@@ -148,6 +168,13 @@
 
     <div id="cesiumContainer"></div>
 
+    <div class="setUserData">
+      <textarea name="description" placeholder="此处是描述信息"></textarea>
+      <div class="data-btn">
+        <div class="btn confirm">确认</div>
+        <div class="btn cancle">取消</div>
+      </div>
+    </div>
     <!-- <div id="UIContainer"></div>
     <canvas id="canvas"></canvas> -->
 
@@ -173,6 +200,14 @@
 
         <div class="tool-btn polygon" title="绘制面元素">
           <span class="iconfont icon-duobianxing"></span>
+        </div>
+
+        <div class="tool-btn record" title="写记录">
+          <span class="iconfont icon-jurassic_entry-costdata"></span>
+        </div>
+
+        <div class="tool-btn read" title="读记录">
+          <span class="iconfont icon-duqumoban"></span>
         </div>
 
         <!-- <div class="tool-btn" title="删除元素">

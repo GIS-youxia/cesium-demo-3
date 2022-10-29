@@ -11,7 +11,7 @@ export class PolygonEntity {
         hierarchy: new Cesium.CallbackProperty(() => {
           return new Cesium.PolygonHierarchy(this.positions)
         }, false),
-        material: new Cesium.Color.fromCssColorString('rgba(255,0,0,0.5)'),
+        material: new Cesium.Color.fromCssColorString('rgba(0,255,0,0.5)'),
         outline: false,
         perPositionHeight: false,
         loop: true
@@ -23,7 +23,7 @@ export class PolygonEntity {
         positions: new Cesium.CallbackProperty(this._getPositions, false),
         clampToGround: true,
         width: 3,
-        material: Cesium.Color.RED
+        material: Cesium.Color.GREEN
       }
     });
   }

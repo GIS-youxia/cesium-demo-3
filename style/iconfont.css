@@ -1,16 +1,24 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3736452 */
-  src: url('iconfont.woff2?t=1667005297883') format('woff2'),
-       url('iconfont.woff?t=1667005297883') format('woff'),
-       url('iconfont.ttf?t=1667005297883') format('truetype');
+  src: url('iconfont.woff2?t=1667056041160') format('woff2'),
+       url('iconfont.woff?t=1667056041160') format('woff'),
+       url('iconfont.ttf?t=1667056041160') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-duqumoban:before {
+  content: "\e651";
+}
+
+.icon-jurassic_entry-costdata:before {
+  content: "\e6f3";
 }
 
 .icon-delete:before {

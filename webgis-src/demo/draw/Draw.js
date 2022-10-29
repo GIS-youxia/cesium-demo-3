@@ -17,6 +17,8 @@ const DrawState = {
   "MARKER": "marker",
   "POLYLINE": "polyline",
   "POLYGON": "polygon",
+  "RECORD": "record",
+  "READ": "read",
 }
 
 export class DrawDemo {
@@ -39,8 +41,19 @@ export class DrawDemo {
       polygonTool: this._polygonTool,
     };
 
+    this._lastCilckEntity = null;
+    this._lastClickEntityColor = null;
     this._importExport = new ImportExport(this._viewer, this._toolMap);
     this._activeTool = null;
+    this._userDataDom = document.querySelector(".setUserData");
+    document.querySelector(".setUserData .confirm").addEventListener("click", () => {
+      this._lastCilckEntity.userData = document.querySelector(".setUserData textarea").value;
+      this._userDataDom.style.display = "none"
+     })
+    document.querySelector(".setUserData .cancle").addEventListener("click", () => {
+      this._userDataDom.style.display = "none"
+    })
+
     this._setCamera()
     this._initEvent();
     this._initToolUI();
@@ -122,11 +135,15 @@ export class DrawDemo {
     const markerDom = document.querySelector(".marker")
     const polylineDom = document.querySelector(".polyline")
     const polygonDom = document.querySelector(".polygon")
+    const recordDom = document.querySelector(".record")
+    const readDom = document.querySelector(".read")
 
     this.allToolDom = {
       marker: markerDom,
       polyline: polylineDom,
-      polygon: polygonDom
+      polygon: polygonDom,
+      record: recordDom,
+      read: readDom,
     }
 
     const allToolMap = {
@@ -176,6 +193,17 @@ export class DrawDemo {
       _handleToolClick("polygon")
     })
 
+    recordDom.addEventListener("click", () => {
+      this._disableAllTool();
+      recordDom.classList.add("tool-btn-active")
+      this.drawState = DrawState.RECORD
+    })
+
+    readDom.addEventListener("click", () => {
+      this._disableAllTool();
+      readDom.classList.add("tool-btn-active")
+      this.drawState = DrawState.READ
+    })
   }
 
   _setCamera() {
@@ -192,6 +220,26 @@ export class DrawDemo {
     })
   }
 
+  _setEntityColor(entity, color) {
+    if (entity.billboard) {
+      entity.billboard.color = color;
+    } else if (entity.polyline) {
+      entity.polyline.material = color;
+    } else if (entity.polygon) {
+      entity.polygon.material = color;
+    }
+  }
+
+  _getEntityColor(entity) {
+    if (entity.billboard) {
+      return entity.billboard.color
+    } else if (entity.polyline) {
+      return entity.polyline.material
+    } else if (entity.polygon) {
+      return entity.polygon.material
+    }
+  }
+
   _initEvent() {
     var handler = new Cesium.ScreenSpaceEventHandler(this._viewer.scene.canvas);
     handler.setInputAction(event => {
@@ -204,12 +252,56 @@ export class DrawDemo {
     }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
     handler.setInputAction(event => {
-      if (this.drawState === DrawState.NONE) return;
-
       const position = this._viewer.scene.camera.pickEllipsoid(event.position);
+
+
+      if (this.drawState === DrawState.RECORD) {
+        this._userDataDom.style.display = "none"
+
+        if (this._lastCilckEntity) {
+          this._setEntityColor(this._lastCilckEntity, this._lastClickEntityColor);
+          this._lastCilckEntity = null;
+        }
+        const pick = this._viewer.scene.pick(event.position);
+        if (Cesium.defined(pick)) {
+          var oEntity = this._viewer.entities.getById(pick.id.id);
+          // console.error(oEntity);
+          this._lastClickEntityColor = this._getEntityColor(oEntity);
+          this._setEntityColor(oEntity, Cesium.Color.RED)
+          this._lastCilckEntity = oEntity;
+
+          this._userDataDom.style.display = "block"
+          if (oEntity.userData) {
+            document.querySelector(".setUserData textarea").value = oEntity.userData
+          } else {
+            document.querySelector(".setUserData textarea").value = ""
+          }
+          // if (oEntity.b)
+        }
+      }
+
+      if (this.drawState === DrawState.READ) {
+        if (this._lastCilckEntity) {
+          this._setEntityColor(this._lastCilckEntity, this._lastClickEntityColor);
+          this._lastCilckEntity = null;
+        }
+        const pick = this._viewer.scene.pick(event.position);
+        if (Cesium.defined(pick)) {
+          var oEntity = this._viewer.entities.getById(pick.id.id);
+          // console.error(oEntity);
+          this._lastClickEntityColor = this._getEntityColor(oEntity);
+          this._setEntityColor(oEntity, Cesium.Color.RED)
+          this._lastCilckEntity = oEntity;
+
+          this._showText(oEntity.userData || "")
+        }
+      }
+      if (this.drawState === DrawState.NONE) return;
       this._polylineTool.mouseClick(position);
       this._markerTool.mouseClick(position);
       this._polygonTool.mouseClick(position);
+
+
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
 
     document.addEventListener('keydown', e => {
@@ -221,6 +313,13 @@ export class DrawDemo {
             this._activeTool.enable = false
             this._activeTool = null;
           }
+
+          if (this._lastCilckEntity) {
+            this._setEntityColor(this._lastCilckEntity, this._lastClickEntityColor);
+            this._lastCilckEntity = null;
+            this._userDataDom.style.display = "none"
+          }
+          this.drawState = DrawState.NONE;
           break;
       }
      })

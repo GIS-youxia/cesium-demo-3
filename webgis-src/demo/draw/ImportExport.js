@@ -69,7 +69,6 @@ export class ImportExport {
       const itemJson = {
         "type": "Feature",
         "properties": {
-
         },
         "geometry": {
           "type": type,
@@ -77,6 +76,9 @@ export class ImportExport {
         }
       }
 
+      if (entity.userData) {
+        itemJson.properties.userData = entity.userData;
+      }
       json.features.push(itemJson);
     }
 
@@ -101,7 +103,7 @@ export class ImportExport {
           height: item.geometry.coordinates[2]
         };
         const position = Cesium.Cartesian3.fromDegrees(coord.lon, coord.lat, coord.height)
-        tool.addMarker(position);
+        tool.addMarker(position, item.properties);
       })
     } else if (type === "LineString") {
       json.features.forEach(item => {

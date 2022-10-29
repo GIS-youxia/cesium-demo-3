@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4784088",
+      "name": "读取模板",
+      "font_class": "duqumoban",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "10792670",
+      "name": "成本数据录入_编辑录入操作_jurassic",
+      "font_class": "jurassic_entry-costdata",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
       "icon_id": "248953",
       "name": "delete",
       "font_class": "delete",

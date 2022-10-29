@@ -11,7 +11,7 @@ export class PolylineEntity {
         positions: new Cesium.CallbackProperty(this._getPositions, false),
         clampToGround: true,
         width: lineWidth,
-        material: Cesium.Color.RED,
+        material: Cesium.Color.GREEN,
         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0.0, 800*10000)
       }
     });
