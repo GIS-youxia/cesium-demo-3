@@ -200,7 +200,7 @@
 }
 
 .leaflet-top .leaflet-control {
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .leaflet-bottom .leaflet-control {
@@ -209,6 +209,7 @@
 
 .leaflet-left .leaflet-control {
   margin-left: 10px;
+  overflow: hidden;
 }
 
 .leaflet-right .leaflet-control {

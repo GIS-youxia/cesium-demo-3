@@ -14,12 +14,14 @@ export function getViewer() {
 
   const viewOptions = {
     //-------------------------- UI控件 --------------------
+    homeButton: false,
     //动画
     animation: false,
     // 图层选择
     baseLayerPicker: false,
     // 全屏
     fullscreenButton: false,
+    geocoder: false,
     infoBox: false,
     // 2d/3d切换
     sceneModePicker: false,
@@ -39,7 +41,7 @@ export function getViewer() {
 
   // 显示帧率
   // @ts-ignore
-  viewer.scene.debugShowFramesPerSecond = true;
+  // viewer.scene.debugShowFramesPerSecond = true;
 
   // @ts-ignore
   // viewer.scene.globe.show = false;

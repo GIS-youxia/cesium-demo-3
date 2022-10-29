@@ -4,6 +4,9 @@ import { PolylineEntity } from './PolylineEntity';
 export class PolylineTool {
   constructor(viewer) {
     this._viewer = viewer
+    this.type = "LineString"
+
+    this._lineWidth = 3;
 
     // 当前指示的marker
     this._activeMarker = null;
@@ -22,7 +25,7 @@ export class PolylineTool {
           return this._dashPositions
         }, false),
         clampToGround: true,
-        width: 2,
+        width: this._lineWidth,
         material: new Cesium.PolylineDashMaterialProperty({
           color: Cesium.Color.RED,
           dashLength: 20 //短划线长度
@@ -40,27 +43,32 @@ export class PolylineTool {
 
   set enable(v) {
     this._enable = v;
+    this._polylineDash.show = true;
 
-    if (v) {
-      this._polylineDash.show = true;
-      this._activePolyline = new PolylineEntity(this._viewer)
+    if (!v) {
+      this._dashPositions = [];
+      this._polylineDash.show = false;
+      this._markers.forEach(marker => {
+        this._viewer.entities.remove(marker);
+      });
+      if (this._activePolyline) {
+        this._activePolyline.dispose();
+      }
+      this._activePolyline = null;
+      this._activeMarker = null;
     }
   }
 
-  cancle() {
-    this._dashPositions = [];
-    this._polylineDash.show = false;
-    this._markers.forEach(marker => {
-      this._viewer.entities.remove(marker);
-    });
-    this._activePolyline.dispose();
-    this._activePolyline = null;
-    this._activeMarker = null;
+  get children() {
+    return this._polylines;
+  }
+
+  get childrenEntity() {
+    return this._polylines.map(item => { return item.entity })
   }
 
   finish() {
     this._dashPositions = [];
-    this._polylineDash.show = false;
     this._markers.forEach(marker => {
       this._viewer.entities.remove(marker);
     });
@@ -84,8 +92,18 @@ export class PolylineTool {
     return marker;
   }
 
+  addPolyline(positions) {
+    const polyline = new PolylineEntity(this._viewer, this._lineWidth)
+    polyline.positions = positions;
+    this._polylines.push(polyline);
+  }
+
   mouseMove(position) {
     if (!this._enable) return;
+
+    if (!this._activePolyline) {
+      this._activePolyline = new PolylineEntity(this._viewer, this._lineWidth)
+    }
 
     if (this._dashPositions[0]) {
       this._dashPositions[1] = position
@@ -100,6 +118,14 @@ export class PolylineTool {
 
   mouseClick(position) {
     if (!this._enable) return;
+    if (!this._activePolyline) return;
+
+    const last = this._activePolyline.positions[this._activePolyline.positions.length - 1];
+    if (this._activePolyline.positions.length >= 2 && Cesium.Cartesian3.distance(last, position) < 100) {
+      this.finish();
+      console.log("finish...");
+      return;
+    }
 
     this._activeMarker = this._addMarker(position);
     this._dashPositions[0] = position;

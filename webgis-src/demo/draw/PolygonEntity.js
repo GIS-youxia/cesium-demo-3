@@ -6,7 +6,7 @@ export class PolygonEntity {
     this._getPositions = this._getPositions.bind(this);
     this.positions = [];
 
-    this._entity = this._viewer.entities.add({
+    this.entity = this._viewer.entities.add({
       polygon: {
         hierarchy: new Cesium.CallbackProperty(() => {
           return new Cesium.PolygonHierarchy(this.positions)
@@ -22,12 +22,11 @@ export class PolygonEntity {
       polyline: {
         positions: new Cesium.CallbackProperty(this._getPositions, false),
         clampToGround: true,
-        width: 2,
+        width: 3,
         material: Cesium.Color.RED
       }
     });
   }
-
 
   _getPositions() {
     return this.positions

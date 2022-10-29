@@ -4,6 +4,7 @@ import { PolygonEntity } from './PolygonEntity';
 export class PolygonTool {
   constructor(viewer) {
     this._viewer = viewer
+    this.type =  "Polygon"
 
     // 当前指示的marker
     this._activeMarker = null;
@@ -23,21 +24,26 @@ export class PolygonTool {
 
   set enable(v) {
     this._enable = v;
+
+    if (!v) {
+      this._dashPositions = [];
+      this._markers.forEach(marker => {
+        this._viewer.entities.remove(marker);
+      });
+      if (this._activePolygon) {
+        this._activePolygon.dispose();
+      }
+      this._activePolygon = null;
+      this._activeMarker = null;
+    }
   }
 
   get children() {
-    return this._markers;
+    return this._polygons;
   }
 
-  cancle() {
-    this._dashPositions = [];
-    // this._polylineDash.show = false;
-    this._markers.forEach(marker => {
-      this._viewer.entities.remove(marker);
-    });
-    this._activePolygon.dispose();
-    this._activePolygon = null;
-    this._activeMarker = null;
+  get childrenEntity() {
+    return this._polygons.map(item => { return item.entity })
   }
 
   finish() {
@@ -68,6 +74,11 @@ export class PolygonTool {
     return marker;
   }
 
+  addPolygon(positions) {
+    const polygon = new PolygonEntity(this._viewer)
+    polygon.positions = positions
+    this._polygons.push(polygon);
+  }
   mouseMove(position) {
     if (!this._enable) return;
 

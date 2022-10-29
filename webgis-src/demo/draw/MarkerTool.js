@@ -24,7 +24,15 @@ export class MarkerTool {
     return this._markers;
   }
 
+  get childrenEntity() {
+    return this.children;
+  }
+
   addMarker(position) {
+    this._markers.push(this._addMarker(position))
+  }
+
+  _addMarker(position) {
     return this._viewer.entities.add({
       position: position,
       billboard: {
@@ -39,7 +47,7 @@ export class MarkerTool {
     if (!this._enable) return;
 
     if (!this._activeMarker) {
-      this._activeMarker = this.addMarker(position);
+      this._activeMarker = this._addMarker(position);
     } else {
       this._activeMarker.position = position;
     }
@@ -48,7 +56,7 @@ export class MarkerTool {
   mouseClick(position) {
     if (!this._enable) return;
 
-    this._activeMarker = this.addMarker(position);
     this._markers.push(this._activeMarker)
+    this._activeMarker = this._addMarker(position);
   }
 }

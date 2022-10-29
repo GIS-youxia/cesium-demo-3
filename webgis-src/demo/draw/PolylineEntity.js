@@ -1,19 +1,20 @@
 import * as Cesium from 'cesium';
 
 export class PolylineEntity {
-  constructor(viewer) {
+  constructor(viewer, lineWidth = 1) {
     this._viewer = viewer;
     this._getPositions = this._getPositions.bind(this);
     this.positions = [];
 
-    this._entity = this._viewer.entities.add({
-        polyline: {
-          positions: new Cesium.CallbackProperty(this._getPositions, false),
-          clampToGround: true,
-          width: 2,
-          material: Cesium.Color.RED
-        }
-      });
+    this.entity = this._viewer.entities.add({
+      polyline: {
+        positions: new Cesium.CallbackProperty(this._getPositions, false),
+        clampToGround: true,
+        width: lineWidth,
+        material: Cesium.Color.RED,
+        distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0.0, 800*10000)
+      }
+    });
   }
 
   _getPositions() {
