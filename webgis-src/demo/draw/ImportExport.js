@@ -76,7 +76,11 @@ export class ImportExport {
         }
       }
 
-      if (entity.userData) {
+      if (entity.entity && entity.entity.userData) {
+        itemJson.properties.userData = entity.entity.userData;
+      }
+
+      if (entity && entity.userData) {
         itemJson.properties.userData = entity.userData;
       }
       json.features.push(itemJson);
@@ -112,7 +116,7 @@ export class ImportExport {
           const position = Cesium.Cartesian3.fromDegrees(c[0], c[1], c[2])
           positions.push(position)
         }
-        tool.addPolyline(positions);
+        tool.addPolyline(positions, item.properties);
       })
     } else if (type === "Polygon") {
       json.features.forEach(item => {
@@ -121,7 +125,7 @@ export class ImportExport {
           const position = Cesium.Cartesian3.fromDegrees(c[0], c[1], c[2])
           positions.push(position)
         }
-        tool.addPolygon(positions);
+        tool.addPolygon(positions, item.properties);
       })
     }
   }

@@ -33,6 +33,6 @@ export class PolygonEntity {
   }
 
   dispose() {
-    this._viewer.entities.remove(this._entity);
+    this._viewer.entities.remove(this.entity);
   }
 }

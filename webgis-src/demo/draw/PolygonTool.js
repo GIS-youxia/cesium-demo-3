@@ -74,10 +74,14 @@ export class PolygonTool {
     return marker;
   }
 
-  addPolygon(positions) {
+  addPolygon(positions, properties) {
     const polygon = new PolygonEntity(this._viewer)
     polygon.positions = positions
     this._polygons.push(polygon);
+
+    if (properties && properties.userData) {
+      polygon.entity.userData = properties.userData
+    }
   }
   mouseMove(position) {
     if (!this._enable) return;

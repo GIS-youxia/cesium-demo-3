@@ -92,10 +92,13 @@ export class PolylineTool {
     return marker;
   }
 
-  addPolyline(positions) {
+  addPolyline(positions, properties) {
     const polyline = new PolylineEntity(this._viewer, this._lineWidth)
     polyline.positions = positions;
     this._polylines.push(polyline);
+    if (properties && properties.userData) {
+      polyline.entity.userData = properties.userData
+    }
   }
 
   mouseMove(position) {

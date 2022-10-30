@@ -136,14 +136,14 @@ export class DrawDemo {
     const polylineDom = document.querySelector(".polyline")
     const polygonDom = document.querySelector(".polygon")
     const recordDom = document.querySelector(".record")
-    const readDom = document.querySelector(".read")
+    // const readDom = document.querySelector(".read")
 
     this.allToolDom = {
       marker: markerDom,
       polyline: polylineDom,
       polygon: polygonDom,
       record: recordDom,
-      read: readDom,
+      // read: readDom,
     }
 
     const allToolMap = {
@@ -199,11 +199,11 @@ export class DrawDemo {
       this.drawState = DrawState.RECORD
     })
 
-    readDom.addEventListener("click", () => {
-      this._disableAllTool();
-      readDom.classList.add("tool-btn-active")
-      this.drawState = DrawState.READ
-    })
+    // readDom.addEventListener("click", () => {
+    //   this._disableAllTool();
+    //   readDom.classList.add("tool-btn-active")
+    //   this.drawState = DrawState.READ
+    // })
   }
 
   _setCamera() {
