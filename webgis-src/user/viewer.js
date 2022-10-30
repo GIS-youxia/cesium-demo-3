@@ -3,7 +3,6 @@ import { addCSS } from '../ui/helper';
 import { updateResolutionScale } from '../misc/index'
 // @ts-ignore
 console.log(Cesium.VERSION);
-window.Cesium = Cesium;
 
 export function getViewer() {
 

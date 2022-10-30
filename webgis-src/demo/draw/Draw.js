@@ -10,7 +10,7 @@ import { PolygonTool } from './PolygonTool'
 import { ImportExport } from './ImportExport'
 
 
-addCSS("./webgis-src/demo/draw/cesium-drawing-tool.css")
+// addCSS("./webgis-src/demo/draw/cesium-drawing-tool.css")
 
 const DrawState = {
   "NONE": "none",

@@ -1,7 +1,6 @@
 
 import * as Cesium from 'cesium';
-window.Cesium = Cesium;
-require('@dvgis/cesium-map')
+import * as CesiumMap from './cesium-map/index'
 
 // deca
 // Cesium.AmapImageryProvider = Cesium.AmapImageryProvider;
@@ -31,7 +30,7 @@ export function addGaode(viewer, style ="elec") {
     crs: 'WGS84' // 使用84坐标系，默认为：GCJ02
   }
 
-  let layer = viewer.imageryLayers.addImageryProvider(new Cesium.AmapImageryProvider(options))
+  let layer = viewer.imageryLayers.addImageryProvider(new CesiumMap.AmapImageryProvider(options))
   return layer
 
 

@@ -1,3 +1,5 @@
+import * as Cesium from 'cesium';
+
 export class MarkerTool {
   constructor(viewer) {
     this._viewer = viewer
