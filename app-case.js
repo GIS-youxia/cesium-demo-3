@@ -13,29 +13,29 @@ import { addCSS } from './tool/helper';
 import { addGaode } from './tool/provider';
 
 /*--------------------------------------- case ------------------------------------------ */
-import { coneRotation } from './show'
+// import { coneRotation } from './show'
 // import { MjqGrid } from './case/mjq/mjq_grid'
 import { Tile } from './case/tile/index'
-import { Draw } from './case/draw/draw'
-import { Radar } from './case/radar/index'
-// import { Road } from './case/road/index'
-import { DomLabelDemo } from './case/DynamicLabel/index'
-import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
-import { RiverDemo } from './case/river/index'
-import { PowerDemo } from './case/power/index'
-import { WallDemo } from './case/wall';
-import { S3MDemo } from './case/s3m/index'
-import { CircleDemo } from './case/circle/index'
-import { StatelliteDemo } from './case/satellite/index'
-import { StretchGeogsonDemo } from './case/stretchGeogson/index'
-import { POIDemo } from './case/poi';
-import { KFCDemo } from './case/kfc/index'
-import { PersonDemo } from './case/person/index'
-import { TdtDemo } from './case/tdt/index'
-import { AQIDemo } from './case/aqi/index'
-import { TextDemo } from './case/text';
-import { WindTurbineDemo } from './case/windTurbine';
-import { HelloDemo } from './case/hello'
+// import { Draw } from './case/draw/draw'
+// import { Radar } from './case/radar/index'
+// // import { Road } from './case/road/index'
+// import { DomLabelDemo } from './case/DynamicLabel/index'
+// import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
+// import { RiverDemo } from './case/river/index'
+// import { PowerDemo } from './case/power/index'
+// import { WallDemo } from './case/wall';
+// import { S3MDemo } from './case/s3m/index'
+// import { CircleDemo } from './case/circle/index'
+// import { StatelliteDemo } from './case/satellite/index'
+// import { StretchGeogsonDemo } from './case/stretchGeogson/index'
+// import { POIDemo } from './case/poi';
+// import { KFCDemo } from './case/kfc/index'
+// import { PersonDemo } from './case/person/index'
+// import { TdtDemo } from './case/tdt/index'
+// import { AQIDemo } from './case/aqi/index'
+// import { TextDemo } from './case/text';
+// import { WindTurbineDemo } from './case/windTurbine';
+// import { HelloDemo } from './case/hello'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -78,7 +78,7 @@ viewer.scene.debugShowFramesPerSecond = true;
 // });
 
 // @ts-ignore
-viewer.scene.globe.show = false;
+// viewer.scene.globe.show = false;
 //去cesium logo
 // viewer.cesiumWidget.creditContainer.style.display = "none";
 // @ts-ignore
@@ -102,7 +102,7 @@ viewer.scene.globe.enableLighting = false;
 
 
 // window.case = new MjqGrid(viewer)
-// window.case = new Tile(viewer)
+window.case = new Tile(viewer)
 // window.case = new Radar(viewer)
 // window.case = new Road(viewer)
 // window.case = new Draw(viewer)
@@ -122,4 +122,4 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new AQIDemo(viewer);
 // window.case = new TextDemo(viewer);
 // window.case = new WindTurbineDemo(viewer);
-window.case = new HelloDemo(viewer);
+// window.case = new HelloDemo(viewer);
