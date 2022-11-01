@@ -4,6 +4,6 @@ import { getViewer } from './user/viewer';
 const viewer = getViewer()
 
 import { AxesDemo } from './demo/tool/AxesDemo';
-import { DrawDemo } from './demo/draw/Draw'
+import { EntityDemo } from './demo/entity/EntityDemo';
 
-window.demo = new DrawDemo(viewer);
+window.demo = new EntityDemo(viewer);
