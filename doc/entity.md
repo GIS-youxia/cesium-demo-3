@@ -72,7 +72,9 @@ EntityCollection.add()
 ```
 
 #### 2
+Scene.js 模块内的 render 函数会将控制权交给 WebGL，执行 CesiumJS 自己封装的指令对象，画出每一帧来。
 
+模块内的 render 函数首先会更新一批状态信息，譬如帧状态、雾效、Uniform 值、通道状态、三维场景中的环境信息等，然后就开始更新并执行指令，调用的是 Scene 原型链上的 updateAndExecuteCommands 方法。
 ```js
 [Module CesiumWidget.js]
 CesiumWidget.render()
