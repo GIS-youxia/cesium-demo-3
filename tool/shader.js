@@ -11,9 +11,6 @@ export function getPureColor() {
                         // 高亮的范围(_baseHeight ~ _baseHeight + _heightRange) 默认是 0-60米
                         float _heightRange = 60.0;
 
-                        // float _glowRange = 300.0; // 光环的移动范围(高度)
-                        float _glowRange = 0.0; // 光环的移动范围(高度)
-
                         float vtxf_height = fsInput.attributes.positionMC.z - _baseHeight;
 
                         float vtxf_a11 = fract(czm_frameNumber / 120.0) * 3.14159265 * 1.;
@@ -22,10 +19,9 @@ export function getPureColor() {
 
                         material.diffuse *= vec3(vtxf_a12);
                         float vtxf_a13 = fract(czm_frameNumber / 360.0);
-                        float vtxf_h = clamp(vtxf_height / _glowRange, 0.0, 1.0);
 
                         vtxf_a13 = abs(vtxf_a13 - 0.5) * 2.0;
-                        float vtxf_diff = step(0.005, abs(vtxf_h - vtxf_a13));
+                        float vtxf_diff = step(0.005, abs(vtxf_a13));
                         material.diffuse += material.diffuse * (1.0 - vtxf_diff);
                     }
                     `,
