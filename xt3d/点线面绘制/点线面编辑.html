@@ -10,10 +10,11 @@
     <script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
 
-    <script src='http://www.xt3d.cn/libs/turf.min.js'></script>
+    <!-- <script src='http://www.xt3d.cn/libs/turf.min.js'></script> -->
+    <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -131,11 +132,14 @@
             },
 
             generatePoint(positions) {
+                // xtgis.cc/
+                // 211.149.185.229:8080/static/images/examples/billboardplane.gif
+                // 211.149.185.229:8080/static/images/poi/sp.png
                 let entity = this.viewer.entities.add({
                     Type: "EditableMarker",
                     position: positions[0],
                     billboard: {
-                        image: "/data.xt3d.cn/assets/images/poi/sp.png",
+                        image: "211.149.185.229:8080/static/images/poi/sp.png",
                         scaleByDistance: new Cesium.NearFarScalar(300, 1, 1200, 0.4), //设置随图缩放距离和比例
                         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 10000), //设置可见距离 10000米可见
                         verticalOrigin: Cesium.VerticalOrigin.BOTTOM
