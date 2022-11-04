@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -59,14 +59,14 @@
 
         //添加数据
         addData() {
-          this.loadBuildData();
+          // this.loadBuildData();
           this.addPolyline2();
-          this.addPolyline3();
+          // this.addPolyline3();
         },
 
         addPolyline2() {
           let blueMaterial = new xt3d.PolylineObject.PolylineLightingMaterialProperty(Cesium.Color.BLUE);
-          let promise = Cesium.GeoJsonDataSource.load('/data.xt3d.cn/assets/data/nanshan/nanshan-road2.geojson');
+          let promise = Cesium.GeoJsonDataSource.load('/res/nanshan-road3.geojson');
           promise.then((dataSource) => {
             this.viewer.dataSources.add(dataSource);
             let values = dataSource.entities.values;
@@ -83,7 +83,7 @@
 
         addPolyline3() {
           let yellowMaterial = new xt3d.PolylineObject.PolylineLightingMaterialProperty(Cesium.Color.GREEN);
-          let promise = Cesium.GeoJsonDataSource.load('/data.xt3d.cn/assets/data/nanshan/nanshan-road3.geojson');
+          let promise = Cesium.GeoJsonDataSource.load('211.149.185.229:8080/static/data/nanshan/nanshan-road3.geojson');
           promise.then((dataSource) => {
             this.viewer.dataSources.add(dataSource);
             let values = dataSource.entities.values;

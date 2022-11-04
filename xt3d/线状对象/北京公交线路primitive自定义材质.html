@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -38,7 +38,7 @@
         //初始化viewer
         initViewer(el) {
           let singleTileImageryProvider = new Cesium.SingleTileImageryProvider({
-            url: "/data.xt3d.cn/assets/images/earth/earth_4.jpg",
+            url: "../res/earth_4.jpeg",
           });
           singleTileImageryProvider.defaultBrightness = 0.01;
           this.viewer = new Cesium.Viewer(el, {
@@ -63,7 +63,7 @@
 
         //加载数据
         loadLinesData() {
-          let url = 'http://earthsdk.com/v/last/Apps/assets/odlines/lines-bus.json';
+          let url = '../res/line-bus.json';
           Cesium.Resource.fetchJson(url).then((data) => {
             var busLines = [];
             data.map(function (busLine, idx) {
@@ -98,6 +98,8 @@
 
         //添加到场景
         addLineDatas(busLines) {
+          console.error(new xt3d.PolylineObject.PolylinODPrimitiveAppearance(new Cesium.Color()));
+
           let scene = this.viewer.scene;
           let color;
 

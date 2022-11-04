@@ -29,7 +29,7 @@ export function getViewer() {
     navigationHelpButton: false,
     shouldAnimate: true,
     imageryProvider: new Cesium.SingleTileImageryProvider({
-      url: "./res/pic/bg.png",
+      url: "./res/pic/earth_4.jpeg",
     }),
   }
 
