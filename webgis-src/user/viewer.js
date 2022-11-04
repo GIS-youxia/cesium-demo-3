@@ -34,6 +34,7 @@ export function getViewer() {
   }
 
   var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
+  viewOptions.imageryProvider.defaultBrightness = 0.01;
   viewer.shadows = false;
   // @ts-ignore
   window.viewer = viewer;
