@@ -1,20 +1,10 @@
 import * as Cesium from 'cesium';
+import { addArcgis } from '../../../tool/provider';
 import { getMaterial } from '../../material/odLineMaterial'
 
 export class RoadLineDemo {
   constructor(viewer) {
     this.viewer = viewer;
-
-    // 亮度设置
-    // var stages = this.viewer.scene.postProcessStages;
-    // this.viewer.scene.brightness = this.viewer.scene.brightness || stages.add(Cesium.PostProcessStageLibrary.createBrightnessStage());
-    // this.viewer.scene.brightness.enabled = true;
-    // this.viewer.scene.brightness.uniforms.brightness = 2;
-
-    // this.viewer.imageryLayers._layers[0].defaultBrightness = 0.01;
-
-
-    // this.loadBuildData();
     this.loadLinesData();
     this.setView();
   }
@@ -50,24 +40,25 @@ export class RoadLineDemo {
           width: 2.0,
         });
       });
-      this.addLineDatas(busLines);
+      // this.addLineDatasPrimitive(busLines);
+      this.addLineDatasEntity(busLines);
     });
   }
 
-  //添加到场景
-  addLineDatas(busLines) {
+  //添加到场景 Primitive 方式
+  addLineDatasPrimitive(busLines) {
     let scene = this.viewer.scene;
     let color;
 
     busLines.forEach(line => {
-      color = new Cesium.Color(Math.random() * 0.5 + 0.5, Math.random() * 0.8 + 0.2, 0.0, 1.0);
+      color = new Cesium.Color(0, Math.random() * 0.8 + 0.2, Math.random() * 0.5 + 0.5, 1.0);
       var appearance = getMaterial(color);
       var primitive = new Cesium.Primitive({
         appearance,
         geometryInstances: new Cesium.GeometryInstance({
           geometry: new Cesium.PolylineGeometry({
             positions: Cesium.Cartesian3.fromDegreesArray(line.positions),
-            width: 2.0,
+            width: 3.0,
           }),
         }),
       });
@@ -75,8 +66,32 @@ export class RoadLineDemo {
     })
   }
 
+  //添加到场景, entity 方式
+  addLineDatasEntity(busLines) {
+    busLines.forEach(line => {
+      this.viewer.entities.add({
+        polyline: {
+          positions: Cesium.Cartesian3.fromDegreesArray(line.positions),
+          width: line.width,
+          material: new Cesium.PolylineGlowMaterialProperty({
+            glowPower: 0.8,
+            color: Cesium.Color.fromCssColorString("rgba(255,0,0,0.1)"),
+          })
+          // material: new xt3d.PolylineObject.PolylineTrailMaterialProperty({
+          //   speed: 3 * Math.random(),
+          //   color: line.color,
+          //   percent: 0.01,
+          //   gradient: 0.2,
+          // })
+        }
+      })
+    })
+  }
+
   //设置默认视角
-  setView() {
+  async setView() {
+    await addArcgis(viewer);
+
     this.viewer.scene.camera.setView({
       destination: {
         x: -2264713.773444937,

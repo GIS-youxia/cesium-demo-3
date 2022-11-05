@@ -18,8 +18,8 @@ import { addGaode } from './tool/provider';
 // import { Tile } from './case/tile/index'
 // import { Draw } from './case/draw/draw'
 // import { Radar } from './case/radar/index'
-// // import { Road } from './case/road/index'
-import { DomLabelDemo } from './case/DynamicLabel/index'
+import { Road } from './case/road/index'
+// import { DomLabelDemo } from './case/DynamicLabel/index'
 // import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 // import { RiverDemo } from './case/river/index'
 // import { PowerDemo } from './case/power/index'
@@ -104,10 +104,10 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new MjqGrid(viewer)
 // window.case = new Tile(viewer)
 // window.case = new Radar(viewer)
-// window.case = new Road(viewer)
+window.case = new Road(viewer)
 // window.case = new Draw(viewer)
 // window.case = new FlowLine(viewer);
-window.case = new DomLabelDemo(viewer);
+// window.case = new DomLabelDemo(viewer);
 // window.case = new RiverDemo(viewer);
 // window.case = new PowerDemo(viewer);
 // window.case = new WallDemo(viewer);
