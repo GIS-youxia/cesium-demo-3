@@ -28,13 +28,16 @@ export function getViewer() {
     timeline: false,
     navigationHelpButton: false,
     shouldAnimate: true,
-    imageryProvider: new Cesium.SingleTileImageryProvider({
-      url: "./res/pic/earth_4.jpeg",
-    }),
+    // imageryProvider: new Cesium.SingleTileImageryProvider({
+    //   url: "./res/pic/earth_4.jpeg",
+    // }),
+    imageryProvider: new Cesium.UrlTemplateImageryProvider({
+        url: "https://a.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=sk.eyJ1IjoibWFyc2dpcyIsImEiOiJjbDFhYXQ3a2EwaHF6M2NvdnhmdjR6ajZ2In0.-sahm9R0QuPP3pAihJHC4A"
+      })
   }
 
   var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
-  viewOptions.imageryProvider.defaultBrightness = 0.01;
+  // viewOptions.imageryProvider.defaultBrightness = 0.01;
   viewer.shadows = false;
   // @ts-ignore
   window.viewer = viewer;

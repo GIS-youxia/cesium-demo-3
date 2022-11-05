@@ -11,7 +11,7 @@ export class RoadLineDemo {
     // this.viewer.scene.brightness.enabled = true;
     // this.viewer.scene.brightness.uniforms.brightness = 2;
 
-    this.viewer.imageryLayers._layers[0].defaultBrightness = 0.01;
+    // this.viewer.imageryLayers._layers[0].defaultBrightness = 0.01;
 
 
     // this.loadBuildData();
