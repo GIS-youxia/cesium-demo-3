@@ -1,6 +1,11 @@
 import * as Cesium from 'cesium';
 import { addArcgis } from '../../../tool/provider';
 import { getMaterial } from '../../material/odLineMaterial'
+import '../../material/type/polyline'
+
+import { PolylineLightingTrailMaterialProperty } from '../../material/property/polyline/PolylineLightingTrailMaterialProperty';
+import { PolylineTrailMaterialProperty } from '../../../src/lines/MaterialProperty/PolylineTrailMaterialProperty';
+PolylineTrailMaterialProperty
 
 export class RoadLineDemo {
   constructor(viewer) {
@@ -73,16 +78,20 @@ export class RoadLineDemo {
         polyline: {
           positions: Cesium.Cartesian3.fromDegreesArray(line.positions),
           width: line.width,
-          material: new Cesium.PolylineGlowMaterialProperty({
-            glowPower: 0.8,
-            color: Cesium.Color.fromCssColorString("rgba(255,0,0,0.1)"),
-          })
-          // material: new xt3d.PolylineObject.PolylineTrailMaterialProperty({
-          //   speed: 3 * Math.random(),
-          //   color: line.color,
-          //   percent: 0.01,
-          //   gradient: 0.2,
+          // material: new Cesium.PolylineGlowMaterialProperty({
+          //   glowPower: 0.8,
+          //   color: Cesium.Color.fromCssColorString("rgba(255,0,0,0.1)"),
           // })
+          // material: new PolylineLightingTrailMaterialProperty({
+          //   color: Cesium.Color.YELLOW,
+          //   speed: .0
+          // }),
+          material: new PolylineTrailMaterialProperty({
+            speed: 3 * Math.random(),
+            color: line.color,
+            percent: 0.01,
+            gradient: 0.2,
+          })
         }
       })
     })
