@@ -5,7 +5,10 @@ const viewer = getViewer()
 
 // import { AxesDemo } from './demo/tool/AxesDemo';
 // import { EntityDemo } from './demo/entity/EntityDemo';
-import { RoadLineDemo } from './demo/entity/RoadLineDemo'
+// import { RoadLineDemo } from './demo/entity/RoadLineDemo'
 // import { ConeGlowDemo } from './demo/primitive/ConeGlowDemo'
+import { UseDemo } from './demo/UseDemo'
+import { getClickPoint } from './misc';
 
-window.demo = new RoadLineDemo(viewer);
+// getClickPoint({ viewer: viewer })
+window.demo = new UseDemo(viewer);
