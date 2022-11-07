@@ -28,7 +28,8 @@ export class SmartDemo {
     const tileset = viewer.scene.primitives.add(
       new Cesium.Cesium3DTileset({
         // 离线数据
-        url: "./res/tileset2.json",
+        // url: "./res/tileset2.json",
+        url: "http://data.mars3d.cn/3dtiles/jzw-hefei/tileset.json",
         // 在线数据
         // url: "https://lab.earthsdk.com/model/702aa950d03c11e99f7ddd77cbe22fea/tileset.json"
         // url: "http://211.149.185.229:8081/data/country_build/chengdu_ajust_clip/tileset.json"
@@ -37,9 +38,9 @@ export class SmartDemo {
 
 
     tileset.readyPromise.then(function (tileset) {
-      // viewer.flyTo(tileset, {
-      //   duration: 0
-      // });
+      viewer.flyTo(tileset, {
+        duration: 0
+      });
       tileset.style = new Cesium.Cesium3DTileStyle({
         color: {
           conditions: [
@@ -51,8 +52,14 @@ export class SmartDemo {
 
       // 根据模型高度改变颜色
       tileset.customShader = getPureColor();
-      // aaa(tileset)
+      aaa(tileset)
     });
   }
 
+  addFace() {
+    const url = "http://data.mars3d.cn/file/geojson/hefei-shequ.json";
+    Cesium.Resource.fetchJson(url).then(res => {
+
+    })
+  }
 }
