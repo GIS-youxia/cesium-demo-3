@@ -36,6 +36,7 @@ import { Road } from './case/road/index'
 // import { TextDemo } from './case/text';
 // import { WindTurbineDemo } from './case/windTurbine';
 // import { HelloDemo } from './case/hello'
+import { SmartDemo } from './case/smart2/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -57,7 +58,10 @@ const viewOptions = {
   timeline: false,
   navigationHelpButton: false,
   shouldAnimate: true,
-  imageryProvider: undefined,
+  // imageryProvider: undefined,
+   imageryProvider: new Cesium.SingleTileImageryProvider({
+      url: "./res/pic/earth_4.jpeg",
+    }),
 }
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
@@ -104,7 +108,7 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new MjqGrid(viewer)
 // window.case = new Tile(viewer)
 // window.case = new Radar(viewer)
-window.case = new Road(viewer)
+// window.case = new Road(viewer)
 // window.case = new Draw(viewer)
 // window.case = new FlowLine(viewer);
 // window.case = new DomLabelDemo(viewer);
@@ -123,3 +127,4 @@ window.case = new Road(viewer)
 // window.case = new TextDemo(viewer);
 // window.case = new WindTurbineDemo(viewer);
 // window.case = new HelloDemo(viewer);
+window.case = new SmartDemo(viewer);
