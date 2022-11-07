@@ -18,7 +18,7 @@ import { addGaode } from './tool/provider';
 // import { Tile } from './case/tile/index'
 // import { Draw } from './case/draw/draw'
 // import { Radar } from './case/radar/index'
-import { Road } from './case/road/index'
+// import { Road } from './case/road/index'
 // import { DomLabelDemo } from './case/DynamicLabel/index'
 // import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 // import { RiverDemo } from './case/river/index'

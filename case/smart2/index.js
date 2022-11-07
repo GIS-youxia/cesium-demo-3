@@ -1,4 +1,5 @@
 import * as Cesium from 'cesium';
+import { aaa } from '../../tool/ClipPlaneHelp';
 import { addArcgis } from '../../tool/provider';
 const glsl = require("./frag.glsl");
 
@@ -36,9 +37,9 @@ export class SmartDemo {
 
 
     tileset.readyPromise.then(function (tileset) {
-      viewer.flyTo(tileset, {
-        duration: 0
-      });
+      // viewer.flyTo(tileset, {
+      //   duration: 0
+      // });
       tileset.style = new Cesium.Cesium3DTileStyle({
         color: {
           conditions: [
@@ -50,6 +51,7 @@ export class SmartDemo {
 
       // 根据模型高度改变颜色
       tileset.customShader = getPureColor();
+      // aaa(tileset)
     });
   }
 
