@@ -97,7 +97,7 @@ export class SmartDemo {
         const polygonEntity = this.viewer.entities.add({
           polygon: {
             hierarchy: new Cesium.PolygonHierarchy(positions),
-            material: Cesium.Color.fromCssColorString(color).withAlpha(0.2),
+            material: Cesium.Color.fromCssColorString(color).withAlpha(0.15),
             perPositionHeight: true,
           }
         });
@@ -106,10 +106,10 @@ export class SmartDemo {
           polyline: {
             positions,
             clampToGround: false,
-            width: 4,
+            width: 2,
             closure: true,
             material: new PolylineTrailMaterialProperty({
-              speed: 5,
+              speed: 2,
               color: new Cesium.Color.fromCssColorString(color),
               percent: 0.8, // 尾巴拖多少长
               // gradient: 0.01, // 变化率
