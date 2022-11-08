@@ -31,6 +31,7 @@ export function updateResolutionScale(viewer) {
  * @param {*} _viewer
  * @return {*}
  */
+let arr = []
 export function getClickPointAdd(_viewer,cb) {
   // 注册屏幕点击事件
   let handler = new Cesium.ScreenSpaceEventHandler(_viewer.scene.canvas);
@@ -49,6 +50,10 @@ export function getClickPointAdd(_viewer,cb) {
       longitude: ${lon},
       latitude: ${lat},
     }`);
+    // console.warn(lon, lat);
+    arr.push([lon, lat])
+    console.log(arr);
+
 
     cb && cb(clickPosition);
 
@@ -127,12 +132,13 @@ export function flyTo(view) {
 }
 
 // 添加点
-export function addPoint(viewer, position, pixelSize=10) {
+export function addPoint(viewer, position, pixelSize = 10, color="#ffff00") {
+  let c = Cesium.Color.fromCssColorString(color)
   viewer.entities.add({
     position,
     point: {
       pixelSize,
-      color: Cesium.Color.YELLOW,
+      color: c,
     }
   })
 }
@@ -187,4 +193,51 @@ export function worldToWGS84(viewer, worldPos){
   var lng = Cesium.Math.toDegrees(cartographic.longitude);
   var alt = cartographic.height;
   return { lng, lat, alt };
+}
+
+
+export function GeoJsonToGraphics(geoJsonData, sr = { wkid: 4326 }) {
+  const Point = [], Polyline = [], Polygon = [];
+  geoJsonData.features.forEach(f => {
+    const geo = f.geometry, coords = geo.coordinates;
+    let geometry, collection;
+    switch (geo.type.toLowerCase()) {
+      case "point":
+        collection = Point;
+        geometry = {
+          type: 'point',
+          x: coords[0],
+          y: coords[1],
+          spatialReference: sr
+        };
+        break;
+      case "linestring":
+        collection = Polyline;
+        geometry = {
+          type: 'polyline',
+          paths: [coords],
+          spatialReference: sr
+        };
+        break;
+      case "polygon":
+        collection = Polygon;
+        geometry = {
+          type: 'polygon',
+          rings: coords,
+          spatialReference: sr
+        };
+        break;
+      default:
+        return null;
+    }
+    collection.push({
+      geometry: geometry,
+      attributes: f.properties || {}
+    });
+  })
+  return {
+    point: Point,
+    polyline: Polyline,
+    polygon: Polygon,
+  }
 }
