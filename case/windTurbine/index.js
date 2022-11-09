@@ -1,8 +1,5 @@
 import * as Cesium from 'cesium';
-
-
-
-
+import { CameraManager } from '../../webgis-src/camera';
 
 export class WindTurbineDemo {
   constructor(viewer) {
@@ -19,12 +16,11 @@ export class WindTurbineDemo {
   }
 
   addModel(viewer) {
-    const position = Cesium.Cartesian3.fromDegrees(123.54, 47.19);
-
+    const position = Cesium.Cartesian3.fromDegrees(123.54, 47.19, 0);
     const euler = new Cesium.HeadingPitchRoll(Cesium.Math.toRadians(90), 0, 0)
     const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, euler)
 
-    const entity = viewer.entities.add({
+    viewer.entities.add({
       position,
       orientation,
       name: "",
@@ -34,35 +30,17 @@ export class WindTurbineDemo {
       }
     });
 
-    this.arround(viewer, entity);
-  }
+    const pos = Cesium.Cartesian3.fromDegrees(123.54, 47.19, 300)
 
-
-  /**
-   * 绕点旋转
-   * @param {*} viewer
-   * @param {*} entity
-   * @memberof WindTurbineDemo
-   */
-  arround(viewer, entity) {
-    let initialHeading = 0;
-    // 步长
-    let step = 0.05;
-
-    setInterval(intervalFn, step);
-
-    // 定义轮询函数
-    function intervalFn() {
-      if (initialHeading > 360) {
-        initialHeading = 0;
-      }
-      var offset = new Cesium.HeadingPitchRange(
-        Cesium.Math.toRadians(initialHeading), // 水平方向的旋转角 0-360度
-        -Cesium.Math.toRadians(30),// 垂直平面俯仰角 // 0-90度
-        1000  // 相机距离地球球心的距离
-      );
-      viewer.zoomTo(entity, offset);
-      initialHeading += step;
-    }
+    const manager = new CameraManager(viewer)
+    manager.setConfig({
+      cameraPosition: pos,
+      targetPosition: position,
+      type: "ArroundPoint", // AroundView,ArroundPoint
+      heading: 0,
+      pitch: -30,
+      range: 50000
+    })
+    manager.start();
   }
 }

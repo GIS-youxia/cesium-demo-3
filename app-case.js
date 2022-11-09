@@ -34,9 +34,9 @@ import { addGaode } from './tool/provider';
 // import { TdtDemo } from './case/tdt/index'
 // import { AQIDemo } from './case/aqi/index'
 // import { TextDemo } from './case/text';
-// import { WindTurbineDemo } from './case/windTurbine';
+import { WindTurbineDemo } from './case/windTurbine';
 // import { HelloDemo } from './case/hello'
-import { SmartDemo } from './case/smart2/index'
+// import { SmartDemo } from './case/smart2/index'
 
 // @ts-ignore
 window.CESIUM_BASE_URL = "./node_modules/cesium/Build/CesiumUnminified";
@@ -59,9 +59,9 @@ const viewOptions = {
   navigationHelpButton: false,
   shouldAnimate: true,
   // imageryProvider: undefined,
-   imageryProvider: new Cesium.SingleTileImageryProvider({
-      url: "./res/pic/earth_4.jpeg",
-    }),
+  //  imageryProvider: new Cesium.SingleTileImageryProvider({
+  //     url: "./res/pic/earth_4.jpeg",
+  //   }),
 }
 
 var viewer = new Cesium.Viewer("cesiumContainer", viewOptions);
@@ -125,6 +125,6 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new TdtDemo(viewer);
 // window.case = new AQIDemo(viewer);
 // window.case = new TextDemo(viewer);
-// window.case = new WindTurbineDemo(viewer);
+window.case = new WindTurbineDemo(viewer);
 // window.case = new HelloDemo(viewer);
-window.case = new SmartDemo(viewer);
+// window.case = new SmartDemo(viewer);
