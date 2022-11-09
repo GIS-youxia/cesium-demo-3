@@ -38,7 +38,6 @@ export class CameraManager {
       const roll = this._options.roll ? Cesium.Math.toRadians(this._options.roll) : this._viewer.camera.roll;
 
       this._viewer.camera.setView({
-        destination: this._options.cameraPosition,
         orientation: {
           heading: Cesium.Math.toRadians(this._options.heading),
           pitch,
@@ -55,6 +54,19 @@ export class CameraManager {
     const { type } = options;
     this._type = type;
     this._options = options;
+
+    if (this._type == "AroundView") {
+      const pitch = this._options.pitch ? Cesium.Math.toRadians(this._options.pitch) : this._viewer.camera.pitch;
+      const roll = this._options.roll ? Cesium.Math.toRadians(this._options.roll) : this._viewer.camera.roll;
+      this._viewer.camera.setView({
+        destination: this._options.cameraPosition,
+        orientation: {
+          heading: Cesium.Math.toRadians(this._options.heading),
+          pitch,
+          roll
+        }
+      })
+    }
   }
 
   start() {

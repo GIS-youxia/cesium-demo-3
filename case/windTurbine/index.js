@@ -36,7 +36,7 @@ export class WindTurbineDemo {
     manager.setConfig({
       cameraPosition: pos,
       targetPosition: position,
-      type: "ArroundPoint", // AroundView,ArroundPoint
+      type: "AroundView", // AroundView,ArroundPoint
       heading: 0,
       pitch: -30,
       range: 50000
