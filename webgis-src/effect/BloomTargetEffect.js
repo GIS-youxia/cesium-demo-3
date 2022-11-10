@@ -1,11 +1,13 @@
 import * as Cesium from 'cesium'
-const highGlsl = require("./a.glsl")
-const blurGlsl = require("./b.glsl")
-const c = require("./c.glsl")
-const dGlsl = require("./d.glsl")
+const highGlsl = require("./bloom/a.glsl")
+const blurGlsl = require("./bloom/b.glsl")
+const c = require("./bloom/c.glsl")
+const dGlsl = require("./bloom/d.glsl")
 
-
-export class BloomTarget {
+/**
+ * 物体发光
+ */
+export class BloomTargetEffect {
   constructor(viewer) {
     this._viewer = viewer;
 
@@ -111,14 +113,20 @@ export class BloomTarget {
     this.postProcessStage = postProcessStage;
 
     this._viewer.scene.postProcessStages.add(postProcessStage)
-    // this.postProcessStage.selected = [];
+    this.postProcessStage.selected = [];
   }
 
-  // get selected() {
-  //   return this.postProcessStage.selected
-  // }
-
-  // set selected(v) {
-  //   // this.postProcessStage.selected = v;
-  // }
+  handleClick(pickedObject) {
+    if (Cesium.defined(pickedObject)) {
+      const selected = []
+      pickedObject.primitive._pickIds.forEach(item => {
+        selected.push({
+          pickId: item
+        })
+      })
+      this.postProcessStage.selected = selected;
+    } else {
+      this.postProcessStage.selected = [];
+    }
+  }
 }

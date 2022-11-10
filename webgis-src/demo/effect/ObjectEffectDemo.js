@@ -1,13 +1,30 @@
 import * as Cesium from 'cesium'
-import { BloomTarget } from '../../effect/BloomTarget'
+import { BloomTargetEffect } from '../../effect/BloomTargetEffect'
+import { OutLineEffect } from '../../effect/OutlineEffect';
 import { BoxPrimitive } from '../../primitive/BoxPrimitive';
 import { EllipsoidPrimitive } from '../../primitive/EllipsoidPrimitive';
-export class BloomTargetDemo {
-  constructor(viewer) {
-    const bloom = new BloomTarget(viewer)
-    bloom.postProcessStage.selected = [];
-    this.bloom = bloom;
 
+export class ObjectEffectDemo {
+  constructor(viewer) {
+    const bloom = new BloomTargetEffect(viewer)
+    const outline = new OutLineEffect(viewer)
+    this.effect = outline;
+
+    this.addMesh(viewer)
+    this.addMouseOver(viewer)
+
+    viewer.camera.flyTo({
+      destination: { "x": -2473994.447849224, "y": 4839441.4421547055, "z": 3328342.424308095 },
+      duration: 0,
+      orientation: {
+        heading: 0.03412961843945439,
+        pitch: -Math.PI/4,
+        roll: 6.2831850130093905
+      }
+    });
+  }
+
+  addMesh(viewer) {
     const pos = Cesium.Cartesian3.fromDegrees(117.076033, 31.663258, 0.3);
     const boxGreen = new BoxPrimitive({
       position: pos,
@@ -23,34 +40,13 @@ export class BloomTargetDemo {
     })
     window.sphere = sphere;
     viewer.scene.primitives.add(sphere.primitive)
-
-    this.addMouseOver(viewer)
-    viewer.camera.flyTo({
-      destination: { "x": -2473994.447849224, "y": 4839441.4421547055, "z": 3328342.424308095 },
-      duration: 0,
-      orientation: {
-        heading: 0.03412961843945439,
-        pitch: -Math.PI/4,
-        roll: 6.2831850130093905
-      }
-    });
   }
 
   addMouseOver(viewer) {
     var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
     handler.setInputAction(movement => {
       const pickedObject = viewer.scene.pick(movement.position);
-      if (Cesium.defined(pickedObject)) {
-        const selected = []
-        pickedObject.primitive._pickIds.forEach(item => {
-          selected.push({
-            pickId: item
-          })
-        })
-        this.bloom.postProcessStage.selected = selected;
-      } else {
-        this.bloom.postProcessStage.selected = [];
-      }
+      this.effect.handleClick(pickedObject)
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
   }
 
