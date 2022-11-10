@@ -3,10 +3,10 @@ import { getRotationMatrixByHeadingPitchRoll } from '../math/math';
 
 export class EllipsoidPrimitive {
   constructor(options) {
-    const { color, radius, position, heading, pitch, roll } = options;
+    const { color, radii, position, heading, pitch, roll } = options;
     this._hpr = new Cesium.HeadingPitchRoll(heading || 0, pitch || 0, roll || 0);
     this._position = position || new Cesium.Cartesian3();
-    this._radius = radius || 100;
+    this._radii = radii || 100;
     this._color = color || "#ff0000";
     this.primitive = this._createPrimite();
   }
@@ -23,12 +23,11 @@ export class EllipsoidPrimitive {
     const cesiumColor = Cesium.Color.fromCssColorString(this._color);
 
     return new Cesium.GeometryInstance({
-      geometry: new Cesium.EllipseGeometry({
-        center: this._position,
-        semiMinorAxis: this._radius,
-        semiMajorAxis: this._radius,
+      geometry: new Cesium.EllipsoidGeometry({
+        radii: this._radii,
         vertexFormat: Cesium.PerInstanceColorAppearance.VERTEX_FORMAT,
       }),
+      modelMatrix: this._getModelMatrix(),
       attributes: {
         color: Cesium.ColorGeometryInstanceAttribute.fromColor(cesiumColor),
       },
@@ -40,7 +39,8 @@ export class EllipsoidPrimitive {
       geometryInstances: [this._createGeometryInstance()],
       appearance: new Cesium.PerInstanceColorAppearance({
         closed: true,
-        translucent: false
+        translucent: false,
+        flat: false,
       }),
       modelMatrix: Cesium.Matrix4.IDENTITY,
     });
