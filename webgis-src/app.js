@@ -9,6 +9,7 @@ import { RoadLineDemo } from './demo/entity/RoadLineDemo'
 // import { ConeGlowDemo } from './demo/primitive/ConeGlowDemo'
 // import { UseDemo } from './demo/UseDemo'
 // import { getClickPoint } from './misc';
+import { BloomTargetDemo } from './demo/effect/BloomTargetDemo'
 
 // getClickPoint({ viewer: viewer })
-window.demo = new RoadLineDemo(viewer);
+window.demo = new BloomTargetDemo(viewer);
