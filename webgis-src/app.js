@@ -9,7 +9,11 @@ import { RoadLineDemo } from './demo/entity/RoadLineDemo'
 // import { ConeGlowDemo } from './demo/primitive/ConeGlowDemo'
 // import { UseDemo } from './demo/UseDemo'
 // import { getClickPoint } from './misc';
-import { ObjectEffectDemo } from './demo/effect/ObjectEffectDemo'
+// import { ObjectEffectDemo } from './demo/effect/ObjectEffectDemo'
+import { cusotom } from './demo/primitive/cuostom'
+import { groundSkybox } from './demo/primitive/groundSkybox';
 
 // getClickPoint({ viewer: viewer })
-window.demo = new ObjectEffectDemo(viewer);
+// window.demo = new ObjectEffectDemo(viewer);
+// cusotom(viewer)
+groundSkybox(viewer)

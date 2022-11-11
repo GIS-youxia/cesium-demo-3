@@ -8,7 +8,7 @@ export class ObjectEffectDemo {
   constructor(viewer) {
     const bloom = new BloomTargetEffect(viewer)
     const outline = new OutLineEffect(viewer)
-    this.effect = outline;
+    this.effect = bloom;
 
     this.addMesh(viewer)
     this.addMouseOver(viewer)
