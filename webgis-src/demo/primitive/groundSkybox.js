@@ -5,12 +5,12 @@ export function groundSkybox(viewer) {
   // 自定义的近地天空盒
   let groundSkybox = new GroundSkyBox({
     sources: {
-      positiveX: "./res/pic/qingtian/right.jpg",
-      negativeX: "./res/pic/qingtian/left.jpg",
-      positiveY: "./res/pic/qingtian/front.jpg",
-      negativeY: "./res/pic/qingtian/back.jpg",
-      positiveZ: "./res/pic/qingtian/top.jpg",
-      negativeZ: "./res/pic/qingtian/bottom.jpg"
+      positiveX: "./res/pic/skybox/right.png",
+      negativeX: "./res/pic/skybox/left.png",
+      positiveY: "./res/pic/skybox/front.png",
+      negativeY: "./res/pic/skybox/back.png",
+      positiveZ: "./res/pic/skybox/top.png",
+      negativeZ: "./res/pic/skybox/bottom.png"
     }
   })
 
