@@ -47,7 +47,8 @@ export function getViewer() {
   // viewer.scene.debugShowFramesPerSecond = true;
 
   // @ts-ignore
-  // viewer.scene.globe.show = false;
+  viewer.scene.globe.show = false;
+  viewer.scene.skyBox.show = false
   //去cesium logo
   // viewer.cesiumWidget.creditContainer.style.display = "none";
   // @ts-ignore
