@@ -14,10 +14,11 @@ import { cusotom, addPlanePrimitive, addRingPrimitive } from './demo/primitive/c
 import { groundSkybox } from './demo/primitive/groundSkybox';
 import { RingPrimitive } from './primitive/RingPrimitive';
 import { addRangeMesh } from './demo/mesh';
+import { getClickPointAdd } from '../tool/tool';
 
 addRangeMesh(viewer);
 // addRingPrimitive(viewer)
-
+getClickPointAdd(viewer)
 
 // getClickPoint({ viewer: viewer })
 // window.demo = new ObjectEffectDemo(viewer);

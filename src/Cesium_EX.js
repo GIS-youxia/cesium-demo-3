@@ -14,9 +14,9 @@ import {
  * @param {*} r
  * @return {*}
  */
-function isIntersect(t, r) {
-  for (var i = 0, n = t.length; i < n; i++) {
-    var o = t[i];
+function isIntersect(bounds, r) {
+  for (var i = 0; i < bounds.length; i++) {
+    var o = bounds[i];
     if (BoundingRectangle.intersect(o, r) == Intersect.INTERSECTING)
       return true;
   }
