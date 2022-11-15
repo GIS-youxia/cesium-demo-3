@@ -9,12 +9,13 @@ export class RingPrimitive {
     this._center = center;
     this._radius = radius;
     this._color = Cesium.Color.fromCssColorString(color);
-    this._updatePrimitives()
+    this._updatePrimitives(options)
   }
 
-  _updatePrimitives() {
+  _updatePrimitives(options) {
     let ring = new Cesium.Primitive({
-      geometryInstances: Cesium.GeometryPipeline.toWireframe(this._getRingGeometry()),
+      // geometryInstances: Cesium.GeometryPipeline.toWireframe(this._getRingGeometry()),
+      geometryInstances: this._getRingGeometry(options),
       asynchronous: false,
       appearance: new Cesium.PerInstanceColorAppearance({
         flat: true,

@@ -13,8 +13,10 @@ import { ConeGlowDemo } from './demo/primitive/ConeGlowDemo'
 import { cusotom, addPlanePrimitive, addRingPrimitive } from './demo/primitive/cuostom'
 import { groundSkybox } from './demo/primitive/groundSkybox';
 import { RingPrimitive } from './primitive/RingPrimitive';
+import { addRangeMesh } from './demo/mesh';
 
-addRingPrimitive(viewer)
+addRangeMesh(viewer);
+// addRingPrimitive(viewer)
 
 
 // getClickPoint({ viewer: viewer })
