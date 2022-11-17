@@ -33,7 +33,7 @@ export class PlanePrimitive {
     var primitive = new Cesium.Primitive({
       geometryInstances: planeGeometryInstance,
       appearance: new Cesium.PerInstanceColorAppearance({
-        closed: true
+        closed: true,
       }),
       asynchronous: false,
     });
@@ -43,6 +43,9 @@ export class PlanePrimitive {
     if (outline) {
       this._createOutline(planeModelMatrix);
     }
+
+    this.primitive = primitive;
+    this.geometry = planeGeometry;
   }
 
   _createOutline(planeModelMatrix) {

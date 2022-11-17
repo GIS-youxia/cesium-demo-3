@@ -16,8 +16,9 @@ import { RingPrimitive } from './primitive/RingPrimitive';
 import { addRangeMesh } from './demo/mesh';
 import { getClickPointAdd } from '../tool/tool';
 
-addRangeMesh(viewer);
+// addRangeMesh(viewer);
 // addRingPrimitive(viewer)
+addPlanePrimitive(viewer)
 getClickPointAdd(viewer)
 
 // getClickPoint({ viewer: viewer })
