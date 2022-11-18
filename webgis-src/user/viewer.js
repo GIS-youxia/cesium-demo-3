@@ -12,6 +12,7 @@ export function getViewer() {
   addCSS("./node_modules/cesium/Build/CesiumUnminified/Widgets/widgets.css")
 
   const viewOptions = {
+    scene3DOnly: true,
     //如果为true并且配置支持它，则使用顺序无关的半透明性
     orderIndependentTranslucency: false,
 
