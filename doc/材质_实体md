@@ -1,0 +1,76 @@
+#### 实体材质(MaterialProperty)
+
+```js
+ColorMaterialProperty
+ImageMaterialProperty
+CompositeMaterialProperty
+GridMaterialProperty
+PolylineGlowMaterialProperty
+PolylineOutlineMaterialProperty
+StripeMaterialProperty
+CheckerboardMaterialProperty
+```
+
+![alt](./images/v2-c83680caaff317ec55ebd5e79056fa60_720w.webp)
+
+#### 使用例子
+```js
+// 1 ColorMaterialProperty,颜色材质, type=Color
+var color = Cesium.Color.BLUE.withAlpha(0.5);
+var colorMaterial = new Cesium.ColorMaterialProperty(color);
+
+// 2 ImageMaterialProperty, 贴图材质, type=Image
+var imgUrl = "./images/bumpmap.png";
+var imgMaterial = new Cesium.ImageMaterialProperty({
+  image: imgUrl,
+  repeat: new Cesium.Cartesian2(4, 4),
+  color: Cesium.Color.BLUE,
+});
+
+// 3 CheckerboardMaterialProperty,棋盘纹理, type=Checkerboard
+var checkerboardMaterial = new Cesium.CheckerboardMaterialProperty({
+  evenColor: Cesium.Color.WHITE,
+  oddColor: Cesium.Color.BLACK,
+  repeat: new Cesium.Cartesian2(4, 4),
+});
+
+// 4 StripeMaterialProperty 条纹纹理, type="Stripe"
+var stripeMaterial = new Cesium.StripeMaterialProperty({
+  orientation: Cesium.StripeOrientation.VERTICAL,
+  evenColor: Cesium.Color.WHITE,
+  oddColor: Cesium.Color.BLACK,
+  repeat: 16,
+});
+
+// 5 GridMaterialProperty 网格, type="Grid"
+ var gripMaterial = new Cesium.GridMaterialProperty({
+  color: Cesium.Color.YELLOW,
+  cellAlpha: 0.5,
+  lineCount: new Cesium.Cartesian2(8, 8),
+  lineThickness: new Cesium.Cartesian2(2.0, 2.0),
+  lineOffset: new Cesium.Cartesian2(0.0, 0.0),
+});
+
+// 6 PolylineGlowMaterialProperty 发光材质, type="PolylineGlow"
+new Cesium.PolylineGlowMaterialProperty({
+  glowPower: 0.8,
+  taperPower: 0.5,
+  color: Cesium.Color.CORNFLOWERBLUE,
+})
+
+// 7 PolylineOutlineMaterialProperty 外轮廓材质, type="PolylineOutline"
+new Cesium.PolylineOutlineMaterialProperty({
+  color: Cesium.Color.ORANGE,
+  outlineWidth: 5,
+  outlineColor: Cesium.Color.BLACK,
+})
+
+// 8 PolylineArrowMaterialProperty 带有箭头的线, type="PolylineArrow"
+new Cesium.PolylineArrowMaterialProperty(Cesium.Color.PURPLE)
+
+// 9 PolylineDashMaterialProperty 虚线, type="PolylineDash"
+new Cesium.PolylineDashMaterialProperty({
+  color: Cesium.Color.CYAN,
+})
+```
+

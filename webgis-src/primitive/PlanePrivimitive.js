@@ -71,6 +71,9 @@ export class PlanePrimitive {
     if (outline) {
       this._createOutline(planeModelMatrix);
     }
+
+    this.primitive = primitive;
+    this.geometry = planeGeometry;
   }
 
   _createOutline(planeModelMatrix) {

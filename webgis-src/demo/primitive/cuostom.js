@@ -29,13 +29,14 @@ function fly(viewer, dist) {
 
 export function addPlanePrimitive(viewer) {
   var origin = Cesium.Cartesian3.fromDegrees(106, 26, 0);
-  new PlanePrimitive({
+  const plane = new PlanePrimitive({
     viewer: viewer,
     position: origin,
     dimensions: new Cesium.Cartesian2(4000, 3000)
   });
+  window.plane = plane;
 
-  fly(viewer, Cesium.Cartesian3.fromDegrees(106, 26, 5000));
+  fly(viewer, Cesium.Cartesian3.fromDegrees(106, 26, 50000));
 }
 
 
