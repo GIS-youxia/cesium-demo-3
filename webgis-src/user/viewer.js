@@ -12,6 +12,9 @@ export function getViewer() {
   addCSS("./node_modules/cesium/Build/CesiumUnminified/Widgets/widgets.css")
 
   const viewOptions = {
+    //如果为true并且配置支持它，则使用顺序无关的半透明性
+    orderIndependentTranslucency: false,
+
     //-------------------------- UI控件 --------------------
     homeButton: false,
     //动画
@@ -47,7 +50,7 @@ export function getViewer() {
   // viewer.scene.debugShowFramesPerSecond = true;
 
   // @ts-ignore
-  // viewer.scene.globe.show = false;
+  viewer.scene.globe.show = false;
   viewer.scene.skyBox.show = false
   //去cesium logo
   // viewer.cesiumWidget.creditContainer.style.display = "none";

@@ -32,7 +32,7 @@ export function addPlanePrimitive(viewer) {
   new PlanePrimitive({
     viewer: viewer,
     position: origin,
-    dimensions: new Cesium.Cartesian2(4000000, 3000000)
+    dimensions: new Cesium.Cartesian2(4000, 3000)
   });
 
   fly(viewer, Cesium.Cartesian3.fromDegrees(106, 26, 5000));
