@@ -1,5 +1,5 @@
 > https://www.saoniuhuo.com/article/detail-483380.html#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BB%8E-viewer-%E8%AE%BF%E9%97%AE-entity-api
-
+https://zhuanlan.zhihu.com/p/389962991
 
 
 ### entity 创建过程
@@ -98,18 +98,29 @@ CesiumWidget.render()
 
 ```js
 // https://segmentfault.com/a/1190000041685672?utm_source=sf-similar-article
+// https://blog.csdn.net/u010447508/article/details/107469179
 
 [Module Scene.js]
 - fn render() {
   - Scene.updateAndExecuteCommands()
     - fn executeCommandsInViewport()
       - fn updateAndRenderPrimitives()
+
         - Scene._groundPrimitives.update();
           [Module PrimitiveCollection.js]
           - PrimitiveCollection.update();
             - primitives[i].update();
               [Module Primitive.js]
               Primitive.update();
+
+        - Scene._primitives.update();
+          [Module PrimitiveCollection.js]
+          PrimitiveCollection.update();
+            Primitive.update();
+              fn loadSynchronous()
+                PrimitivePipeline.combineGeometry();
+                 fn geometryPipeline()
+                  fn transformToWorldCoordinates()
 }
 
 ```
