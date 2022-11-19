@@ -1,7 +1,7 @@
 import * as Cesium from 'cesium'//根据自己的实际路径修改
 
 export function modifyMap(viewer, options) {
-  const baseLayer = viewer.imageryLayers.get(0)
+  const baseLayer = viewer.imageryLayers.get(1)
   //以下几个参数根据实际情况修改,目前我是参照火星科技的参数,个人感觉效果还不错
   baseLayer.brightness = options.brightness || 0.6
   baseLayer.contrast = options.contrast || 1.8
@@ -30,13 +30,3 @@ export function modifyMap(viewer, options) {
     baseFragShader[i] = baseFragShader[i].replace(strS, strT)
   }
 }
-
-//调用
-// import modifyMap from './filterColor'
-// modifyMap(viewer, {
-//     //反色?
-//     invertColor: true,
-//     //滤镜值
-//     filterRGB: [60, 145, 172],
-// });
-// viewer是什么不用我说了吧

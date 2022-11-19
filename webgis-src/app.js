@@ -2,13 +2,17 @@ import * as Cesium from 'cesium';
 import { getViewer } from './user/viewer';
 
 const viewer = getViewer()
-// addGaode(viewer,"elec")
-// modifyMap(viewer, {
-//     //反色?
-//     invertColor: false,
-//     //滤镜值
-//     filterRGB: [60, 145, 172],
-// });
+addGaode(viewer,"elec")
+modifyMap(viewer, {
+  invertColor: true, // 反向颜色 color.r = 1.0 - color.r
+  brightness: 0.6,
+  contrast: 1.8,
+  gamma: 0.3,
+  hue: 1,
+  saturation: 0,
+  filterRGB: [78, 112, 166],
+  // filterRGB: [0, 100, 200],
+});
 
 // import { AxesDemo } from './demo/tool/AxesDemo';
 import { EntityDemo } from './demo/entity/EntityDemo';
