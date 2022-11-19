@@ -24,6 +24,14 @@ export function removeGaode(viewer) {
   viewer.imageryLayers.remove(viewer.imageryLayers._layers[1])
 }
 
+export function addGaode2(viewer) {
+  var atLayer = new Cesium.UrlTemplateImageryProvider({
+    url: "http://webst02.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}",
+    minimumLevel: 3,
+    maximumLevel: 18
+  })
+  viewer.imageryLayers.addImageryProvider(atLayer);
+}
 export function addGaode(viewer, style ="elec") {
   var options = {
     style: style, // style: img elec cva

@@ -1,18 +1,17 @@
 import * as Cesium from 'cesium';
 import { getViewer } from './user/viewer';
-
 const viewer = getViewer()
-addGaode(viewer,"elec")
-modifyMap(viewer, {
-  invertColor: true, // 反向颜色 color.r = 1.0 - color.r
-  brightness: 0.6,
-  contrast: 1.8,
-  gamma: 0.3,
-  hue: 1,
-  saturation: 0,
-  filterRGB: [78, 112, 166],
-  // filterRGB: [0, 100, 200],
-});
+addGaode2(viewer)
+// modifyMap(viewer, {
+//   invertColor: true, // 反向颜色 color.r = 1.0 - color.r
+//   brightness: 0.6,
+//   contrast: 1.8,
+//   gamma: 0.3,
+//   hue: 1,
+//   saturation: 0,
+//   // filterRGB: [78, 112, 166],
+//   // filterRGB: [0, 50, 200],
+// });
 
 // import { AxesDemo } from './demo/tool/AxesDemo';
 import { EntityDemo } from './demo/entity/EntityDemo';
@@ -27,7 +26,7 @@ import { RingPrimitive } from './primitive/RingPrimitive';
 import { addRangeMesh } from './demo/mesh';
 import { getClickPointAdd } from '../tool/tool';
 import { modifyMap } from '../tool/filterColor';
-import { addGaode } from '../tool/provider';
+import { addGaode, addGaode2 } from '../tool/provider';
 
 addPlanePrimitive(viewer);
 // addRingPrimitive(viewer)
