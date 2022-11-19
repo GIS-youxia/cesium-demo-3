@@ -2,6 +2,13 @@ import * as Cesium from 'cesium';
 import { getViewer } from './user/viewer';
 
 const viewer = getViewer()
+// addGaode(viewer,"elec")
+// modifyMap(viewer, {
+//     //反色?
+//     invertColor: false,
+//     //滤镜值
+//     filterRGB: [60, 145, 172],
+// });
 
 // import { AxesDemo } from './demo/tool/AxesDemo';
 import { EntityDemo } from './demo/entity/EntityDemo';
@@ -15,6 +22,8 @@ import { groundSkybox } from './demo/primitive/groundSkybox';
 import { RingPrimitive } from './primitive/RingPrimitive';
 import { addRangeMesh } from './demo/mesh';
 import { getClickPointAdd } from '../tool/tool';
+import { modifyMap } from '../tool/filterColor';
+import { addGaode } from '../tool/provider';
 
 addPlanePrimitive(viewer);
 // addRingPrimitive(viewer)

@@ -15,3 +15,10 @@ https://github.com/MapGIS/MapGIS-Mobile-React-Native/tree/fa6a56ad0903969dd2e460
 
 博客学习:
 https://www.cnblogs.com/2008nmj/tag/Cesium/
+
+
+```js
+// 点转到地球背后弹窗隐藏
+this.isVisible = new Cesium.EllipsoidalOccluder(Cesium.Ellipsoid.WGS84,this.viewer.camera.position).isPointVisible(this.click_point);
+
+```

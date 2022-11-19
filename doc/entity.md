@@ -91,6 +91,15 @@ CesiumWidget.render()
                 [Module PrimitiveCollection.js]
                 PrimitiveCollection.update();
                   primitives[i].update(frameState);
+
+                  [Module Primitive.js]
+                    Primitive.update();
+                    // 1)如果没有材质程序,则创建
+                    fn createCommands
+                    // 2) updateAndQueueCommandsFunc
+                    fn updateAndQueueCommands();
+                      // 为 commandList 赋值
+
 ```
 
 
@@ -123,4 +132,11 @@ CesiumWidget.render()
                   fn transformToWorldCoordinates()
 }
 
+```
+
+
+#### 绘制
+```js
+executeCommandsInViewport
+  fn executeCommands
 ```

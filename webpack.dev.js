@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: "development",
-  entry: "./webgis-src/app.js",
-  // entry: "./app-case.js",
+  // entry: "./webgis-src/app.js",
+  entry: "./app-case.js",
   output: {
     filename: "build.js",
     path: path.join(__dirname, "./dist")

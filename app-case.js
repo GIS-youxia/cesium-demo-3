@@ -33,7 +33,7 @@ import { addGaode } from './tool/provider';
 // import { PersonDemo } from './case/person/index'
 // import { TdtDemo } from './case/tdt/index'
 // import { AQIDemo } from './case/aqi/index'
-// import { TextDemo } from './case/text';
+import { TextDemo } from './case/text';
 import { WindTurbineDemo } from './case/windTurbine';
 // import { HelloDemo } from './case/hello'
 // import { SmartDemo } from './case/smart2/index'
@@ -124,7 +124,7 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new PersonDemo(viewer);
 // window.case = new TdtDemo(viewer);
 // window.case = new AQIDemo(viewer);
-// window.case = new TextDemo(viewer);
-window.case = new WindTurbineDemo(viewer);
+window.case = new TextDemo(viewer);
+// window.case = new WindTurbineDemo(viewer);
 // window.case = new HelloDemo(viewer);
 // window.case = new SmartDemo(viewer);
