@@ -17,6 +17,7 @@
     bottom: 0px;
     font-family: "PingFang-SC-Regular", "Helvetica Neue", "PingFang SC", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     background-image: url(./pic/home_icon_18.png);
+    pointer-events: none;
 }
 
 .hot-spot2 {

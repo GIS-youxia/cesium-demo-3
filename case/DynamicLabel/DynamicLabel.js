@@ -1,5 +1,4 @@
 import * as Cesium from 'cesium';
-import { setCamera } from '../../tool/camera';
 import { addPoint } from '../../tool/tool';
 
 export class DynamicLabel {
@@ -19,12 +18,6 @@ export class DynamicLabel {
     this.show = true;
 
     this.addPostRender();
-    // setComeraPosition(viewer, {
-    //   longitude: x,
-    //   latitude: y,
-    //   height: z,
-    // })
-    setCamera(viewer, "beiJing", 10000)
   }
 
   createDiv(label) {
