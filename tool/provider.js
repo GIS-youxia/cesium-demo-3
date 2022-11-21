@@ -26,11 +26,21 @@ export function removeGaode(viewer) {
 
 export function addGaode2(viewer) {
   var atLayer = new Cesium.UrlTemplateImageryProvider({
-    url: "http://webst02.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}",
+    url: "http://webst{s}.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}",
     minimumLevel: 3,
-    maximumLevel: 18
+    maximumLevel: 200,
+    subdomains: ["01", "02", "03", "04"] //多域名请求
   })
   viewer.imageryLayers.addImageryProvider(atLayer);
+
+  // var options = {
+  //   // style: style, // style: img elec cva
+  //   crs: 'WGS84', // 使用84坐标系，默认为：GCJ02
+  //   url: "http://webst02.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}"
+  // }
+
+  // let layer = viewer.imageryLayers.addImageryProvider(new CesiumMap.AmapImageryProvider(options))
+
 }
 export function addGaode(viewer, style ="elec") {
   var options = {

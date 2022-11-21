@@ -1,9 +1,9 @@
 import * as Cesium from 'cesium';
 import { addCSS } from '../ui/helper';
 import { updateResolutionScale } from '../misc/index'
+import { AMapNominatimGeocoder, OpenStreetMapNominatimGeocoder } from '../misc/geocoder';
 // @ts-ignore
 console.log(Cesium.VERSION);
-
 export function getViewer() {
 
   // @ts-ignore
@@ -24,7 +24,7 @@ export function getViewer() {
     baseLayerPicker: false,
     // 全屏
     fullscreenButton: false,
-    geocoder: false,
+    geocoder: new AMapNominatimGeocoder(),
     infoBox: false,
     // 2d/3d切换
     sceneModePicker: false,
