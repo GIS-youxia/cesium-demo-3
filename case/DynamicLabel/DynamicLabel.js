@@ -16,7 +16,6 @@ export class DynamicLabel {
     }
 
     this.show = true;
-
     this.addPostRender();
   }
 
