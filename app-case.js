@@ -37,6 +37,7 @@ import { Demo as CircleDomDemo } from './case/dom/index'
 
 import { TextDemo } from './case/text';
 import { WindTurbineDemo } from './case/windTurbine';
+import { WatherDemo } from './case/water';
 // import { HelloDemo } from './case/hello'
 // import { SmartDemo } from './case/smart2/index'
 
@@ -113,7 +114,7 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new Road(viewer)
 // window.case = new Draw(viewer)
 // window.case = new FlowLine(viewer);
-window.case = new DomLabelDemo(viewer);
+// window.case = new DomLabelDemo(viewer);
 // window.case = new RiverDemo(viewer);
 // window.case = new PowerDemo(viewer);
 // window.case = new WallDemo(viewer);
@@ -131,3 +132,4 @@ window.case = new DomLabelDemo(viewer);
 // window.case = new HelloDemo(viewer);
 // window.case = new SmartDemo(viewer);
 // window.case = new CircleDomDemo(viewer);
+window.case = new WatherDemo(viewer);

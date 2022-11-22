@@ -165,6 +165,7 @@ function getCameraView(viewer) {
   return r;
 }
 
+
 /**
  * 开场动画
  * @param {Cesium.Viewer} viewer
@@ -234,4 +235,18 @@ export function openFlyAnimation(viewer, options = {}) {
       });
     }
   })
+}
+
+
+export function centerAt(options) {
+  const center = Cesium.Cartesian3.fromDegrees(options.x, options.y);
+  const heading = Cesium.Math.toRadians(options.heading);
+  const pitch = Cesium.Math.toRadians(options.pitch);
+  const range = options.z;
+  options.viewer.camera.flyToBoundingSphere(new Cesium.BoundingSphere(center, 0),
+    {
+      offset: new Cesium.HeadingPitchRange(heading, pitch, range),
+      duration: options.duration !== undefined ? options.duration:1 ,
+    },
+  );
 }
