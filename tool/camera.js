@@ -2,7 +2,7 @@ import * as Cesium from 'cesium';
 
 
 /** 中国坐标 */
-export function setCamera(view, name="beiJing", height=10000) {
+export function setCamera(view, name = "beiJing", height = 10000) {
   let info = {}
 
   switch (name) {
@@ -150,4 +150,88 @@ function name(params) {
     var extent = [Rectangle.west / Math.PI * 180, Rectangle.south / Math.PI * 180, Rectangle.east / Math.PI * 180, Rectangle.north / Math.PI * 180];
     return extent;
   }
+}
+
+function getCameraView(viewer) {
+  var camera = viewer.camera
+  var a = camera.positionCartographic;
+  var r = {};
+  r.y = Cesium.Math.toDegrees(a.latitude) || 6;
+  r.x = Cesium.Math.toDegrees(a.longitude) || 6;
+  r.z = a.height || 2;
+  r.heading = Cesium.Math.toDegrees(camera.heading || -90) || 1;
+  r.pitch = Cesium.Math.toDegrees(camera.pitch || 0) || 1;
+  r.roll = Cesium.Math.toDegrees(camera.roll || 0) || 1;
+  return r;
+}
+
+/**
+ * 开场动画
+ * @param {Cesium.Viewer} viewer
+ * @param {Object} options 参数集合
+ * @param {number} options.longitude 经度
+ * @param {number} options.latitude 维度
+ * @param {number} options.height 高度
+ * @param {number} options.heading 航向
+ * @param {number} options.pitch 俯仰
+ * @param {number} options.roll 横滚
+ * @param {number} options.rotationDuration 水平旋转时间
+ * @param {number} options.zoomDuration 缩放时间
+ * @param {number} options.pitchDuration 倾角时间
+ * @example
+ * ````js
+ * openFlyAnimation(viewer,{
+ *  longitude: 116.39642393115915,
+ *  latitude: 39.91666925151443,
+ *  pitch: -45,
+ * })
+ * ```
+ */
+export function openFlyAnimation(viewer, options = {}) {
+  const globeHeight = 16e6;
+  // 目标位置
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(options.longitude, options.latitude, options.height || 10e4),
+    orientation: {
+      heading: Cesium.Math.toRadians(options.heading || 0),
+      pitch: Cesium.Math.toRadians(options.pitch || 0),
+      roll: Cesium.Math.toRadians(options.roll || 0)
+    },
+  });
+  // 保存目标相机的参数
+  const targetCameraParam = getCameraView(viewer);
+
+  // 中国背面的位置
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(-85.16, 13.71, globeHeight)
+  });
+
+  // 水平旋转动画
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(targetCameraParam.x, targetCameraParam.y, globeHeight),
+    duration: options.rotationDuration !== undefined ? options.rotationDuration: 2,
+    easingFunction: Cesium.EasingFunction.LINEAR_NONE,
+    complete: function () {
+
+      // 垂直缩放动画
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(targetCameraParam.x, targetCameraParam.y, targetCameraParam.z),
+        duration: options.zoomDuration !== undefined ? options.zoomDuration : 4,
+        complete: function () {
+
+          // 相机倾角动画
+          const center = Cesium.Cartesian3.fromDegrees(targetCameraParam.x, targetCameraParam.y);
+          const heading = Cesium.Math.toRadians(targetCameraParam.heading);
+          const pitch = Cesium.Math.toRadians(targetCameraParam.pitch);
+          const range = targetCameraParam.z;
+          viewer.camera.flyToBoundingSphere(new Cesium.BoundingSphere(center, 0),
+            {
+              offset: new Cesium.HeadingPitchRange(heading, pitch, range),
+              duration: options.pitchDuration !== undefined ? options.pitchDuration : 2,
+            },
+          );
+        }
+      });
+    }
+  })
 }

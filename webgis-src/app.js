@@ -27,8 +27,9 @@ import { addRangeMesh } from './demo/mesh';
 import { getClickPointAdd } from '../tool/tool';
 import { modifyMap } from '../tool/filterColor';
 import { addGaode, addGaode2 } from '../tool/provider';
+import { openFlyAnimation } from '../tool/camera';
 
-addPlanePrimitive(viewer);
+// addPlanePrimitive(viewer);
 // addRingPrimitive(viewer)
 // getClickPointAdd(viewer)
 
@@ -38,3 +39,20 @@ addPlanePrimitive(viewer);
 // groundSkybox(viewer)
 // new EntityDemo(viewer)
 // new ConeGlowDemo(viewer)
+// openFlyAnimation(viewer)
+
+// 开场动画
+openFlyAnimation(viewer, {
+  // 目标经度
+  longitude: 116.39642393115915,
+  // 目标维度
+  latitude: 39.91666925151443,
+  // 俯仰
+  pitch: -45,
+  // 水平旋转时间
+  rotationDuration: 2,
+  // 缩放时间
+  zoomDuration: 4,
+  // 倾角时间
+  pitchDuration: 2
+})
