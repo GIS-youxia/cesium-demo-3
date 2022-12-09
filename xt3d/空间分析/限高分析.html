@@ -16,7 +16,9 @@
     <script src="https://unpkg.com/element-ui@2.15.5/lib/index.js"></script>
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
+
     <style>
       html,
       body,
@@ -84,7 +86,7 @@
             sceneModePicker: false,
             navigationHelpButton: false,
             terrainProvider: new Cesium.CesiumTerrainProvider({
-              url: "http://www.xt3d.cn/data/localter",
+              url: "http://localhost:9000/data/localter",
               requestWaterMask: true,
               requestVertexNormals: true
             }),
@@ -110,7 +112,7 @@
         load3dtiles() {
           var tileset = this.viewer.scene.primitives.add(
             new Cesium.Cesium3DTileset({
-              url: "http://www.xt3d.cn/data/offset_3dtiles/tileset.json",
+              url: "http://localhost:9000/data/offset_3dtiles/tileset.json",
             })
           );
 
