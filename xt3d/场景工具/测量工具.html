@@ -9,11 +9,11 @@
     <!-- 引入Cesium -->
     <script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
-
-    <script src='http://www.xt3d.cn/libs/turf.min.js'></script>
-
+<script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+    <!-- <script src='http://www.xt3d.cn/libs/turf.min.js'></script> -->
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -70,7 +70,7 @@
       let xt3dInit = {
         init(el) {
           this.initViewer(el);
-          this.load3dtiles();
+          // this.load3dtiles();
           this.initMeasureTools();
         },
 
@@ -89,7 +89,7 @@
             navigationHelpButton: false,
             shouldAnimate: false,
             imageryProvider: new Cesium.UrlTemplateImageryProvider({
-              url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
+              url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=93d1fdef41f93d2211deed6d22780c48"
             })
           });
           this.viewer.scene.globe.depthTestAgainstTerrain = true;
@@ -102,13 +102,14 @@
         initMeasureTools() {
           //测距工具
           this.mdTool = new xt3d.Map3dTools.Measure.Distance(this.viewer, {
-            startImgUrl: "/data.xt3d.cn/assets/images/marker/start.png", //起点图标
-            endImgUrl: "/data.xt3d.cn/assets/images/marker/end.png" //终点图标
+            // startImgUrl: "/data.xt3d.cn/assets/images/marker/start.png", //起点图标
+            // endImgUrl: "/data.xt3d.cn/assets/images/marker/end.png" //终点图标
           });
           //测高工具
           this.mhTool = new xt3d.Map3dTools.Measure.Height(this.viewer);
           //测面
           this.maTool = new xt3d.Map3dTools.Measure.Area(this.viewer);
+          window.maTool = this.maTool;
         },
 
         //开始测量
