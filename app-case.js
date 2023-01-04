@@ -19,11 +19,11 @@ import { addGaode } from './tool/provider';
 // import { Draw } from './case/draw/draw'
 // import { Radar } from './case/radar/index'
 // import { Road } from './case/road/index'
-import { DomLabelDemo } from './case/DynamicLabel/index'
+// import { DomLabelDemo } from './case/DynamicLabel/index'
 // import { FlowLine } from './case/VertiicalFlowLinePrimitive/index'
 // import { RiverDemo } from './case/river/index'
 // import { PowerDemo } from './case/power/index'
-// import { WallDemo } from './case/wall';
+import { WallDemo } from './case/wall';
 // import { S3MDemo } from './case/s3m/index'
 // import { CircleDemo } from './case/circle/index'
 // import { StatelliteDemo } from './case/satellite/index'
@@ -117,7 +117,7 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new DomLabelDemo(viewer);
 // window.case = new RiverDemo(viewer);
 // window.case = new PowerDemo(viewer);
-// window.case = new WallDemo(viewer);
+window.case = new WallDemo(viewer);
 // window.case = new S3MDemo(viewer);
 // window.case = new CircleDemo(viewer);
 // window.case = new StatelliteDemo(viewer);
@@ -132,4 +132,4 @@ viewer.scene.globe.enableLighting = false;
 // window.case = new HelloDemo(viewer);
 // window.case = new SmartDemo(viewer);
 // window.case = new CircleDomDemo(viewer);
-window.case = new WatherDemo(viewer);
+// window.case = new WatherDemo(viewer);
