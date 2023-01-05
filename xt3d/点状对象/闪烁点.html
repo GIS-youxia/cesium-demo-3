@@ -12,7 +12,9 @@
 
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
+
     <style>
       html,
       body,
@@ -50,9 +52,9 @@
                     homeButton: false,
                     sceneModePicker: false,
                     navigationHelpButton: false,
-                    imageryProvider: new Cesium.UrlTemplateImageryProvider({
-                        url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
-                    })
+                    // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+                    //     url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
+                    // })
                 });
             },
 
@@ -60,31 +62,37 @@
             addMarkers() {
                 let position = Cesium.Cartesian3.fromDegrees(106.45721717052103, 29.508857826447745, 30.828267397716047);
                 alertMarker = new xt3d.PointObject.AlertMarker(this.viewer, position, {
-                    iconUrl: "/data.xt3d.cn/assets/images/marker/pos_red.png",
+                    // iconUrl: "/data.xt3d.cn/assets/images/marker/pos_red.png",
+                    // iconUrl: "http://211.149.185.229:8080/static/images/marker/pos_red.png",
+                    iconUrl: "../res/pos_red.png",
                     color: Cesium.Color.RED
                 });
 
                 position = Cesium.Cartesian3.fromDegrees(106.4565365840505, 29.505992532615764, 30.070031394164918);
                 alertMarker = new xt3d.PointObject.AlertMarker(this.viewer, position, {
-                    iconUrl: "/data.xt3d.cn/assets/images/marker/pos_yellow.png",
+                    // iconUrl: "http://211.149.185.229:8080/static/images/marker/pos_yellow.png",
+                     iconUrl: "../res/pos_yellow.png",
                     color: Cesium.Color.YELLOW
                 });
 
                 position = Cesium.Cartesian3.fromDegrees(106.45370265970207, 29.508107660894193, 47);
                 alertMarker = new xt3d.PointObject.AlertMarker(this.viewer, position, {
-                    iconUrl: "/data.xt3d.cn/assets/images/marker/pos_orange.png",
+                    // iconUrl: "/data.xt3d.cn/assets/images/marker/pos_orange.png",
+                    iconUrl: "../res/pos_orange.png",
                     color: Cesium.Color.ORANGE
                 });
 
                 position = Cesium.Cartesian3.fromDegrees(106.45546249312059, 29.5076339345534, 68.3813861536219);
                 alertMarker = new xt3d.PointObject.AlertMarker(this.viewer, position, {
-                    iconUrl: "/data.xt3d.cn/assets/images/marker/pos_yellow.png",
+                    // iconUrl: "/data.xt3d.cn/assets/images/marker/pos_yellow.png",
+                    iconUrl: "../res/pos_yellow.png",
                     color: Cesium.Color.BLUE
                 });
 
                 position = Cesium.Cartesian3.fromDegrees(106.45377240762079, 29.50653022945677, 70.49301763120009);
                 alertMarker = new xt3d.PointObject.AlertMarker(this.viewer, position, {
-                    iconUrl: "/data.xt3d.cn/assets/images/marker/pos_yellow.png",
+                    // iconUrl: "/data.xt3d.cn/assets/images/marker/pos_yellow.png",
+                    iconUrl: "../res/pos_yellow.png",
                     color: Cesium.Color.GREEN
                 });
             },
@@ -93,7 +101,8 @@
             load3dtiles() {
                 var tileset = this.viewer.scene.primitives.add(
                     new Cesium.Cesium3DTileset({
-                        url: "http://www.xt3d.cn/data/offset_3dtiles/tileset.json",
+                        // url: "http://www.xt3d.cn/data/offset_3dtiles/tileset.json",
+                        url: "http://211.149.185.229:8081/data/offset_3dtiles/tileset.json",
                     })
                 );
 

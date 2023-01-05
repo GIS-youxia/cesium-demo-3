@@ -12,7 +12,8 @@
 
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -32,7 +33,7 @@
       let xt3dInit = {
         init(el) {
           this.initViewer(el);
-          this.load3dtiles();
+          // this.load3dtiles();
           this.addFloatMarkers();
           this.setView();
         },
@@ -51,9 +52,9 @@
             sceneModePicker: false,
             navigationHelpButton: false,
             shouldAnimate: false,
-            imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-              url: 'http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer'
-            })
+            // imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+            //   url: 'http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer'
+            // })
           });
           //是否开启抗锯齿
           this.viewer.scene.fxaa = true;
@@ -65,7 +66,9 @@
         addFloatMarkers() {
           let position = Cesium.Cartesian3.fromDegrees(108.95850065559718, 34.21944714452281, 15);
           let fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "http://211.149.185.229:8080/static/images/poi/float.png",
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量
@@ -73,7 +76,8 @@
 
           position = Cesium.Cartesian3.fromDegrees(108.95909494633781, 34.219537169430744, 15);
           fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量
@@ -81,7 +85,8 @@
 
           position = Cesium.Cartesian3.fromDegrees(108.95966728565314, 34.219028011091496, 15);
           fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量
@@ -89,7 +94,8 @@
 
           position = Cesium.Cartesian3.fromDegrees(108.95941801151338, 34.21876373222085, 15);
           fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量
@@ -97,7 +103,8 @@
 
           position = Cesium.Cartesian3.fromDegrees(108.95976447924141, 34.219705361971975, 15);
           fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量
@@ -105,7 +112,8 @@
 
           position = Cesium.Cartesian3.fromDegrees(108.9604459582188, 34.219064731198834, 15);
           fMarker = new xt3d.PointObject.FloatMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            // image: "/data.xt3d.cn/assets/images/poi/float.png", //图标
+            image: "../res/float.png",
             lineHeight: 16, //线高
             bounceHeight: 1, //高度
             increment: 0.008, //增量

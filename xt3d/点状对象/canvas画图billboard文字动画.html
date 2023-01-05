@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -50,9 +51,9 @@
                     sceneModePicker: false,
                     navigationHelpButton: false,
                     shouldAnimate: false,
-                    imageryProvider: new Cesium.UrlTemplateImageryProvider({
-                        url: "https://a.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=sk.eyJ1IjoibWFyc2dpcyIsImEiOiJjbDFhYXQ3a2EwaHF6M2NvdnhmdjR6ajZ2In0.-sahm9R0QuPP3pAihJHC4A"
-                    })
+                    // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+                    //     url: "https://a.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=sk.eyJ1IjoibWFyc2dpcyIsImEiOiJjbDFhYXQ3a2EwaHF6M2NvdnhmdjR6ajZ2In0.-sahm9R0QuPP3pAihJHC4A"
+                    // })
                 });
             },
 
@@ -60,7 +61,7 @@
             load3dtiles() {
                 var tileset = this.viewer.scene.primitives.add(
                     new Cesium.Cesium3DTileset({
-                        url: "http://www.xt3d.cn/data/3dtiles/gongchang/tileset.json",
+                        url: "http://211.149.185.229:8081/data/3dtiles/gongchang/tileset.json",
                     })
                 );
             },

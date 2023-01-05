@@ -12,7 +12,8 @@
 
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
         html,
         body,
@@ -48,9 +49,9 @@
                     sceneModePicker: false,
                     navigationHelpButton: false,
                     shouldAnimate: false,
-                    imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-                        url: 'http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer'
-                    })
+                    // imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                    //     url: 'http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer'
+                    // })
                 });
                 this.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
                 this.viewer.selectedEntityChanged.addEventListener(this.selectedEntityChanged);
@@ -58,11 +59,12 @@
 
             //初始化聚合
             initCluster() {
-                let pointcluster = new xt3d.PointObject.PointCluster1(this.viewer, "http://www.xt3d.cn/data/cluserPoint.json", {
+                let pointcluster = new xt3d.PointObject.PointCluster1(this.viewer,
+                "../res/cluserPoint.json", {
                     pixelRange: 30, //聚合像素
                     minimumClusterSize: 3, //最低聚合数
-                    billboardImg: "/data.xt3d.cn/assets/images/marker/bluecamera.png", //单个点的图片
-                    clusterImage: "/data.xt3d.cn/assets/images/pointcluster" //聚合图标路径
+                    billboardImg: "../res/bluecamera.png", //单个点的图片
+                    clusterImage: "../res" //聚合图标路径
                 });
 
                 //数据加载完成事件

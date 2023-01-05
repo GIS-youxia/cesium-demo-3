@@ -12,7 +12,8 @@
 
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -50,9 +51,9 @@
                     homeButton: false,
                     sceneModePicker: false,
                     navigationHelpButton: false,
-                    imageryProvider: new Cesium.UrlTemplateImageryProvider({
-                        url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
-                    })
+                    // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+                    //     url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
+                    // })
                 });
 
             },
@@ -60,20 +61,21 @@
             //添加BillboardGif
             addBillboardGifs() {
                 let position = Cesium.Cartesian3.fromDegrees(106.45369964187564, 29.506519369988975, 68);
-                let billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position, "/data.xt3d.cn/assets/images/marker/bgif0.gif");
+                let billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position,
+                "../res/bgif0.gif");
 
                 position = Cesium.Cartesian3.fromDegrees(106.45551315829987, 29.507635519892798, 67);
-                billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position, "/data.xt3d.cn/assets/images/marker/tf.gif");
+                billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position, "../res/tf.gif");
 
                 position = Cesium.Cartesian3.fromDegrees(106.4572625082757, 29.506150903331505, 26);
-                billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position, "/data.xt3d.cn/assets/images/marker/bgif0.gif");
+                billboardGif = new xt3d.PointObject.BillboardGif(this.viewer, position, "../res/bgif0.gif");
             },
 
             //加载三维模型
             load3dtiles() {
                 var tileset = this.viewer.scene.primitives.add(
                     new Cesium.Cesium3DTileset({
-                        url: "http://www.xt3d.cn/data/offset_3dtiles/tileset.json",
+                        url: "http://211.149.185.229:8081/data/offset_3dtiles/tileset.json",
                     })
                 );
 

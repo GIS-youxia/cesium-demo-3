@@ -12,7 +12,8 @@
 
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -52,9 +53,9 @@
             homeButton: false,
             sceneModePicker: false,
             navigationHelpButton: false,
-            imageryProvider: new Cesium.UrlTemplateImageryProvider({
-              url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
-            })
+            // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+            //   url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
+            // })
           });
         },
 
@@ -71,42 +72,49 @@
         addMarkers() {
           let position = Cesium.Cartesian3.fromDegrees(108.95850065559718, 34.21944714452281, -1);
           let bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "http://211.149.185.229:8080/static/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
 
           position = Cesium.Cartesian3.fromDegrees(108.95909494633781, 34.219537169430744, -2);
           bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
 
           position = Cesium.Cartesian3.fromDegrees(108.95966728565314, 34.219028011091496, -3);
           bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
 
           position = Cesium.Cartesian3.fromDegrees(108.95941801151338, 34.21876373222085, -4);
           bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
 
           position = Cesium.Cartesian3.fromDegrees(108.95976447924141, 34.219705361971975, -2);
           bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
 
           position = Cesium.Cartesian3.fromDegrees(108.9604459582188, 34.219064731198834, -4);
           bMarker = new xt3d.PointObject.BounceMarker(this.viewer, position, {
-            image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            // image: "/data.xt3d.cn/assets/images/marker/mark3.png",
+            image: "../res/mark3.png",
             bounceHeight: 100, //高度
             increment: 0.05, //增量
           });
