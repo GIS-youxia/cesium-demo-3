@@ -2,6 +2,8 @@ import * as Cesium from 'cesium';
 import { Tower } from './Tower'
 import { setCamera, setComeraPosition } from '../../tool/camera';
 
+// todo: 悬链线
+
 function generateCurve (start, end) {
   var _0x2918f7 = new Cesium['Cartesian3']();
   Cesium['Cartesian3']['add'](start, end, _0x2918f7);
