@@ -51,9 +51,10 @@
                     sceneModePicker: false,
                     navigationHelpButton: false,
                     shouldAnimate: true,
-                    imageryProvider: new Cesium.UrlTemplateImageryProvider({
-                        url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
-                    }),
+                    imageryProvider: false
+                    // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+                    //     url: "https://t7.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=tdtTk"
+                    // }),
                 });
                 this.viewer.scene.globe.depthTestAgainstTerrain = true;
             },
@@ -61,13 +62,14 @@
             //添加数据
             addPrimitives() {
                 let primitiveLabelCol = new xt3d.PointObject.PrimitiveLabelCol(this.viewer);
-                fetch("/data.xt3d.cn/assets/data/mudi-all.json").then(res => {
+                // fetch("http://211.149.185.229:8080/static/data/mudi-all.json").then(res => {
+                fetch("../res/mudi-all.json").then(res => {
                     return res.json();
                 }).then(res => {
                     res.data.forEach(item => {
                         const position = Cesium.Cartesian3.fromDegrees(Number(item.lng), Number(item.lat), 0);
                         const label = item.text;
-                        primitiveLabelCol.add(position, label, 'http://211.149.185.229:8080/assets/images/marker/mark3.png');
+                        primitiveLabelCol.add(position, label, '../res/mark3.png');
                     });
                 })
             },
