@@ -9,10 +9,11 @@
     <!-- 引入Cesium -->
     <script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/cesium@1.84.0/Build/Cesium/Widgets/widgets.css">
-    <script src='http://www.xt3d.cn/libs/turf.min.js'></script>
 
     <!--  引入xt3d -->
-    <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script>
+    <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+    <!-- <script src="http://www.xt3d.cn/xt3dlib/xt3d.min.js"></script> -->
+    <script src="../lib/xt3d.min.js"></script>
     <style>
       html,
       body,
@@ -51,13 +52,14 @@
                     sceneModePicker: false,
                     navigationHelpButton: false,
                     shouldAnimate: true,
-                    imageryProvider: new Cesium.UrlTemplateImageryProvider({
-                        url: 'https://webrd03.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
-                    }),
-                    terrainProvider: new Cesium.CesiumTerrainProvider({
-                        url: "http://data.xtgis.cn/terrain",
-                        requestVertexNormals: true
-                    }),
+                    imageryProvider: false,
+                    // imageryProvider: new Cesium.UrlTemplateImageryProvider({
+                    //     url: 'https://webrd03.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
+                    // }),
+                    // terrainProvider: new Cesium.CesiumTerrainProvider({
+                    //     url: "http://data.xtgis.cn/terrain",
+                    //     requestVertexNormals: true
+                    // }),
                 });
                 this.viewer.scene.globe.depthTestAgainstTerrain = true;
 
@@ -71,7 +73,7 @@
 
             //添加图标点
             addPrimitives() {
-                let points = turf.randomPoint(20000, {
+                let points = turf.randomPoint(100000, {
                     bbox: [73, 20, 135, 40]
                 }); //使用turf生产20000个随机坐标点
                 let features = points.features;
@@ -90,7 +92,8 @@
             addPrimitive(position) {
                 this.billboards.add({
                     position: position,
-                    image: '/data.xt3d.cn/assets/images/marker/monitor.png',
+                    // image: 'http://211.149.185.229:8080/static/images/marker/monitor.png',
+                    image: '../res/monitor.png',
                     verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
                 });
             },
